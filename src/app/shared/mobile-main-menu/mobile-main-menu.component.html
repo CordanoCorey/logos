@@ -1,0 +1,53 @@
+<div class="mobile-main-menu">
+  <div class="top">
+    <img class="logo" src="assets/Olive_1.png" />
+    <h1 class="school-name">LOGOS SCHOOL</h1>
+  </div>
+  <mat-icon class="icon-close" (click)="close.emit()">close</mat-icon>
+  <div class="menu-items scrollable">
+    <div class="left">
+      <div class="menu-item">
+        <button (click)="goTo.emit('/home')" mat-button class="level-0">
+          Home
+        </button>
+      </div>
+      <div class="menu-item">
+        <button (click)="goTo.emit('/about')" mat-button class="level-0">
+          About Us
+        </button>
+        <div class="sub-menu-wrapper">
+          <logos-sub-menu [menuItems]="aboutUsSubmenu"></logos-sub-menu>
+        </div>
+      </div>
+      <div class="menu-item">
+        <button (click)="goTo.emit('/academics')" mat-button class="level-0">
+          Academics
+        </button>
+        <div class="sub-menu-wrapper">
+          <logos-sub-menu [menuItems]="academicsSubmenu"></logos-sub-menu>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="menu-item">
+        <button (click)="goTo.emit('/contact')" mat-button class="level-0">
+          Contact Us
+        </button>
+        <div class="sub-menu-wrapper">
+          <logos-sub-menu [menuItems]="contactUsSubmenu"></logos-sub-menu>
+        </div>
+      </div>
+      <div class="menu-item">
+        <button (click)="goTo.emit('/admissions')" mat-button class="level-0">
+          Admissions
+        </button>
+        <div class="sub-menu-wrapper">
+          <logos-sub-menu
+            [menuItems]="admissionsSubmenu"
+            class="level-0"
+          ></logos-sub-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

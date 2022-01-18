@@ -1,0 +1,9 @@
+<div class="bible-verse" [class.vertical]="vertical">
+  <span *ngIf="!isArray" class="words">{{ words }}</span>
+  <div *ngIf="isArray" class="words">
+    <span *ngFor="let w of wordsArray" class="verse">{{ w }}</span>
+  </div>
+  <span class="ref"
+    ><span *ngIf="vertical" class="dash">&mdash;</span>{{ ref }}</span
+  >
+</div>

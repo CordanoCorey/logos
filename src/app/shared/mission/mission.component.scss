@@ -1,0 +1,73 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.mission {
+  @extend .primary-font;
+  color: $primary-color;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+
+  p {
+    .bold {
+      font-weight: 700;
+      font-size: 32px;
+      text-transform: uppercase;
+    }
+
+    .bold.font-effect-emboss {
+      @extend .primary-font;
+      text-align: center;
+      font-size: 42px;
+      color: $primary-color;
+      font-style: italic;
+    }
+  }
+
+  p:nth-of-type(1) {
+    .bold {
+      font-size: 48px;
+    }
+  }
+
+  p:nth-of-type(2) {}
+
+  p:nth-of-type(3) {}
+
+  p:nth-of-type(4) {}
+
+  p:nth-of-type(5) {}
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .mission {
+    font-size: 18px;
+
+    p {
+      text-align: center;
+
+      .bold {
+        font-size: 20px;
+      }
+
+      .bold.font-effect-emboss {}
+    }
+
+    p:nth-of-type(1) {
+      text-align: left;
+
+      .bold {
+        font-size: 24px;
+      }
+    }
+
+    p:nth-of-type(2) {}
+
+    p:nth-of-type(3) {}
+
+    p:nth-of-type(4) {}
+
+    p:nth-of-type(5) {}
+  }
+}

@@ -1,0 +1,17 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.carousel {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .carousel {}
+}

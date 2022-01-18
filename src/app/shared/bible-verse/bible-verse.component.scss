@@ -1,0 +1,139 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.bible-verse {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  position: relative;
+
+  .words {
+    @extend .alt-font;
+    @include mat-elevation(4);
+    font-size: 16px;
+    color: #fff;
+    border-left: 2px solid mat-color($primary-palette, 300);
+    border-right: 3px solid #fff;
+    margin-right: 3px;
+    height: 100%;
+    padding: 0 2px 0 10px;
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .ref {
+    @extend .font1-bold;
+    @extend .light-blue-grey-text;
+    font-size: 20px;
+    //border-left: 2px solid #fff;
+    height: calc(100% - 0px);
+    width: 30%;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    // position: absolute;
+    // right: 0;
+    // top: 0px;
+  }
+}
+
+.bible-verse.vertical {
+  flex-direction: column;
+
+  .words {
+    border-left: none;
+    border-right: none;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid mat-color($primary-palette, 300);
+    width: 80%;
+    padding: 10px 2%;
+  }
+
+  .ref {
+    border: none;
+    width: 84%;
+    padding: 5px 0px 0 0px;
+
+    .dash {
+      margin-right: 5px;
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .bible-verse {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    width: 100%;
+    position: relative;
+
+    .words {
+      @extend .alt-font;
+      @include mat-elevation(4);
+      font-size: 16px;
+      color: #fff;
+      border-left: 2px solid mat-color($primary-palette, 300);
+      border-right: 3px solid #fff;
+      margin-right: 3px;
+      height: 100%;
+      padding: 0 2px 0 10px;
+      width: 370px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .ref {
+      @extend .font1-bold;
+      @extend .light-blue-grey-text;
+      font-size: 20px;
+      //border-left: 2px solid #fff;
+      height: calc(100% - 0px);
+      width: 30%;
+      padding: 0 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      // position: absolute;
+      // right: 0;
+      // top: 0px;
+    }
+  }
+
+  .bible-verse.vertical {
+
+    .words {
+      border-left: none;
+      border-right: none;
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid mat-color($primary-palette, 300);
+      width: 80%;
+      padding: 5px 2%;
+    }
+
+    .ref {
+      border: none;
+      width: 84%;
+      padding: 5px 0px 0 0px;
+
+      .dash {
+        margin-right: 5px;
+      }
+    }
+  }
+}

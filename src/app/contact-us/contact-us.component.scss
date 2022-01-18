@@ -1,0 +1,122 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+:host {
+  display: block;
+  min-height: 100%;
+  width: 100%;
+}
+
+.contact-us {
+  padding-top: 130px;
+  height: calc(100% - 130px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 56px;
+    color: mat-color($primary-palette, 600);
+    text-align: center;
+  }
+
+  logos-header {}
+
+  .top {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+
+    .left {
+      margin-right: 80px;
+
+      img {
+        max-width: 373px;
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      height: 306px;
+      justify-content: center;
+
+      .info {
+        display: flex;
+        flex-direction: column;
+
+        .lbl {
+          color: mat-color($accent-palette, 500);
+          font-weight: bold;
+          font-size: 28px;
+          margin-bottom: 10px;
+        }
+
+        .val {
+          color: mat-color($primary-palette, 500);
+          font-weight: bold;
+          font-size: 32px;
+        }
+      }
+
+      .info:first-of-type {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .contact-us {
+    padding-top: 60px;
+    height: calc(100% - 60px);
+    overflow: hidden;
+
+    h1 {
+      font-size: 32px;
+      margin: 10px 0;
+    }
+
+    logos-header {
+      height: 60px;
+    }
+
+    .top {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: space-around;
+      height: calc(100% - 50px);
+      margin-top: 0;
+
+      .left {
+        margin-right: unset;
+        width: 88%;
+
+        img {
+          max-width: 100%;
+        }
+      }
+
+      .right {
+        height: unset;
+
+        .info {
+
+          .lbl {
+            text-align: center;
+          }
+
+          .val {
+            text-align: center;
+            font-size: 24px;
+          }
+        }
+
+        .info:first-of-type {}
+      }
+    }
+  }
+}

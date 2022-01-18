@@ -1,0 +1,134 @@
+<div class="main-menu">
+  <div
+    class="menu-item"
+    #aboutEl
+    (mouseover)="submenu = 'ABOUT'"
+    (mouseleave)="submenu = null"
+  >
+    <button
+      mat-button
+      class="main-menu-item"
+      routerLink="/about"
+      aria-label="About Us"
+    >
+      About Us
+    </button>
+    <div
+      class="submenu"
+      *ngIf="submenu === 'ABOUT'"
+      [style.left.px]="aboutSubmenuLeft"
+      [@openClose]="submenu === 'ABOUT' ? 'opened' : 'closed'"
+    >
+      <button
+        mat-button
+        routerLink="/about"
+        [queryParams]="{ view: 'mission' }"
+      >
+        <span>Mission Statement</span>
+      </button>
+      <button mat-button routerLink="/about" [queryParams]="{ view: 'beliefs' }">
+        <span>Statement of Faith</span>
+      </button>
+      <button mat-button routerLink="/about" [queryParams]="{ view: 'vision' }">
+        <span>Vision and Philosophy</span>
+      </button>
+      <!-- <button mat-button routerLink="/about" [queryParams]="{ view: 'faqs' }">
+        <span>FAQs</span>
+      </button> -->
+    </div>
+  </div>
+  <div
+    class="menu-item"
+    #academicsEl
+    (mouseover)="submenu = 'ACADEMICS'"
+    (mouseleave)="submenu = null"
+  >
+    <button
+      mat-button
+      class="main-menu-item"
+      routerLink="/academics"
+      aria-label="Academics"
+    >
+      Academics
+    </button>
+    <div
+      class="submenu"
+      [style.left.px]="academicsSubmenuLeft"
+      [@openClose]="submenu === 'ACADEMICS' ? 'opened' : 'closed'"
+    >
+      <button mat-button routerLink="/academics">
+        <span>Why Classical?</span>
+      </button>
+      <button mat-button routerLink="/academics">
+        <span>Curriculum</span>
+      </button>
+      <button mat-button routerLink="/academics">
+        <span>Instruction</span>
+      </button>
+      <button mat-button routerLink="/academics">
+        <span>Accreditation (ACCS)</span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="menu-item"
+    #admissionsEl
+    (mouseover)="submenu = 'ADMISSIONS'"
+    (mouseleave)="submenu = null"
+  >
+    <button
+      mat-button
+      class="main-menu-item"
+      routerLink="/admissions"
+      aria-label="Admissions"
+    >
+      Admissions
+    </button>
+    <div
+      class="submenu"
+      [style.left.px]="admissionsSubmenuLeft"
+      [@openClose]="submenu === 'ADMISSIONS' ? 'opened' : 'closed'"
+      style.off
+    >
+      <button mat-button routerLink="/admissions">
+        <span>Tuition</span>
+      </button>
+      <button mat-button routerLink="/admissions">
+        <span>Visit</span>
+      </button>
+      <button mat-button routerLink="/admissions">
+        <span>Application</span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="menu-item"
+    #contactEl
+    (mouseover)="submenu = 'CONTACT'"
+    (mouseleave)="submenu = null"
+  >
+    <button
+      mat-button
+      class="main-menu-item"
+      routerLink="/contact"
+      aria-label="Contact Us"
+    >
+      Contact Us
+    </button>
+    <div
+      class="submenu"
+      [style.left.px]="contactSubmenuLeft"
+      [@openClose]="submenu === 'CONTACT' ? 'opened' : 'closed'"
+    >
+      <button mat-button routerLink="/contact">
+        <span>Apply</span>
+      </button>
+      <button mat-button routerLink="/contact">
+        <span>Volunteer</span>
+      </button>
+      <button mat-button routerLink="/contact">
+        <span>Donate</span>
+      </button>
+    </div>
+  </div>
+</div>

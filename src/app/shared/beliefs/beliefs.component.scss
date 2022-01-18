@@ -1,0 +1,40 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.beliefs {
+  @extend .primary-font;
+  color: mat-color($primary-palette, 600);
+  font-size: 24px;
+
+  h2 {
+    @extend .primary-font;
+    text-align: center;
+    font-size: 42px;
+    color: $primary-color;
+    font-style: italic;
+  }
+
+  .beliefs-list {
+    .order {
+      margin-right: 5px;
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .beliefs {
+    @extend .primary-font;
+    color: mat-color($primary-palette, 600);
+    font-size: 18px;
+    width: 94%;
+    margin-left: 3%;
+
+    h2 {
+      font-size: 28px;
+    }
+
+    .beliefs-list {
+      .order {}
+    }
+  }
+}

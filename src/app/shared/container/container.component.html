@@ -1,0 +1,32 @@
+<div
+  class="container"
+  [style.width.px]="windowWidth"
+  [style.height.px]="windowHeight"
+>
+  <div
+    class="sidenav-container scrollable-window"
+    [@sidenavToggle]="sidenavOpened ? 'opened' : 'closed'"
+  >
+    <logos-mobile-main-menu
+      (close)="onCloseSidenav()"
+      (goTo)="goTo($event)"
+    ></logos-mobile-main-menu>
+  </div>
+  <img
+    class="splash-image"
+    *ngIf="backgroundImage"
+    [src]="'/assets/' + backgroundImage"
+    [@fadeInRightBig]="bgImgAnimationState"
+    (load)="splashLoaded.emit(backgroundImage)"
+  />
+  <div
+    class="content scrollable parallax"
+    [style.background]="hasOverlay ? contentBackground : '#fff'"
+    [class.overlay]="hasOverlay"
+    (scroll)="onScroll($event)"
+  >
+    <ng-content></ng-content>
+  </div>
+
+  <logos-clouds *ngIf="hasClouds"></logos-clouds>
+</div>

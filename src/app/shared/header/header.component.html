@@ -1,0 +1,16 @@
+<div class="header" [class.home]="routeName === 'home'">
+  <div class="left" routerLink="/home">
+    <img class="logo" src="assets/Olive_1_White.png" />
+    <span class="school-name">LOGOS SCHOOL</span>
+    <span class="motto" *ngIf="showMainMenuItems && !isMobile"
+      >A Classical <span class="ampersand">&</span> Christ-Centered
+      Education</span
+    >
+  </div>
+  <logos-main-menu *ngIf="showMainMenuItems && !isMobile"></logos-main-menu>
+  <button mat-button class="toggle-menu" (click)="toggleSidenav()">
+    <mat-icon class="menu-icon" *ngIf="isMobile || !showMainMenuItems"
+      >menu</mat-icon
+    >
+  </button>
+</div>

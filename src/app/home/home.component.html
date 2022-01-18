@@ -1,0 +1,756 @@
+<logos-container
+  [backgroundImage]="
+    activeViewIndex === -1
+      ? backgroundImage
+      : views[activeViewIndex].backgroundImage
+  "
+  [contentBackground]="
+    activeViewIndex === -1
+      ? 'rgba(30, 63, 102, 0.91)'
+      : 'views[activeViewIndex].background'
+  "
+  [hasOverlay]="hasOverlay"
+  [sidenavOpened]="sidenavOpened"
+  (splashLoaded)="loadImage2($event)"
+  (windowHeightChanges)="windowHeight = $event"
+>
+  <div class="home">
+    <!-- <span
+      style="position: fixed; top: 10px; right: 200px; z-index: 13; color: #fff"
+      >{{ views[activeViewIndex]?.visibleHeight }}</span
+    > -->
+    <logos-header
+      [showMainMenuItems]="views[0].stickyPct < 1"
+      (toggle)="sidenavOpened = !sidenavOpened"
+    ></logos-header>
+    <logos-overlay
+      [expanded]="chartOverlay !== null"
+      background="#fff"
+      (minimize)="chartOverlay = null"
+      [heightPx]="null"
+      [widthPx]="contentWidth"
+    >
+      <img
+        class="chart"
+        *ngIf="chartOverlay"
+        [src]="'/assets/charts/' + chartOverlay"
+        [style.max-height.px]="contentHeight"
+        [style.max-width.px]="contentWidth"
+      />
+    </logos-overlay>
+    <div
+      class="scrollable"
+      (scroll)="onScroll($event)"
+      [style.z-index]="hasOverlay && views[0].stickyPct < 1 ? 8 : 11"
+      #scrollable
+    >
+      <div class="above-fold" [style.height.px]="contentHeight">
+        <span
+          class="greeting"
+          [class.blue]="!hasOverlay"
+          *ngIf="logoImageFinished"
+          [@rotateInDownLeftOnEnter]
+          >Welcome to</span
+        >
+        <div class="logo-effect" [class.completed]="hasOverlay">
+          <img
+            class="logo"
+            *ngIf="!hasOverlay"
+            src="assets/Olive_1.png"
+            [@intoView]
+            (@intoView.done)="onLogoEnterEnd($event)"
+          />
+          <img
+            class="logo"
+            *ngIf="hasOverlay"
+            [style.left.px]="logoLeftPx"
+            [style.top.px]="logoTopPx"
+            src="assets/Olive_1_White.png"
+          />
+          <div
+            class="logo-copies"
+            [@copyAndShrink]
+            (@copyAndShrink.start)="onCopyStart($event)"
+            (@copyAndShrink.done)="onCopyEnd($event)"
+            *ngIf="logoImageFinished && !hasOverlay"
+          >
+            <img
+              class="logo-mini"
+              src="assets/Olive_1.png"
+              *ngFor="let logo of logoCopies; let i = index"
+              [style.top.px]="logo.topPx"
+              [style.left.px]="logo.leftPx"
+            />
+          </div>
+        </div>
+        <span
+          class="school-name"
+          *ngIf="
+            logosCopied &&
+            !(activeViewIndex !== -1 && views[0].isFixed && views[0].top <= 0)
+          "
+          [@rotateInUpRightOnEnter]
+          [style.font-size.px]="schoolNameFontSize"
+          [style.left.px]="schoolNameLeft"
+          [style.top.px]="schoolNameTop"
+          [style.position]="views[0].isFixed ? 'fixed' : 'absolute'"
+          [class.below]="scrollY > contentHeight / 4"
+          [class.blue]="!hasOverlay"
+          #schoolName
+          >LOGOS SCHOOL<span *ngIf="scrollY !== 0">,</span>
+        </span>
+        <img
+          *ngIf="hasOverlay && activeViewIndex === -1"
+          class="arrows"
+          src="assets/Arrows.png"
+          (click)="goDown()"
+          [style.top.px]="contentHeight ? contentHeight - 100 : 1000"
+          [@bounce]="arrowAnimationState"
+        />
+        <!-- <logos-nav-menu
+          class="about-submenu"
+          [menuItems]="aboutUsSubmenu"
+          [vertical]="true"
+        ></logos-nav-menu>
+        <img class="map-pin" src="assets/graphics/Map_pin.png" /> -->
+      </div>
+
+      <div
+        class="below-fold"
+        [style.top.px]="belowFoldTop"
+        [style.height.px]="belowFoldHeight"
+      >
+        <div
+          class="stretchy"
+          *ngFor="let view of views; let i = index; trackBy: trackByMethod"
+          [style.height.px]="views[i].visibleHeight"
+          [@collapse]="views[i].visible ? 'opened' : 'closed'"
+          [class.active]="activeViewIndex === i"
+          #stretchyEl
+        >
+          <div
+            class="sticky"
+            *ngIf="scrollY > contentHeight / 4 + views[i].topStart"
+            [class.fixed]="views[i].isFixed"
+            [style.top.px]="
+              !views[i].isFixed && views[i].visibleHeight === views[i].height
+                ? 0
+                : views[i].top
+            "
+            [style.left.px]="isMobile ? 10 : views[i].left"
+            (click)="goToViewIndex(i)"
+          >
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 0"
+              [@fadeInRightBigOnEnter]
+            >
+              in faithful submission to
+              <span class="bold italic">Scripture</span>
+              <span [class.hidden]="views[i].isFixed">and</span>
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 1"
+              [@fadeInLeftBigOnEnter]
+            >
+              <!-- <span [class.hidden]="views[i].isFixed">...</span> -->
+              with deference to the authority granted therein to
+              <span class="bold">parents</span>
+              <span class="row"
+                >regarding the instruction of their children<span
+                  [class.hidden]="views[i].isFixed"
+                  >,</span
+                ></span
+              >
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 2"
+              [@fadeInRightBigOnEnter]
+            >
+              provides a
+              <span class="bold italic">classical, Christ-centered</span>
+              education
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 3"
+              [@fadeInRightBigOnEnter]
+            >
+              <span [class.hidden]="views[i].isFixed">...</span>
+              designed to achieve academic
+              <span class="bold">excellence</span>
+              <span [class.hidden]="views[i].isFixed">and</span>
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 4"
+              [@fadeInLeftBigOnEnter]
+            >
+              <span [class.hidden]="views[i].isFixed">...</span>
+              instill a life-long <span class="bold">love of learning</span>
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 5"
+              [@fadeInRightBigOnEnter]
+            >
+              <span [class.hidden]="views[i].isFixed">...</span>through
+              enthusiastic affirmation of the
+              <span class="bold">Christian worldview</span>
+              <span class="row"
+                >as the foundation for knowledge, virtue, and beauty<span
+                  [class.hidden]="views[i].isFixed"
+                  >,</span
+                ></span
+              >
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 6"
+              [@fadeInLeftBigOnEnter]
+            >
+              <span [class.hidden]="views[i].isFixed">...</span>
+              so that each student is equipped to
+              <span class="italic">joyfully</span
+              ><span class="bold">glorify God</span>
+              <span class="row">in every aspect of life.</span>
+            </p>
+          </div>
+
+          <!-- SCRIPTURE -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 0"
+            [style.height.px]="views[0].visibleHeight"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[0].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex === 0"
+                >Scripture</logos-banner
+              >
+
+              <div
+                class="row"
+                style="height: 400px"
+                *ngIf="views[0].visibleHeight > 500"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+              >
+                <img
+                  class="graphic book-steps"
+                  src="/assets/graphics/book-steps.png"
+                  [@fadeInLeftBigOnEnter]
+                />
+                <logos-quote
+                  routerLink="/about"
+                  [quote]="views[0].quotes[0]"
+                  [@fadeInRightBigOnEnter]
+                ></logos-quote>
+              </div>
+
+              <logos-carousel>
+                <logos-bible-verse
+                  *logosCarouselContent
+                  words="In the beginning was the Word (Logos), and the Word was with God, and the Word was God."
+                  ref="John 1:1"
+                  [vertical]="true"
+                ></logos-bible-verse>
+                <!-- <logos-bible-verse
+                  *logosCarouselContent
+                  [words]="views[0].verses[0].words"
+                  [ref]="views[0].verses[0].ref"
+                  [vertical]="true"
+                ></logos-bible-verse>
+                <logos-bible-verse
+                  *logosCarouselContent
+                  [words]="views[0].verses[1].words"
+                  [ref]="views[0].verses[1].ref"
+                ></logos-bible-verse> -->
+              </logos-carousel>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[0].quotes[1]"
+                *ngIf="views[0].visibleHeight > 200"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+                [cite]="false"
+              ></logos-quote>
+
+              <logos-nav-menu [menuItems]="aboutUsSubmenu"></logos-nav-menu>
+            </div>
+          </div>
+          <!-- SCRIPTURE -->
+
+          <!-- PARENTS -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 1"
+            [style.height.px]="views[1].visibleHeight"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[1].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex === 1">Parents</logos-banner>
+              <div class="row">
+                <logos-stat
+                  prop="Approx. hours spent in school"
+                  number="12000"
+                ></logos-stat>
+                <logos-quote
+                  routerLink="/about"
+                  [quote]="views[1].quotes[0]"
+                  *ngIf="views[1].visibleHeight > 200"
+                  [@fadeInOnEnter]
+                  [@fadeOutOnLeave]
+                ></logos-quote>
+              </div>
+              <div class="row">
+                <logos-quote
+                  routerLink="/about"
+                  [quote]="views[1].quotes[1]"
+                  *ngIf="views[1].visibleHeight > 400"
+                  [@fadeInOnEnter]
+                  [@fadeOutOnLeave]
+                  [cite]="false"
+                ></logos-quote>
+                <logos-stat
+                  prop="Approx. hours spent in school"
+                  number="12000"
+                ></logos-stat>
+              </div>
+
+              <button mat-button routerLink="/contact">Enroll</button>
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[1].quotes[2]"
+                *ngIf="views[1].visibleHeight > 600"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+                [cite]="false"
+              ></logos-quote>
+            </div>
+          </div>
+          <!-- PARENTS -->
+
+          <!-- CLASSICAL, CHRIST-CENTERED -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 2"
+            [style.height.px]="views[2].visibleHeight"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[2].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex === 2"
+                >Classical, Christ-centered Education</logos-banner
+              >
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[2].quotes[0]"
+                *ngIf="views[2].visibleHeight > 600"
+                style="height: 200px"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+              ></logos-quote>
+
+              <div
+                class="row"
+                *ngIf="views[2].visibleHeight > 800"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+                style="height: 400px"
+              >
+                <img
+                  class="chart"
+                  style="height: 320px"
+                  (click)="chartOverlay = views[2].charts[2]"
+                  [src]="'/assets/charts/' + views[2].charts[2]"
+                />
+                <logos-quote
+                  routerLink="/about"
+                  [quote]="views[2].quotes[1]"
+                  *ngIf="views[2].visibleHeight > 600"
+                  [cite]="false"
+                ></logos-quote>
+              </div>
+
+              <div
+                class="charts charts-2"
+                *ngIf="views[2].visibleHeight > 400"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[2].chartsBy2[0]"
+                  [src]="'/assets/charts/' + chart"
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[2].quotes[2]"
+                *ngIf="views[2].visibleHeight > 800"
+                style="height: 200px"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+                [cite]="false"
+              ></logos-quote>
+            </div>
+          </div>
+          <!-- CLASSICAL, CHRIST-CENTERED -->
+
+          <!-- EXCELLENCE -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 3"
+            [style.height.px]="views[3].visibleHeight"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[3].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex === 3"
+                >Academic Excellence</logos-banner
+              >
+
+              <logos-nav-menu [menuItems]="academicsSubmenu"></logos-nav-menu>
+
+              <div class="charts" *ngIf="views[3].visibleHeight > 200">
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[3].chartsBy3[0]"
+                  [src]="'/assets/charts/' + chart"
+                  [@rotateInOnEnter]
+                  [@rotateOutOnLeave]
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[3].quotes[0]"
+                *ngIf="views[3].visibleHeight > 0"
+                style="height: 200px"
+              ></logos-quote>
+
+              <div class="charts" *ngIf="views[3].visibleHeight > 400">
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[3].chartsBy3[1]"
+                  [src]="'/assets/charts/' + chart"
+                  [@rotateInOnEnter]
+                  [@rotateOutOnLeave]
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[3].quotes[1]"
+                *ngIf="views[3].visibleHeight > 0"
+                style="height: 200px"
+                [cite]="false"
+              ></logos-quote>
+
+              <div class="charts" *ngIf="views[3].visibleHeight > 600">
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[3].chartsBy3[2]"
+                  [src]="'/assets/charts/' + chart"
+                  [@rotateInOnEnter]
+                  [@rotateOutOnLeave]
+                />
+              </div>
+            </div>
+          </div>
+          <!-- EXCELLENCE -->
+
+          <!-- LOVE OF LEARNING -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 4"
+            [style.height.px]="views[4].visibleHeight"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[4].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex === 4"
+                >Lifelong Love of Learning</logos-banner
+              >
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[4].quotes[0]"
+                *ngIf="views[4].visibleHeight > 200"
+                style="height: 300px"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+              ></logos-quote>
+
+              <div
+                class="charts charts-1"
+                *ngIf="views[4].visibleHeight > 300"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  (click)="chartOverlay = views[4].charts[2]"
+                  [src]="'/assets/charts/' + views[4].charts[2]"
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[4].quotes[1]"
+                *ngIf="views[4].visibleHeight > 200"
+                style="height: 300px"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+                [cite]="false"
+              ></logos-quote>
+
+              <div
+                class="charts charts-2"
+                *ngIf="views[4].visibleHeight > 600"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[4].chartsBy2[0]"
+                  [src]="'/assets/charts/' + chart"
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[4].quotes[2]"
+                *ngIf="views[4].visibleHeight > 200"
+                style="height: 300px"
+                [@fadeInOnEnter]
+                [@fadeOutOnLeave]
+                [cite]="false"
+              ></logos-quote>
+            </div>
+          </div>
+          <!-- LOVE OF LEARNING -->
+
+          <!-- WORLDVIEW -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 5"
+            [style.height.px]="views[5].visibleHeight"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[5].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex === 5"
+                >Christian Worldview</logos-banner
+              >
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[5].quotes[0]"
+                style="height: 300px"
+              ></logos-quote>
+
+              <div
+                class="charts"
+                *ngIf="views[5].visibleHeight > 200"
+                [@pulseOnEnter]
+              >
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[5].chartsBy3[0]"
+                  [src]="'/assets/charts/' + chart"
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[5].quotes[1]"
+                style="height: 200px"
+                [cite]="false"
+              ></logos-quote>
+
+              <div
+                class="charts"
+                *ngIf="views[5].visibleHeight > 400"
+                [@pulseOnEnter]
+              >
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[5].chartsBy3[1]"
+                  [src]="'/assets/charts/' + chart"
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[5].quotes[2]"
+                style="height: 200px"
+                [cite]="false"
+              ></logos-quote>
+
+              <div
+                class="charts"
+                *ngIf="views[5].visibleHeight > 400"
+                [@pulseOnEnter]
+              >
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[5].chartsBy3[2]"
+                  [src]="'/assets/charts/' + chart"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- WORLDVIEW -->
+
+          <!-- GLORIFY GOD -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 6"
+            [style.height.px]="views[6].visibleHeight"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[6].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex === 6"
+                >All to the Glory of God</logos-banner
+              >
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[6].quotes[0]"
+                style="height: 200px"
+              ></logos-quote>
+
+              <div
+                class="charts"
+                *ngIf="views[6].visibleHeight > 200"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[6].chartsBy3[0]"
+                  [src]="'/assets/charts/' + chart"
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[6].quotes[1]"
+                style="height: 200px"
+                [cite]="false"
+              ></logos-quote>
+
+              <div class="charts" *ngIf="views[6].visibleHeight > 400">
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[6].chartsBy3[1]"
+                  [src]="'/assets/charts/' + chart"
+                  [@zoomInOnEnter]
+                  [@zoomOutOnLeave]
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[6].quotes[2]"
+                style="height: 200px"
+                [cite]="false"
+              ></logos-quote>
+
+              <div class="charts" *ngIf="views[6].visibleHeight > 600">
+                <img
+                  class="chart"
+                  (click)="chartOverlay = chart"
+                  *ngFor="let chart of views[6].chartsBy3[2]"
+                  [src]="'/assets/charts/' + chart"
+                  [@zoomInOnEnter]
+                  [@zoomOutOnLeave]
+                />
+              </div>
+
+              <logos-quote
+                routerLink="/about"
+                [quote]="views[6].quotes[3]"
+                style="height: 400px"
+                [cite]="false"
+              ></logos-quote>
+            </div>
+          </div>
+          <!-- GLORIFY GOD -->
+        </div>
+        <logos-footer></logos-footer>
+        <button
+          *ngIf="scrollY > 0"
+          class="btn-back-to-top"
+          (click)="backToTop()"
+          mat-fab
+          aria-label="Return to Top"
+        >
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</logos-container>

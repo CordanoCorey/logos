@@ -1,0 +1,95 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.quote {
+  display: flex;
+  padding: 0 20px;
+
+  .blockquote {
+    @extend .primary-font;
+    @include mat-elevation(4);
+    background: rgba(0, 0, 0, 0.2);
+    position: relative;
+    font-weight: 800;
+    color: #ffffff;
+    padding: 30px 3%;
+    width: 94%;
+    z-index: 1;
+    margin: 20px auto;
+    align-self: center;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+
+    h1 {
+      position: relative;
+      color: #FFFFFF;
+      font-size: 24px;
+      font-weight: 500;
+      margin: 0;
+      text-align: center;
+      line-height: 32px;
+    }
+
+    .citation {
+      @extend .light-grey-blue-text;
+      position: relative;
+      font-size: 22px;
+      font-weight: normal;
+      font-style: italic;
+      margin: 0;
+      padding-top: 20px;
+      z-index: 1;
+      text-decoration: underline;
+      text-align: center;
+      line-height: 30px;
+    }
+  }
+
+  /* Blockquote right double quotes */
+  .blockquote:after {
+    position: absolute;
+    content: "”";
+    color: rgba(255, 255, 255, 1);
+    font-size: 10rem;
+    line-height: 0;
+    bottom: -43px;
+    right: 30px;
+  }
+}
+
+.quote:hover {
+  .blockquote {
+    @include mat-elevation(0);
+    background: rgba(0, 0, 0, 0.5);
+    text-decoration: underline;
+    border-color: mat-color($primary-palette, 200);
+
+    h1 {
+      @extend .light-grey-blue-text;
+    }
+
+    .citation {
+      color: #fff;
+    }
+  }
+
+  .blockquote:after {
+    color: mat-color($primary-palette, 200);
+  }
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .quote {
+    .blockquote h1 {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .blockquote .citation {
+      color: mat-color($primary-palette, 200);
+      font-size: 20px;
+      text-decoration: underline;
+      -webkit-text-fill-color: unset;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<div class="faqs">
+  <h2>Frequently Asked Questions</h2>
+  <div class="section">
+    <button class="btn-trigger frosted" mat-button (click)="toggle(2)">
+      <div class="row">
+        Equip students to discern, engage, and overcome worldly thinking with
+        biblical thinking.
+        <mat-icon [@flip]="expanded[0] ? 'rotated' : 'default'"
+          >expand_more</mat-icon
+        >
+      </div>
+    </button>
+    <div class="narrative" [@toggle]="expanded[0] ? 'show' : 'hide'">
+      <p></p>
+    </div>
+    <logos-toggle-arrows
+      [isMobile]="isMobile"
+      [readMore]="expanded[0]"
+      (toggle)="toggle(0)"
+    ></logos-toggle-arrows>
+  </div>
+</div>

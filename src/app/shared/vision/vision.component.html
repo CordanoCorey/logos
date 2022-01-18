@@ -1,0 +1,216 @@
+<div class="vision">
+  <h2 class="font-effect-emboss">Vision & Philosophy</h2>
+  <div class="section">
+    <button class="btn-trigger" mat-button (click)="toggle(1)">
+      <div class="row">
+        <div class="goal">
+          <span class="number">1.</span>
+          Cast students as characters in God's story
+        </div>
+        <mat-icon
+          class="font-effect-3d-float"
+          [@flip]="expanded[1] ? 'rotated' : 'default'"
+          >expand_more</mat-icon
+        >
+      </div>
+    </button>
+    <div class="narrative" [@toggle]="expanded[1] ? 'show' : 'hide'">
+      <p class="by">
+        by instilling the self-perception of one created in God's image and in
+        the context of His creation.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        elementum a ligula eu rhoncus. Curabitur et odio pellentesque, malesuada
+        diam eget, ultrices lectus. Donec ac sagittis sapien, in tempor urna.
+        Cras congue justo metus. Sed ut purus massa. Nunc dapibus finibus ipsum,
+        a lobortis ligula pharetra placerat. Quisque at maximus risus. Nam
+        consequat consectetur dignissim. Etiam ipsum nisl, faucibus eu lectus
+        eget, semper ornare libero. Duis lacinia rhoncus volutpat. Cras mollis
+        vel turpis id vestibulum. Proin feugiat risus ex, non blandit ante
+        fringilla eu. Phasellus in felis mi. Proin libero risus, sodales at
+        malesuada dignissim, blandit ut lectus.
+      </p>
+      <p>
+        Nam turpis arcu, aliquet ac diam non, pretium malesuada massa. Donec
+        enim mauris, molestie ac erat ac, dictum varius turpis. Nunc dapibus
+        sollicitudin orci, in tincidunt orci pulvinar at. Aliquam erat volutpat.
+        Curabitur nisl tellus, mattis a purus id, volutpat hendrerit justo. Sed
+        venenatis posuere augue et volutpat. Phasellus efficitur tellus quis
+        neque porta, nec rutrum nulla malesuada. Mauris sed ante turpis. Fusce
+        luctus metus odio, a luctus mi egestas nec. Donec placerat sit amet
+        neque et efficitur. In vel diam sollicitudin, tincidunt quam et,
+        scelerisque sapien. Donec tincidunt euismod augue in commodo. Nam
+        posuere, diam quis gravida cursus, sem leo volutpat lacus, sed rhoncus
+        nulla odio vitae tortor. Vestibulum ante ipsum primis in faucibus orci
+        luctus et ultrices posuere cubilia curae; Aenean vestibulum ligula nec
+        laoreet sollicitudin.
+      </p>
+      <p>
+        Mauris venenatis dui enim, a posuere felis convallis quis. Pellentesque
+        et nunc et enim elementum eleifend. Ut dolor nisl, mollis vitae eleifend
+        et, dignissim a nulla. Maecenas velit leo, interdum in enim sit amet,
+        congue commodo ligula. In hac habitasse platea dictumst. Pellentesque
+        est ligula, laoreet ut egestas at, pellentesque nec neque. Vivamus
+        eleifend venenatis massa, at tempor lectus suscipit a. Etiam accumsan,
+        lacus sed luctus pharetra, erat neque ultricies tortor, quis finibus
+        urna justo et ante. Etiam neque metus, aliquam ac vestibulum sed,
+        ultrices eget risus. Vestibulum lacinia, orci non volutpat tempor, mi
+        purus porttitor felis, a congue odio urna eget odio.
+      </p>
+      <p>
+        Ut vel eleifend orci. Nulla tincidunt pretium sodales. Morbi vel
+        vestibulum ante, a interdum quam. Aenean vestibulum dignissim auctor.
+        Nullam vitae rhoncus nisi. Nunc suscipit nibh ligula, ac ultricies
+        tellus egestas at. Proin tortor ipsum, tincidunt nec scelerisque ac,
+        tempor non odio. Quisque cursus fermentum nulla ac ornare. Maecenas
+        dapibus mauris eget elit finibus pulvinar. Pellentesque tempor libero
+        tincidunt lacus pretium, vitae condimentum dolor aliquet.
+      </p>
+      <p>
+        Etiam ut nulla gravida, hendrerit arcu eget, tincidunt nibh. Phasellus
+        sit amet lacus augue. Vivamus efficitur, arcu in euismod bibendum, odio
+        erat euismod lacus, et lacinia metus lacus quis leo. Donec malesuada,
+        diam sit amet pulvinar varius, velit magna viverra orci, non imperdiet
+        augue diam eget nisi. Nullam non velit tempor risus maximus iaculis.
+        Cras suscipit diam sit amet ligula semper faucibus. Nunc placerat elit
+        non neque malesuada accumsan. Sed finibus convallis ipsum, id accumsan
+        orci interdum eget. Quisque tempus lorem id blandit venenatis.
+      </p>
+    </div>
+    <logos-toggle-arrows
+      [isMobile]="isMobile"
+      [readMore]="expanded[1]"
+      (toggle)="toggle(1)"
+    ></logos-toggle-arrows>
+  </div>
+  <div class="section">
+    <button class="btn-trigger" mat-button (click)="toggle(2)">
+      <div class="row">
+        <div class="goal">
+          <span class="number">2.</span>
+          Unmask the world's spin on the story
+        </div>
+        <mat-icon
+          class="font-effect-3d-float"
+          [@flip]="expanded[2] ? 'rotated' : 'default'"
+          >expand_more</mat-icon
+        >
+      </div>
+    </button>
+    <div class="narrative" [@toggle]="expanded[2] ? 'show' : 'hide'">
+      <p class="by">
+        by equipping students to discern, engage, and overcome worldly thinking
+        with biblical thinking.
+      </p>
+      <p></p>
+    </div>
+    <logos-toggle-arrows
+      [isMobile]="isMobile"
+      [readMore]="expanded[2]"
+      (toggle)="toggle(2)"
+    ></logos-toggle-arrows>
+  </div>
+  <div class="section">
+    <button class="btn-trigger" mat-button (click)="toggle(3)">
+      <div class="row">
+        <div class="goal">
+          <span class="number">3.</span>
+          Bring the story of God's Kingdom to life in the eyes of the students
+        </div>
+        <mat-icon
+          class="font-effect-3d-float"
+          [@flip]="expanded[3] ? 'rotated' : 'default'"
+          >expand_more</mat-icon
+        >
+      </div>
+    </button>
+    <div class="narrative" [@toggle]="expanded[3] ? 'show' : 'hide'">
+      <p class="by">
+        by providing a clear model of the biblical Christian life through our
+        staff and board.
+      </p>
+      <p></p>
+    </div>
+    <logos-toggle-arrows
+      [isMobile]="isMobile"
+      [readMore]="expanded[3]"
+      (toggle)="toggle(3)"
+    ></logos-toggle-arrows>
+  </div>
+  <div class="section">
+    <button class="btn-trigger" mat-button (click)="toggle(4)">
+      <div class="row">
+        <div class="goal">
+          <span class="number">4.</span>
+          Intellectually justify the truth of the story
+        </div>
+        <mat-icon
+          class="font-effect-3d-float"
+          [@flip]="expanded[4] ? 'rotated' : 'default'"
+          >expand_more</mat-icon
+        >
+      </div>
+    </button>
+    <div class="narrative" [@toggle]="expanded[4] ? 'show' : 'hide'">
+      <p class="by">
+        by teaching all subjects as parts of an integrated whole with the
+        Scriptures at the center.
+      </p>
+      <p></p>
+    </div>
+    <logos-toggle-arrows
+      [isMobile]="isMobile"
+      [readMore]="expanded[4]"
+      (toggle)="toggle(4)"
+    ></logos-toggle-arrows>
+  </div>
+  <div class="section">
+    <button class="btn-trigger" mat-button (click)="toggle(5)">
+      <div class="row">
+        <div class="goal">
+          <span class="number">5.</span>
+          Teach students to love the story they're in
+        </div>
+        <mat-icon
+          class="font-effect-3d-float"
+          [@flip]="expanded[5] ? 'rotated' : 'default'"
+          >expand_more</mat-icon
+        >
+      </div>
+    </button>
+    <div class="narrative" [@toggle]="expanded[5] ? 'show' : 'hide'">
+      <p class="by">by loving the material and the students that we teach.</p>
+      <p></p>
+    </div>
+    <logos-toggle-arrows
+      [isMobile]="isMobile"
+      [readMore]="expanded[5]"
+      (toggle)="toggle(5)"
+    ></logos-toggle-arrows>
+  </div>
+  <div class="section">
+    <button class="btn-trigger" mat-button (click)="toggle(6)">
+      <div class="row">
+        <div class="goal">
+          <span class="number">6.</span>
+          Disciple students unto love for the author of salvation
+        </div>
+        <mat-icon
+          class="font-effect-3d-float"
+          [@flip]="expanded[6] ? 'rotated' : 'default'"
+          >expand_more</mat-icon
+        >
+      </div>
+    </button>
+    <div class="narrative" [@toggle]="expanded[6] ? 'show' : 'hide'">
+      <p class="by">by facilitating maturation in the image of God.</p>
+      <p></p>
+    </div>
+    <logos-toggle-arrows
+      [isMobile]="isMobile"
+      [readMore]="expanded[6]"
+      (toggle)="toggle(6)"
+    ></logos-toggle-arrows>
+  </div>
+</div>

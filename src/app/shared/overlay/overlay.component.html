@@ -1,0 +1,10 @@
+<div
+  class="overlay scrollable-small"
+  [class.expanded]="expanded"
+  [style.background]="background"
+  [style.height.px]="expanded ? null : 0"
+  [style.width.px]="expanded ? widthPx : 0"
+>
+  <mat-icon class="icon-close" (click)="onClose()">cancel</mat-icon>
+  <ng-content></ng-content>
+</div>

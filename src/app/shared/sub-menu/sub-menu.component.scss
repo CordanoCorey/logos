@@ -1,0 +1,15 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.sub-menu {
+  display: flex;
+  flex-direction: column;
+
+  .menu-item {
+    button {
+      // @include primary-gradient();
+      color: $primary-color;
+      // box-shadow: 0 6px 12px rgb(134 140 150 / 65%);
+    }
+  }
+}

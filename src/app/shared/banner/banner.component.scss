@@ -1,0 +1,18 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.banner {
+  @extend .heading-font;
+  font-size: 36px;
+  color: #fff;
+  font-style: italic;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .banner {}
+}

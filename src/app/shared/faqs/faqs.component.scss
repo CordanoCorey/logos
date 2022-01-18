@@ -1,0 +1,56 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.faqs {
+  @extend .primary-font;
+  color: mat-color($primary-palette, 600);
+  width: 100%;
+
+  h2 {
+    text-align: center;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    .btn-trigger {
+      font-size: 24px;
+      font-weight: bold;
+      width: 100%;
+
+      .row {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      mat-icon {
+        @include mat-icon-diameter(32px);
+        color: mat-color($accent-palette, 800);
+      }
+    }
+
+    .narrative {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 18px;
+      overflow: hidden;
+      width: 100%;
+
+      p {
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .faqs {
+
+    .section {}
+  }
+}

@@ -1,0 +1,148 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.header {
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+
+
+  .mobile-logo {
+    height: 60px;
+    position: absolute;
+    left: 30px;
+    top: 35px;
+  }
+
+  .left {
+    width: 440px;
+    position: absolute;
+    left: 30px;
+    top: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+
+    .logo {
+      height: 100px;
+      display: flex;
+    }
+
+    .school-name {
+      @extend .font1;
+      color: #fff;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 60px;
+      font-size: 28px;
+      border-right: 3px solid #fff;
+      width: 160px;
+      position: absolute;
+      right: 60px;
+    }
+
+    .motto {
+      @extend .font1;
+      color: #fff;
+      width: 140px;
+      display: flex;
+      font-style: italic;
+      height: 80px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: -45px;
+      font-size: 22px;
+
+      .ampersand {
+        @extend .alt-font;
+        display: contents;
+      }
+    }
+  }
+
+  logos-main-menu {
+    display: block;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    height: 130px;
+    width: 800px;
+    z-index: 12;
+  }
+
+  .toggle-menu {
+    @include mat-elevation(1);
+    position: absolute;
+    right: 30px;
+    top: 35px;
+
+    mat-icon {
+      @include mat-icon-diameter(60px);
+      color: #fff;
+    }
+  }
+
+  .toggle-menu:hover {
+    @include light-primary-gradient-v();
+    color: mat-color($primary-palette, 700)
+  }
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .header {
+    .left {
+      width: 440px;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      cursor: pointer;
+
+
+      .logo {
+        height: 40px;
+        display: flex;
+      }
+
+      .school-name {
+        @extend .font1;
+        color: #fff;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        font-size: 18px;
+        border-right: none;
+        position: absolute;
+        left: 34px;
+        width: 200px;
+      }
+    }
+
+    .toggle-menu.home {
+      top: 40px;
+    }
+
+    .toggle-menu {
+      padding: 5px 0;
+      right: 5px;
+      top: 5px;
+
+      mat-icon {
+        @include mat-icon-diameter(40px);
+      }
+    }
+  }
+}

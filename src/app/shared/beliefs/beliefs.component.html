@@ -1,0 +1,24 @@
+<div class="beliefs">
+  <h2 class="font-effect-emboss" [@rotateInUpRightOnEnter]>
+    Statement of Faith
+  </h2>
+  <p [@lightSpeedInOnEnter]>
+    The following statement of faith is taken directly from the Logos School
+    Bylaws:
+  </p>
+  <div class="beliefs-list">
+    <p *ngFor="let belief of beliefs; let i = index" [@zoomInLeftOnEnter]>
+      <span class="order">{{ i + 1 }}.</span>{{ belief.message }}
+    </p>
+  </div>
+  <p [@lightSpeedInOnEnter]>
+    As a charter member of the Association of Classical, Christian Schools
+    (ACCS), Logos School also subscribes to the ACCS statement of faith, which
+    is found in that association’s by-laws (essentially the first two chapters
+    of the Westminster Confession of Faith).
+  </p>
+  <p [@lightSpeedInOnEnter]>
+    While we hold to a distinctly Reformed doctrinal tradition, we welcome and
+    respect other Christian perspectives in the Logos community.
+  </p>
+</div>

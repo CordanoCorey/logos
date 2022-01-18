@@ -1,0 +1,109 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.mobile-main-menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .top {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      height: 100px;
+      margin: 20px 10px;
+    }
+
+    .school-name {
+      @extend .font1;
+      color: $primary-color;
+    }
+  }
+
+  mat-icon.icon-close {
+    @include mat-icon-diameter(48px);
+    color: $primary-color;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .menu-items {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .left,
+    .right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-item {
+      .level-0 {
+        @extend .heading-font;
+        font-weight: bold;
+      }
+    }
+
+    .sub-menu-wrapper {
+      width: 98%;
+      margin-left: 2%;
+    }
+  }
+}
+
+
+@media only screen and (max-device-width: 1024px) {
+  .mobile-main-menu {
+
+    .top {
+      .logo {
+        height: 40px;
+      }
+
+      .school-name {
+        margin: 0;
+        font-size: 18px;
+      }
+    }
+
+    mat-icon.icon-close {}
+
+    .menu-items {
+      flex-direction: row;
+
+      .left,
+      .right {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .left {
+        width: 55%;
+      }
+
+      .right {
+        width: 45%;
+      }
+
+      .menu-item {
+        .level-0 {
+          @extend .heading-font;
+          font-weight: bold;
+        }
+      }
+
+      .sub-menu-wrapper {
+        width: 98%;
+        margin-left: 2%;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<div class="nav-menu" [class.vertical]="vertical">
+  <button
+    class="menu-item font-effect-3d-float"
+    [routerLink]="menuItem.routerLink"
+    mat-button
+    *ngFor="let menuItem of menuItems"
+  >
+    {{ menuItem.label }}
+  </button>
+</div>

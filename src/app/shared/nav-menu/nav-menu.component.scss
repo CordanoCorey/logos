@@ -1,0 +1,65 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.nav-menu {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  .menu-item {
+    @extend .heading-font;
+    border-radius: 0;
+    color: mat-color($accent-palette, 500);
+    font-size: 18px;
+    border-right: 1px solid mat-color($accent-palette, 500);
+  }
+
+  .menu-item:first-of-type {
+    border-left: 1px solid mat-color($accent-palette, 500);
+  }
+
+  .menu-item:before {
+    @extend .gradient-underline;
+  }
+}
+
+.nav-menu.vertical {
+  flex-direction: column;
+
+  .menu-item {
+    width: 100%;
+    border-right: unset;
+    height: 60px;
+    // border-bottom: 1px solid mat-color($accent-palette, 500);
+  }
+
+  .menu-item:first-of-type {
+    border-left: unset;
+    // border-top: 1px solid mat-color($accent-palette, 500);
+  }
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .nav-menu {
+    flex-direction: column;
+    justify-content: space-between;
+
+    .menu-item {
+      @include mat-elevation(8);
+      @include accent-gradient-v();
+      color: mat-color($primary-palette, 700);
+      border: none;
+      font-size: 14px;
+      width: 80%;
+      font-weight: bold;
+      border-radius: 2px;
+      height: 60px;
+    }
+
+    .menu-item:first-of-type {
+      border: none;
+    }
+  }
+}

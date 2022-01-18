@@ -1,0 +1,18 @@
+<div class="toggle-arrows">
+  <span *ngIf="!readMore" class="ellipsis" (click)="toggle.emit()">...</span>
+  <button mat-button class="btn-expand" (click)="toggle.emit()">
+    <span *ngIf="!readMore">Read more</span>
+    <span *ngIf="readMore">Read less</span>
+    <mat-icon *ngIf="!readMore">add</mat-icon>
+    <mat-icon *ngIf="readMore">remove</mat-icon>
+  </button>
+  <!-- <button
+    *ngIf="isMobile"
+    mat-button
+    class="btn-expand"
+    (click)="toggle.emit()"
+  >
+    <mat-icon *ngIf="!readMore">expand_more</mat-icon>
+    <mat-icon *ngIf="readMore">expand_less</mat-icon>
+  </button> -->
+</div>

@@ -1,0 +1,12 @@
+<div class="sub-menu">
+  <div class="menu-item" *ngFor="let menuItem of menuItems">
+    <button
+      *ngIf="menuItem.routerLink"
+      mat-button
+      [routerLink]="menuItem.routerLink"
+      [queryParams]="menuItem.queryParams"
+    >
+      {{ menuItem.label }}
+    </button>
+  </div>
+</div>

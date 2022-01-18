@@ -1,0 +1,9 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.footer {
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+}

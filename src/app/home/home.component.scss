@@ -1,0 +1,616 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+:host {
+  display: block;
+  min-height: 100%;
+  width: 100%;
+}
+
+.home {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  logos-overlay {
+    position: fixed;
+    display: block;
+    z-index: 12;
+  }
+
+  logos-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .scrollable {
+    overflow-y: auto;
+    width: 100%;
+    height: calc(100% - 130px);
+    z-index: 8;
+    position: relative;
+    position: absolute;
+    top: 130px;
+    overflow-x: hidden;
+  }
+
+  .above-fold {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo-effect {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+
+      img.logo {
+        z-index: -2;
+        opacity: 0.2;
+        width: 500px;
+      }
+
+      .logo-copies {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        z-index: -1;
+
+        .logo-mini {
+          position: absolute;
+          width: 100px;
+        }
+      }
+    }
+
+    .logo-effect.completed {
+      position: unset;
+
+
+      img.logo {
+        // margin-top: -130px;
+        position: fixed;
+        top: calc(50% - 204px);
+        left: calc(50% - 250px);
+        z-index: -2;
+      }
+    }
+
+    h1 {
+      @extend .primary-font;
+      color: #fff;
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    .school-name,
+    .greeting {
+      @extend .font1;
+      display: block;
+      font-size: 54px;
+    }
+
+    .greeting {
+      @extend .light-blue-grey-text;
+      text-transform: uppercase;
+      margin-top: 60px;
+    }
+
+    .school-name {
+      @extend .light-grey-blue-text;
+      height: 80px;
+      margin: 0 60px;
+      position: absolute;
+      z-index: 11;
+    }
+
+    .greeting.blue {
+      @extend .darker-dark-blue-text;
+    }
+
+    .school-name.blue {
+      @extend .dark-darker-blue-text;
+    }
+
+    .school-name.below {
+      width: 160px;
+    }
+
+    .about-submenu {
+      width: 300px;
+      position: absolute;
+      bottom: calc(50% - 100px);
+      left: 100px;
+      height: 300px;
+      z-index: 9999;
+    }
+
+    .arrows {
+      width: 100px;
+      position: fixed;
+      bottom: 60px;
+      cursor: pointer;
+    }
+
+    .map-pin {
+      width: 300px;
+      position: absolute;
+      bottom: 250px;
+      right: 300px;
+    }
+  }
+
+  .below-fold {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 12;
+    overflow: visible;
+    position: absolute;
+
+    .stretchy {
+      margin: 0;
+      width: 100%;
+      height: 300px;
+      position: relative;
+
+      .sticky {
+        @extend .font1;
+        color: #fff;
+        font-weight: 300;
+        height: 130px;
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        width: calc(100% - 500px);
+        cursor: pointer;
+
+        p {
+          font-size: 28px;
+
+          .bold {
+            margin: 0 6px;
+            font-size: 30px;
+            font-weight: 700;
+          }
+
+          .italic {
+            font-size: 30px;
+            font-style: italic;
+          }
+
+          .row {
+            display: block;
+            margin-left: 100px;
+          }
+        }
+      }
+
+      .sticky.featured {
+        position: fixed !important;
+        top: 0 !important;
+        left: 380px !important;
+      }
+
+      .sticky.fixed {
+        position: fixed !important;
+        left: 380px !important;
+
+        // background: rgba(30, 63, 102, 0.91);
+        p {
+          .bold {}
+
+          .row {
+            display: unset;
+            margin-left: 0;
+          }
+        }
+      }
+
+      .accordion-content {
+        // @include mat-elevation(4);
+        // background: rgba(0, 0, 0, 0.1);
+        color: mat-color($primary-palette, 700);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0;
+        height: calc(100% - 40px);
+        width: 100%;
+        //padding: 0 100px 0 400px;
+        overflow: hidden;
+        position: relative;
+
+        .verses {
+          // @include mat-elevation(16);
+          // background: rgba(0, 0, 0, 0.5);
+          padding: 5% 0;
+          height: 90%;
+          width: 494px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          logos-bible-verse {
+            margin: 30px 0;
+          }
+        }
+
+        .overview {
+          height: 100%;
+          width: calc(100% - 500px);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          .graphic {
+            z-index: 30;
+          }
+
+          .charts {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 300px;
+            width: 100%;
+
+            .chart {
+              @include mat-elevation(16);
+              max-height: 260px;
+              max-width: 30%;
+              background: #fff;
+              cursor: zoom-in;
+              z-index: 30;
+              padding: 2px;
+            }
+          }
+
+          .charts.charts-1 {
+
+            .chart {
+              max-width: 90%;
+            }
+          }
+
+          .charts.charts-2 {
+
+            .chart {
+              max-width: 45%;
+            }
+          }
+
+          logos-banner {
+            width: 100%;
+          }
+
+          logos-carousel {
+            display: flex;
+            width: 100%;
+            height: 300px;
+          }
+
+          logos-nav-menu {
+            width: 100%;
+            height: 300px;
+          }
+
+          logos-quote {
+            width: 100%;
+            cursor: pointer;
+          }
+
+          .row {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+
+    .stretchy:nth-of-type(1) {
+      .accordion-content {
+        //background: yellow;
+
+        img.book-steps {
+          width: 50%;
+        }
+      }
+
+      .sticky {
+        //background: yellow;
+        z-index: 20;
+        // top: -130px;
+        // left: 380px;
+      }
+    }
+
+    .stretchy:nth-of-type(2) {
+      .accordion-content {
+        //background: orange;
+      }
+
+      .sticky {
+        //background: orange;
+        z-index: 21;
+        // top: 0px;
+        // left: 380px;
+      }
+    }
+
+    .stretchy:nth-of-type(3) {
+      .accordion-content {
+        //background: green;
+      }
+
+      .sticky {
+        //background: green;
+        z-index: 22;
+        // top: 130px;
+        // left: 380px;
+      }
+    }
+
+    .stretchy:nth-of-type(4) {
+      .accordion-content {
+        //background: blue;
+      }
+
+      .sticky {
+        //background: blue;
+        z-index: 23;
+        // top: 260px;
+        // left: 380px;
+      }
+    }
+
+    .stretchy:nth-of-type(5) {
+      .accordion-content {
+        //background: red;
+      }
+
+      .sticky {
+        //background: red;
+        z-index: 24;
+        // top: 390px;
+        // left: 380px;
+      }
+    }
+
+    .stretchy:nth-of-type(6) {
+
+      .accordion-content {
+        //background: purple;
+      }
+
+      .sticky {
+        //background: purple;
+        z-index: 25;
+        // top: 520px;
+        // left: 380px;
+      }
+    }
+
+    .stretchy:nth-of-type(7) {
+      .accordion-content {
+        //background: turquoise;
+      }
+
+      .sticky {
+        //background: turquoise;
+        z-index: 26;
+        // top: 650px;
+        // left: 380px;
+      }
+    }
+
+    .stretchy.active {
+      .accordion-content {
+        padding: 20px 0;
+      }
+    }
+  }
+
+  logos-footer {
+    @include mat-elevation(16);
+    @include light-primary-gradient-v();
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+  }
+
+  .btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 60px;
+    background: mat-color($primary-palette, 600);
+    z-index: 27;
+  }
+
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .home {
+
+    logos-header {}
+
+    .scrollable {}
+
+    .above-fold {
+
+      .logo-effect {
+
+        img.logo {}
+
+        .logo-copies {
+
+          .logo-mini {}
+        }
+      }
+
+      .logo-effect.completed {
+
+
+        img.logo {}
+      }
+
+      h1 {}
+
+      .school-name,
+      .greeting {
+        font-size: 40px;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .school-name {
+        height: 100px;
+        top: unset !important;
+        bottom: 100px !important;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .school-name.below {
+        width: unset;
+      }
+
+      .arrows {
+        z-index: 9999;
+        bottom: unset;
+      }
+    }
+
+    .below-fold {
+
+      .stretchy {
+        width: 100%;
+
+        .sticky {
+          width: 96%;
+
+          p {
+            font-size: 16px;
+            font-weight: 200;
+            text-align: center !important;
+            width: 100%;
+
+            .bold {
+              font-size: 16px;
+              font-weight: 500;
+              //display: block;
+              margin: 0 3px;
+            }
+
+            .italic {
+              //display: block;
+              font-size: 16px;
+            }
+
+            .row {
+              margin-left: 0;
+              display: unset;
+            }
+          }
+        }
+
+        .sticky.featured {}
+
+        .sticky.fixed {
+          left: 10px !important;
+          width: 300px !important;
+
+          p {
+            font-size: 16px;
+
+            .bold {
+              font-size: 18px;
+            }
+
+            .row {}
+          }
+        }
+
+        .accordion-content {
+          flex-direction: column;
+
+          .verses {
+
+            logos-bible-verse {}
+          }
+
+          .overview {
+            width: 100%;
+
+            logos-quote {}
+
+            .graphic {}
+
+            .charts {
+              width: 300%;
+
+              .chart {
+                width: 90%;
+              }
+            }
+
+            .charts.charts-1 {
+              width: 100%;
+
+              .chart {
+                width: 90%;
+              }
+            }
+
+            .charts.charts-2 {
+              width: 200%;
+
+              .chart {
+                width: 90%;
+              }
+            }
+
+            .row {
+              flex-direction: column;
+              align-items: center;
+            }
+
+            logos-nav-menu {
+              height: 300px;
+              margin: 50px 0;
+            }
+          }
+        }
+      }
+    }
+
+    logos-footer {}
+
+    .btn-back-to-top {
+      bottom: 10px;
+      right: 20px;
+    }
+
+  }
+}

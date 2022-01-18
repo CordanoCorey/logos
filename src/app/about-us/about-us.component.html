@@ -1,0 +1,21 @@
+<logos-container [hasOverlay]="false">
+  <div class="about-us">
+    <logos-header></logos-header>
+    <img
+      class="logo"
+      src="assets/Olive_1.png"
+      [style.top.px]="logoTopPx"
+      #logoEl
+    />
+    <div class="scrollable" #scrollable>
+      <h1 class="font-effect-3d-float" [@slideInLeftOnEnter]>About Us</h1>
+      <logos-mission *ngIf="view !== 'faqs'"></logos-mission>
+      <logos-beliefs *ngIf="view !== 'faqs'"></logos-beliefs>
+      <logos-vision
+        *ngIf="view !== 'faqs'"
+        [isMobile]="isMobile"
+      ></logos-vision>
+      <logos-faqs *ngIf="view === 'faqs'" [isMobile]="isMobile"></logos-faqs>
+    </div>
+  </div>
+</logos-container>

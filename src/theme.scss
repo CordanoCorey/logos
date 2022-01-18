@@ -1,0 +1,322 @@
+@import '~@angular/material/_theming';
+@import './common';
+
+@include mat-core();
+
+$primary: mat-palette($primary-palette);
+$accent: mat-palette($accent-palette);
+
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+.dark-theme {
+  $dark-primary: mat-palette($primary-palette);
+  $dark-accent: mat-palette($accent-palette);
+
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent);
+
+  @include angular-material-theme($dark-theme);
+}
+
+.light-theme {
+  $light-primary: mat-palette($primary-palette);
+  $light-accent: mat-palette($accent-palette);
+
+  $light-theme: mat-dark-theme($light-primary, $light-accent);
+}
+
+@font-face {
+  font-family: 'Cochin';
+  src: url('assets/font/Cochin-Bold.woff2') format('woff2'),
+    url('assets/font/Cochin-Bold.woff') format('woff'),
+    url('assets/font/Cochin-Bold.svg#Cochin-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cochin';
+  src: url('assets/font/Cochin-BoldItalic.woff2') format('woff2'),
+    url('assets/font/Cochin-BoldItalic.woff') format('woff'),
+    url('assets/font/Cochin-BoldItalic.svg#Cochin-BoldItalic') format('svg');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cochin';
+  src: url('assets/font/Cochin.woff2') format('woff2'),
+    url('assets/font/Cochin.woff') format('woff'),
+    url('assets/font/Cochin.svg#Cochin') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cochin';
+  src: url('assets/font/Cochin-Italic.woff2') format('woff2'),
+    url('assets/font/Cochin-Italic.woff') format('woff'),
+    url('assets/font/Cochin-Italic.svg#Cochin-Italic') format('svg');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@include scrollable(#fff, #fff);
+
+iu-file-upload .file-upload {
+  .box {
+    width: 40%;
+  }
+
+  iu-uploads {
+    width: 60%;
+
+    .file-preview {
+      .mat-icon {
+        color: red;
+      }
+    }
+  }
+}
+
+iu-file-upload {
+
+  .file-upload {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+
+    .box {
+      border: 10px solid;
+      width: 50%;
+      border-image-width: initial;
+      border-image-outset: initial;
+      border-image-repeat: initial;
+      border-image-slice: 1 !important;
+      border-image-source: linear-gradient(90 deg, $dark-blue, $light-blue);
+      border-image-source: linear-gradient(to right, $dark-blue, $light-blue) !important;
+      outline-offset: unset;
+      padding: 10px;
+      border-style: solid;
+      border-color: initial;
+      border-width: 5px;
+      border-radius: 12px;
+      outline: unset;
+
+      #dragdrop-message {
+        @extend .primary-font;
+        top: 0px;
+        font-size: 16px;
+        margin-bottom: 0;
+        color: #fff;
+
+        strong {
+          font-weight: normal !important;
+        }
+      }
+    }
+
+    .custom-file-upload {
+      margin-bottom: 10px;
+
+      figure {
+        height: 30px;
+        width: 30px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+
+        mat-icon {
+          color: $dark-blue;
+        }
+      }
+    }
+
+    .file-name {
+      display: none;
+    }
+
+    iu-upload {
+      width: 50%;
+
+      .upload {
+        max-width: 100%;
+
+        .graphic {
+          img {
+            @extend .gradient-box;
+          }
+
+          mat-icon.remove-upload {
+            color: $dark-blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+kgs-file-control.profile-pic {
+
+  iu-file-upload {
+
+    .file-upload {
+
+      iu-upload {
+
+        .upload {
+
+          .graphic {
+            img {
+              border-radius: 100%;
+              height: 150px !important;
+              width: 150px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+iu-file-upload.vertical {
+  .file-upload {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff;
+
+    .box {
+      width: calc(100% - 40px);
+      min-width: 200px;
+      padding: 20px 20px;
+    }
+
+    iu-uploads {
+      width: 100%;
+
+      .uploads {
+        max-width: unset;
+      }
+    }
+
+    .file-name {
+      display: none;
+    }
+
+    iu-upload {
+      width: 100%;
+
+      .upload {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+mat-checkbox {
+  margin-right: 20px;
+
+  .mat-checkbox-inner-container {
+    .mat-checkbox-frame {
+      border-color: #fff;
+    }
+  }
+}
+
+.mat-tab-nav-bar {
+  .mat-tab-links {
+    a {
+      color: #fff;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 33px;
+    }
+  }
+
+  .mat-ink-bar {
+    @include blue-red-gradient();
+    height: 4px;
+  }
+}
+
+.mat-button {
+  @extend .primary-font;
+}
+
+iu-dialog#confirm-delete {
+  .mat-toolbar {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .dialog-title {
+      @extend .heading-font;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+  }
+
+  .mat-dialog-actions {
+    button:first-child {
+      color: #fff !important;
+    }
+
+    button:first-child {
+      @include primary-gradient-v();
+    }
+
+    button:last-child {
+      @include accent-gradient();
+    }
+  }
+}
+
+.icons {
+  display: flex;
+
+  .header-icon {
+    .mat-button-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 16px;
+      margin: 0 20px;
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1024px) {
+  iu-dialog#confirm-delete {
+    height: 100%;
+    width: 100%;
+
+    .mat-toolbar {
+      padding: 0;
+      height: 24px;
+
+      .dialog-title {
+        font-size: 18px;
+      }
+    }
+
+    .mat-dialog-content {
+      padding: 0;
+    }
+  }
+}
