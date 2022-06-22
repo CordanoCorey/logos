@@ -26,7 +26,11 @@
       >
         <span>Mission Statement</span>
       </button>
-      <button mat-button routerLink="/about" [queryParams]="{ view: 'beliefs' }">
+      <button
+        mat-button
+        routerLink="/about"
+        [queryParams]="{ view: 'beliefs' }"
+      >
         <span>Statement of Faith</span>
       </button>
       <button mat-button routerLink="/about" [queryParams]="{ view: 'vision' }">
@@ -56,18 +60,40 @@
       [style.left.px]="academicsSubmenuLeft"
       [@openClose]="submenu === 'ACADEMICS' ? 'opened' : 'closed'"
     >
-      <button mat-button routerLink="/academics">
+      <a
+        mat-button
+        href="https://classicalchristian.org/what-is-cce/"
+        target="_blank"
+      >
         <span>Why Classical?</span>
-      </button>
-      <button mat-button routerLink="/academics">
+      </a>
+      <!-- <button
+        mat-button
+        routerLink="/academics"
+        [queryParams]="{ view: 'classical' }"
+      >
+        <span>Why Classical?</span>
+      </button> -->
+      <button
+        mat-button
+        routerLink="/academics"
+        [queryParams]="{ view: 'curriculum' }"
+      >
         <span>Curriculum</span>
       </button>
-      <button mat-button routerLink="/academics">
+      <!-- <button mat-button routerLink="/academics">
         <span>Instruction</span>
-      </button>
-      <button mat-button routerLink="/academics">
+      </button> -->
+      <a mat-button href="https://classicalchristian.org/" target="_blank">
         <span>Accreditation (ACCS)</span>
-      </button>
+      </a>
+      <!-- <button
+        mat-button
+        routerLink="/academics"
+        [queryParams]="{ view: 'accreditation' }"
+      >
+        <span>Accreditation (ACCS)</span>
+      </button> -->
     </div>
   </div>
   <div
@@ -90,15 +116,29 @@
       [@openClose]="submenu === 'ADMISSIONS' ? 'opened' : 'closed'"
       style.off
     >
-      <button mat-button routerLink="/admissions">
+      <button
+        mat-button
+        routerLink="/admissions"
+        [queryParams]="{ view: 'tuition' }"
+      >
         <span>Tuition</span>
       </button>
-      <button mat-button routerLink="/admissions">
+      <button mat-button routerLink="/contact">
         <span>Visit</span>
       </button>
-      <button mat-button routerLink="/admissions">
+      <!-- <button
+        mat-button
+        routerLink="/admissions"
+        [queryParams]="{ view: 'enroll' }"
+      >
         <span>Application</span>
-      </button>
+      </button> -->
+      <a
+        mat-button
+        href="/assets/docs/Logos School Enrollment Application 2022-2023.pdf"
+        target="_blank"
+        >Enroll</a
+      >
     </div>
   </div>
   <div
@@ -120,13 +160,13 @@
       [style.left.px]="contactSubmenuLeft"
       [@openClose]="submenu === 'CONTACT' ? 'opened' : 'closed'"
     >
-      <button mat-button routerLink="/contact">
+      <button mat-button routerLink="/links">
         <span>Apply</span>
       </button>
       <button mat-button routerLink="/contact">
         <span>Volunteer</span>
       </button>
-      <button mat-button routerLink="/contact">
+      <button mat-button routerLink="/donate">
         <span>Donate</span>
       </button>
     </div>

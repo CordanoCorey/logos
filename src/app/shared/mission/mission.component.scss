@@ -40,7 +40,18 @@
   p:nth-of-type(5) {}
 }
 
-@media only screen and (max-device-width: 1024px) {
+.mission.splash {
+  color: #fff;
+
+  p {
+
+    .bold.font-effect-emboss {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1300px) {
   .mission {
     font-size: 18px;
 

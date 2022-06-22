@@ -1,3 +1,15 @@
-<logos-container [hasClouds]="true">
-  <logos-coming-soon></logos-coming-soon>
+<logos-container [hasOverlay]="false">
+  <div class="admissions">
+    <logos-header></logos-header>
+    <img
+      class="logo"
+      src="assets/Olive_1.png"
+      [style.top.px]="logoTopPx"
+      #logoEl
+    />
+    <div class="scrollable" #scrollable>
+      <h1 class="font-effect-3d-float" [@slideInLeftOnEnter]>Admissions</h1>
+      <logos-tuition></logos-tuition>
+    </div>
+  </div>
 </logos-container>

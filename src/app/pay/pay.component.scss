@@ -1,0 +1,273 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+:host {
+  display: block;
+  min-height: 100%;
+  width: 100%;
+}
+
+.pay {
+  padding-top: 130px;
+  height: calc(100% - 130px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+
+  h1 {
+    font-size: 56px;
+    color: mat-color($primary-palette, 600);
+    text-align: center;
+    font-style: italic;
+    margin: 20px 0 80px 0;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 40%;
+      height: 500px;
+      position: relative;
+
+      h2 {
+        position: absolute;
+        top: -60px;
+        left: 0;
+        color: #000;
+        font-size: 28px;
+      }
+
+      .row {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        h3 {
+          position: absolute;
+          top: -50px;
+          left: 0;
+          color: $primary-color;
+          font-size: 20px;
+        }
+
+        mat-form-field {
+          width: 100%;
+        }
+
+        mat-form-field.city {
+          width: 55%;
+        }
+
+        mat-form-field.zip {
+          width: 40%;
+        }
+      }
+
+      .row.first {
+        margin-top: 30px;
+      }
+    }
+
+    form.credit-card {
+      justify-content: center;
+      margin-left: 50px;
+
+      .row {
+
+        mat-form-field {
+          font-size: 18px;
+
+          input {
+            text-align: center;
+          }
+        }
+      }
+
+      .row.card-number {
+        margin-bottom: 40px;
+
+        mat-form-field {
+          width: 23%;
+        }
+      }
+
+      .row.expiration-date {
+        justify-content: flex-start;
+        margin-bottom: 40px;
+
+        mat-form-field {
+          width: 100px;
+          margin-right: 30px;
+        }
+      }
+
+      .row.card-code {
+
+        mat-form-field {
+          width: 150px;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    width: 80%;
+    padding: 0 10%;
+    display: flex;
+    justify-content: flex-end;
+
+    .btn-submit {
+      @include primary-gradient-v();
+      color: #fff;
+      font-size: 24px;
+      width: 40%;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1300px) {
+  .pay {
+    padding-top: 60px;
+    height: calc(100% - 60px);
+    overflow: hidden;
+
+    logos-header {
+      height: 60px;
+    }
+
+    .scrollable {
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        font-size: 32px;
+        margin: 10px 0;
+      }
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 2000px;
+
+        form {
+          width: 98%;
+          height: 600px;
+
+          h2 {
+            top: -5px;
+            left: 5px;
+            font-size: 22px;
+          }
+
+          .row {
+            width: 98%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+
+            h3 {
+              position: absolute;
+              top: -50px;
+              left: 0;
+              color: $primary-color;
+              font-size: 18px;
+              width: 100%;
+              text-align: center;
+            }
+
+            mat-form-field.city {
+              width: 100%;
+            }
+
+            mat-form-field.zip {
+              width: 100%;
+            }
+          }
+
+          .row.first {
+            margin-top: 50px;
+          }
+        }
+
+        form.credit-card {
+          margin-left: 0px;
+          margin-bottom: 40px;
+          padding-top: 80px;
+          height: 340px;
+
+          .row {
+            flex-direction: row;
+
+            mat-form-field {
+              font-size: 15px;
+
+              input {
+                text-align: center;
+              }
+            }
+          }
+
+          .row.card-number {
+            margin-bottom: 40px;
+
+            mat-form-field {
+              width: 23%;
+            }
+          }
+
+          .row.expiration-date {
+            justify-content: center;
+            margin-bottom: 40px;
+
+            mat-form-field {
+              width: 40%;
+              margin-right: 0;
+            }
+
+            mat-form-field:first-of-type {
+              margin-right: 20px;
+            }
+          }
+
+          .row.card-code {
+            justify-content: center;
+
+            mat-form-field {
+              width: 60%;
+            }
+          }
+        }
+      }
+
+      .buttons {
+        width: 80%;
+        padding: 0 10%;
+        margin-bottom: 60px;
+
+        .btn-submit {
+          font-size: 20px;
+          width: 100%;
+        }
+      }
+    }
+
+  }
+}

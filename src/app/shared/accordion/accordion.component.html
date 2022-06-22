@@ -1,0 +1,30 @@
+<div class="accordion">
+  <button class="btn-trigger" mat-button (click)="toggle.emit()">
+    <div class="row">
+      <div
+        class="goal"
+        [class.indent]="hideHeadingWhenExpanded"
+        *ngIf="!(expanded && hideHeadingWhenExpanded)"
+      >
+        <ng-content select=".accordion-heading"></ng-content>
+      </div>
+      <mat-icon
+        class="font-effect-3d-float"
+        [@flip]="expanded ? 'rotated' : 'default'"
+        >expand_more</mat-icon
+      >
+    </div>
+  </button>
+  <div class="narrative" [@toggle]="expanded ? 'show' : 'hide'">
+    <p class="by" *ngIf="!(expanded && hideSubheadingWhenExpanded)">
+      <ng-content select=".accordion-subheading"></ng-content>
+    </p>
+
+    <ng-content select=".accordion-body"></ng-content>
+  </div>
+  <logos-toggle-arrows
+    [isMobile]="isMobile"
+    [readMore]="expanded"
+    (toggle)="toggle.emit()"
+  ></logos-toggle-arrows>
+</div>

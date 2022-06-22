@@ -1,17 +1,62 @@
 @import '~@angular/material/_theming';
 @import '../../../common';
 
+:host {
+  position: relative;
+
+  .scroll-x {
+    @include mat-icon-diameter(48px);
+    position: absolute;
+    top: calc(50% - 24px);
+    z-index: 9999;
+    color: mat-color($primary-palette, 100);
+    opacity: 0.4;
+  }
+
+  .scroll-x.scroll-left {
+    left: 0px;
+  }
+
+  .scroll-x.scroll-right {
+    right: -10px;
+  }
+}
+
 .carousel {
-  display: flex;
+  display: block;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 100px);
+  margin: 0 50px;
   overflow-x: auto;
   overflow-y: hidden;
   position: relative;
-  align-items: center;
-  justify-content: center;
+
+  .carousel-content-wrapper {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-around;
+    height: calc(100% - 40px);
+    padding: 20px 0;
+    min-width: 100%;
+  }
+
+  .carousel-content-wrapper.centered {
+    justify-content: center;
+  }
+
+  .carousel-content {}
 }
 
-@media only screen and (max-device-width: 1024px) {
-  .carousel {}
+.carousel.overflowed {
+  @include mat-elevation(16);
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid mat-color($primary-palette, 300);
+}
+
+@media only screen and (max-device-width: 1300px) {
+  .carousel {
+    width: 92%;
+    margin: 0 4% 0 4%;
+  }
 }

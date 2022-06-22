@@ -1,13 +1,24 @@
 import { Component, HostListener } from '@angular/core';
+import {
+  WindowActions,
+  build,
+  WindowResize,
+  SmartComponent,
+} from '@caiu/library';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'logos-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent extends SmartComponent {
   _windowHeight = 0;
   _windowWidth = 0;
+
+  constructor(public store: Store<any>) {
+    super(store);
+  }
 
   get windowHeight(): number {
     return parseInt(localStorage.getItem('WINDOW_HEIGHT') || '0', 10) || 0;
@@ -35,39 +46,65 @@ export class AppComponent {
     }
   }
 
-  @HostListener('window:load', ['$event'])
-  onLoad(e: any) {
-    this.windowHeight =
+  @HostListener('window:load', ['$event']) onLoad(e: any) {
+    const windowHeight =
       e && e.currentTarget && e.currentTarget.innerHeight
         ? e.currentTarget.innerHeight
         : 0;
-    this.windowWidth =
+    const windowWidth =
       e && e.currentTarget && e.currentTarget.innerWidth
         ? e.currentTarget.innerWidth
         : 0;
+    console.log(windowHeight, windowWidth);
+    this.dispatch(
+      WindowActions.resize(
+        build(WindowResize, {
+          windowHeight,
+          windowWidth,
+        })
+      )
+    );
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(e: any) {
-    this.windowHeight =
+  @HostListener('window:resize', ['$event']) onResize(e: any) {
+    const windowHeight =
       e && e.currentTarget && e.currentTarget.innerHeight
         ? e.currentTarget.innerHeight
         : 0;
-    this.windowWidth =
+    const windowWidth =
       e && e.currentTarget && e.currentTarget.innerWidth
         ? e.currentTarget.innerWidth
         : 0;
+    console.log(windowHeight, windowWidth);
+    this.dispatch(
+      WindowActions.resize(
+        build(WindowResize, {
+          windowHeight,
+          windowWidth,
+        })
+      )
+    );
   }
 
-  @HostListener('window:orientationchange', ['$event'])
-  onOrientationChange(e: any) {
-    this.windowHeight =
+  @HostListener('window:orientationchange', ['$event']) onOrientationChange(
+    e: any
+  ) {
+    const windowHeight =
       e && e.currentTarget && e.currentTarget.innerHeight
         ? e.currentTarget.innerHeight
         : 0;
-    this.windowWidth =
+    const windowWidth =
       e && e.currentTarget && e.currentTarget.innerWidth
         ? e.currentTarget.innerWidth
         : 0;
+    console.log(windowHeight, windowWidth);
+    this.dispatch(
+      WindowActions.resize(
+        build(WindowResize, {
+          windowHeight,
+          windowWidth,
+        })
+      )
+    );
   }
 }

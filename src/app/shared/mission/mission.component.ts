@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import {
   lightSpeedInOnEnterAnimation,
   rotateInDownLeftOnEnterAnimation,
@@ -14,6 +14,7 @@ import {
   ],
 })
 export class MissionComponent implements OnInit {
+  @Input() splash = false;
   constructor(public el: ElementRef) {}
 
   ngOnInit(): void {}

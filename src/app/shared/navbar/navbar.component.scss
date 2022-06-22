@@ -1,0 +1,69 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .nav-item {
+    @include primary-gradient();
+    width: 100%;
+    border-radius: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      @include mat-icon-diameter(48px);
+      color: mat-color($primary-palette, 200);
+    }
+
+    img {
+      width: 48px;
+    }
+  }
+
+  .nav-item.contact {
+    @include dark-primary-gradient();
+
+    img {
+      width: 40px;
+    }
+  }
+
+  .nav-item.donate {
+    @include dark-primary-gradient();
+    height: 70px;
+
+    img {
+      width: unset;
+      height: 60px;
+    }
+  }
+
+  .nav-item.fb {
+    @include dark-primary-gradient();
+  }
+
+  .nav-item:first-of-type {
+    border-radius: 0 5px 0 0;
+  }
+
+  .nav-item:last-of-type {
+    border-radius: 0 0 5px 0;
+  }
+
+  .nav-item:hover {
+    @include light-primary-gradient();
+
+    mat-icon {
+      color: mat-color($primary-palette, 600);
+    }
+  }
+
+  .nav-item.donate:hover {
+    @include light-primary-gradient();
+  }
+}

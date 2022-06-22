@@ -15,7 +15,7 @@ logos-header {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 10;
   height: 130px;
   width: 100%;
   box-shadow: 0px 0px 8px rgba(229, 229, 229, 0.21);
@@ -52,14 +52,79 @@ logos-main-menu {
   display: none;
 }
 
+logos-accordion {
+
+  .accordion-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+    overflow: hidden;
+    width: 100%;
+
+    logos-words {
+      @extend .primary-font;
+      width: 90%;
+      color: #000;
+    }
+  }
+}
+
+.splash-link {
+  color: #fff;
+  position: absolute;
+  top: 200px;
+  right: 50px;
+  z-index: 9;
+}
+
+
 @media only screen and (max-device-width: 1200px) {
   .parallax {
     background-attachment: scroll;
   }
 
   .mat-button {
+    padding: 0;
+
     .mat-button-wrapper {
       white-space: break-spaces !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+  }
+
+  logos-accordion {
+    .accordion-heading {
+      line-height: 20px;
+      font-size: 20px;
+      text-align: left;
+      width: 96%;
+      padding: 5px 0;
+      font-weight: 500 !important;
+
+      .number {
+
+        margin-right: 2px;
+        font-weight: 700;
+      }
+    }
+
+    .accordion-body {
+      p {
+        line-height: 18px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .splash-link {
+    color: #fff;
+    position: absolute;
+    top: unset;
+    bottom: 200px;
+    right: unset;
+    z-index: 9;
   }
 }

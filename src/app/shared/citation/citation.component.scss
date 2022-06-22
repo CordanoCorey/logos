@@ -1,0 +1,18 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.citation {
+  width: 24px;
+  height: 24px;
+  margin: 0 0 0 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  mat-icon {
+    @include mat-icon-diameter(24px);
+    text-indent: 0;
+    color: mat-color($primary-palette, 300);
+  }
+}

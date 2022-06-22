@@ -1,0 +1,1203 @@
+<logos-container
+  backgroundImage="images/19.jpg"
+  [contentBackground]="
+    activeViewIndex === -1
+      ? 'rgba(30, 63, 102, 0.91)'
+      : 'views[activeViewIndex].background'
+  "
+  [hasOverlay]="hasOverlay"
+  [sidenavOpened]="sidenavOpened"
+  (splashLoaded)="loadImage2($event)"
+  (windowHeightChanges)="windowHeight = $event"
+>
+  <div class="home">
+    <!-- <div
+      style="
+        display: flex;
+        position: fixed;
+        top: 10px;
+        right: 0px;
+        width: 1000px;
+        justify-content: space-around;
+        z-index: 13;
+        color: #fff;
+      "
+    >
+      <span>Active Index: {{ activeViewIndex }}</span>
+      <span>Visible Height: {{ views[activeViewIndex]?.visibleHeight }}</span>
+      <span
+        >Traversed Height: {{ views[activeViewIndex]?.traversedHeight }}</span
+      >
+      <span>belowFoldTop: {{ belowFoldTop }}</span>
+      <span>belowFoldHeight: {{ belowFoldHeight }}</span>
+      <span>scrollY: {{ scrollY }}</span>
+    </div> -->
+    <logos-header
+      [showMainMenuItems]="views[0].stickyPct < 1"
+      (toggle)="sidenavOpened = !sidenavOpened"
+    ></logos-header>
+    <logos-overlay
+      [expanded]="chartOverlay !== null"
+      background="#fff"
+      (minimize)="chartOverlay = null"
+      [heightPx]="null"
+      [widthPx]="contentWidth"
+    >
+      <img
+        class="chart"
+        [style.max-width.px]="chartWidthPx"
+        *ngIf="chartOverlay"
+        [src]="'/assets/charts/' + chartOverlay"
+        [style.max-height.px]="contentHeight"
+        [style.max-width.px]="contentWidth"
+      />
+    </logos-overlay>
+    <div
+      class="scrollable"
+      (scroll)="onScroll($event)"
+      [style.z-index]="hasOverlay && views[0].stickyPct < 1 ? 8 : 11"
+      #scrollable
+    >
+      <div class="above-fold" [style.height.px]="contentHeight">
+        <!-- <logos-splash-announcement [hidden]="scrollY !== 0">
+          Informational Meeting on Thursday, May 19 from 6:15pm - 8pm at
+          Carlisle Evangelical Free Church.
+        </logos-splash-announcement> -->
+        <a
+          class="splash-link"
+          *ngIf="scrollY === 0"
+          href="https://docs.google.com/forms/d/1HcI5oApDqZhVV5awneRZxIL46MVOT0PDANXPkcR6HiU/viewform?edit_requested=true&pli=1"
+          target="_blank"
+        >
+          Fill out an interest form
+        </a>
+        <span
+          class="greeting"
+          [class.blue]="!hasOverlay"
+          *ngIf="logoImageFinished"
+          [@rotateInDownLeftOnEnter]
+          >Welcome to</span
+        >
+        <div
+          *ngIf="hasOverlay"
+          class="city font-effect-emboss"
+          [@zoomInOnEnter]
+          [@zoomOutOnLeave]
+        >
+          Carlisle, PA
+        </div>
+        <logos-spacer
+          *ngIf="hasOverlay && scrollY === 0"
+          style="position: absolute; top: 140px"
+          [rotate]="true"
+          [@fadeInRightBigOnEnter]
+        ></logos-spacer>
+        <logos-spacer
+          *ngIf="hasOverlay && scrollY === 0"
+          style="position: absolute; top: 190px"
+          [@fadeInLeftBigOnEnter]
+        ></logos-spacer>
+        <div class="logo-effect" [class.completed]="hasOverlay">
+          <img
+            class="logo"
+            *ngIf="!hasOverlay"
+            src="assets/Olive_1.png"
+            [@intoView]
+            (@intoView.done)="onLogoEnterEnd($event)"
+          />
+          <img
+            class="logo"
+            *ngIf="hasOverlay"
+            [style.left.px]="logoLeftPx"
+            [style.top.px]="logoTopPx"
+            src="assets/Olive_1_White.png"
+          />
+          <div
+            class="logo-copies"
+            [@copyAndShrink]
+            (@copyAndShrink.start)="onCopyStart($event)"
+            (@copyAndShrink.done)="onCopyEnd($event)"
+            *ngIf="logoImageFinished && !hasOverlay"
+          >
+            <img
+              class="logo-mini"
+              src="assets/Olive_1.png"
+              *ngFor="let logo of logoCopies; let i = index"
+              [style.top.px]="logo.topPx"
+              [style.left.px]="logo.leftPx"
+            />
+          </div>
+        </div>
+        <span
+          class="school-name"
+          *ngIf="
+            logosCopied &&
+            activeViewIndex === -1 &&
+            !views[0].isFixed &&
+            views[0].top > 0
+          "
+          [@rotateInUpRightOnEnter]
+          [style.font-size.px]="schoolNameFontSize"
+          [style.left.px]="schoolNameLeft"
+          [style.top.px]="schoolNameTop"
+          [style.position]="views[0].isFixed ? 'fixed' : 'absolute'"
+          [class.below]="scrollY > contentHeight / 2"
+          [class.blue]="!hasOverlay"
+          #schoolName
+          >LOGOS SCHOOL<span *ngIf="scrollY !== 0">,</span>
+        </span>
+        <img
+          *ngIf="hasOverlay && activeViewIndex === -1"
+          class="arrows"
+          src="assets/Arrows.png"
+          (click)="goDown()"
+          [style.top.px]="contentHeight ? contentHeight - 100 : 1000"
+          [@bounce]="arrowAnimationState"
+        />
+      </div>
+
+      <div
+        class="below-fold"
+        [style.top.px]="belowFoldTop"
+        [style.height.px]="belowFoldHeight"
+      >
+        <div
+          class="stretchy"
+          *ngFor="let view of views; let i = index; trackBy: trackByMethod"
+          [style.height.px]="activeViewIndex === -1 ? 0 : views[i].height"
+          [class.active]="activeViewIndex === i"
+          #stretchyEl
+        >
+          <div
+            class="sticky"
+            *ngIf="true"
+            [class.fixed]="views[i].isFixed"
+            [style.top.px]="views[i].topStart"
+            [style.left.px]="10"
+            [style.width]="contentWidth - 30 + 'px !important'"
+            (click)="goToViewIndex(i)"
+          >
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 0 && showMissionIndex(0)"
+              [@fadeInRightBigOnEnter]
+            >
+              in faithful submission to
+              <span class="bold italic">Scripture</span>
+              <span [class.hidden]="views[i].isFixed">and</span>
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 1 && showMissionIndex(1)"
+              [@fadeInLeftBigOnEnter]
+            >
+              with deference to the authority granted therein to
+              <span class="bold">parents</span>
+              <span class="row"
+                >regarding the instruction of their children<span
+                  [class.hidden]="views[i].isFixed"
+                  >,</span
+                ></span
+              >
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 2 && showMissionIndex(2)"
+              [@fadeInRightBigOnEnter]
+            >
+              provides a
+              <span class="bold italic">classical, Christ-centered</span>
+              education
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 3 && showMissionIndex(3)"
+              [@fadeInRightBigOnEnter]
+            >
+              <span [class.hidden]="views[i].isFixed">...</span>
+              designed to achieve academic
+              <span class="bold">excellence</span>
+              <span [class.hidden]="views[i].isFixed">and</span>
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 4 && showMissionIndex(4)"
+              [@fadeInLeftBigOnEnter]
+            >
+              <span [class.hidden]="views[i].isFixed">...</span>
+              instill a life-long <span class="bold">love of learning</span>
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 5 && showMissionIndex(5)"
+              [@fadeInRightBigOnEnter]
+            >
+              <span [class.hidden]="views[i].isFixed">...</span>through
+              enthusiastic affirmation of the
+              <span class="bold">Christian worldview</span>
+              <span class="row"
+                >as the foundation for knowledge, virtue, and beauty<span
+                  [class.hidden]="views[i].isFixed"
+                  >,</span
+                ></span
+              >
+            </p>
+            <p
+              [class.font-effect-3d-float]="!isMobile"
+              *ngIf="i === 6 && showMissionIndex(6)"
+              [@fadeInLeftBigOnEnter]
+            >
+              <span [class.hidden]="views[i].isFixed">...</span>
+              so that each student is equipped to
+              <span class="italic">joyfully</span
+              ><span class="bold">glorify God</span>
+              <span class="row">in every aspect of life.</span>
+            </p>
+          </div>
+
+          <!-- SCRIPTURE -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 0"
+            [style.height.px]="activeViewIndex === -1 ? 0 : views[0].height"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[0].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <div class="spacer" style="height: 200px"></div>
+              <logos-banner *ngIf="activeViewIndex === 0"
+                ><p class="banner-content font-effect-3d-float">
+                  in faithful submission to
+                  <span class="bold italic">Scripture</span>
+                </p>
+              </logos-banner>
+
+              <div
+                class="row"
+                style="height: 400px"
+                *ngIf="isVisible(0, 300, 600)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <div class="tagline font-effect-3d-float">
+                  {{ views[0].quotes[0].words }}
+                </div>
+              </div>
+
+              <div
+                class="row"
+                style="height: 100px"
+                *ngIf="isVisible(0, 600, 700)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-nav-menu [menuItems]="aboutUsSubmenu"></logos-nav-menu>
+              </div>
+
+              <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(0, 700, 1000)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[0].quotes[1]"
+                  [cite]="false"
+                  [hasContent]="true"
+                >
+                  <span
+                    style="
+                      font-style: italic;
+                      font-size: 32px;
+                      line-height: 36px;
+                    "
+                    >In the beginning</span
+                  >
+                  of this story was the Word, the
+                  <span
+                    style="font-size: 32px; margin-left: 4px; line-height: 36px"
+                    >Logos</span
+                  >. Through Him all things were made and by Him all things are
+                  being made new. He is, therefore, both the storyteller and the
+                  hero of the story &mdash; the author of salvation.
+                </logos-quote>
+              </div>
+
+              <div
+                class="row"
+                style="height: 500px"
+                *ngIf="isVisible(0, 1000, 1500)"
+              >
+                <img
+                  class="graphic book-steps"
+                  src="/assets/graphics/book-steps.png"
+                />
+                <logos-bible-verse
+                  words="In the beginning was the Word (the Logos), and the Word was with God, and the Word was God."
+                  ref="John 1:1"
+                  [vertical]="true"
+                ></logos-bible-verse>
+              </div>
+
+              <div
+                class="row"
+                style="height: 200px"
+                *ngIf="isVisible(0, 1500, 1700)"
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[0].quotes[2]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+              <logos-spacer [heightPx]="200"></logos-spacer>
+            </div>
+          </div>
+          <!-- SCRIPTURE -->
+
+          <!-- PARENTS -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 1"
+            [style.height.px]="activeViewIndex === -1 ? 0 : views[1].height"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[1].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex !== -1">
+                <p class="banner-content font-effect-3d-float">
+                  with deference to the authority granted therein to
+                  <span class="bold">parents</span>
+                  <span class="row"
+                    >regarding the instruction of their children</span
+                  >
+                </p>
+              </logos-banner>
+
+              <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(1, 100, 400)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[1].quotes[0]"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <div
+                class="row"
+                style="height: 500px"
+                *ngIf="isVisible(1, 400, 900)"
+              >
+                <logos-stat
+                  prop="Approx. hours spent in school"
+                  number="12000"
+                  [@fadeInLeftBigOnEnter]
+                  [@fadeOutLeftBigOnLeave]
+                ></logos-stat>
+                <logos-stat
+                  prop="Fall away from the faith during freshman year of college"
+                  number="70%"
+                  [@zoomInOnEnter]
+                  [@zoomOutOnLeave]
+                ></logos-stat>
+                <logos-stat
+                  prop="of ACCS alumni attend church 3+ times per month"
+                  number="90%"
+                  [@fadeInRightBigOnEnter]
+                  [@fadeOutRightBigOnLeave]
+                ></logos-stat>
+              </div>
+
+              <div
+                class="row"
+                style="height: 200px"
+                *ngIf="isVisible(1, 900, 1100)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[1].quotes[1]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(1, 1100, 1400)"
+              >
+                <img
+                  src="assets/graphics/Map_pin.png"
+                  class="map"
+                  [@fadeInLeftBigOnEnter]
+                />
+                <logos-nav-menu
+                  [menuItems]="contactUsSubmenu"
+                  [@fadeInRightBigOnEnter]
+                ></logos-nav-menu>
+              </div>
+              <logos-spacer [heightPx]="200"></logos-spacer>
+            </div>
+          </div>
+          <!-- PARENTS -->
+
+          <!-- CLASSICAL, CHRIST-CENTERED -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 2"
+            [style.height.px]="activeViewIndex === -1 ? 0 : views[2].height"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[2].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex !== -1">
+                <p class="banner-content font-effect-3d-float">
+                  provides a
+                  <span class="bold italic">classical, Christ-centered</span>
+                  education
+                </p>
+              </logos-banner>
+
+              <div
+                class="row"
+                style="height: 100px"
+                *ngIf="isVisible(2, 100, 200)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-nav-menu
+                  [menuItems]="admissionsSubmenu"
+                ></logos-nav-menu>
+              </div>
+
+              <div
+                class="row"
+                *ngIf="isVisible(2, 200, 500)"
+                style="height: 300px"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[2].quotes[0]"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <div
+                class="row"
+                *ngIf="isVisible(2, 500, 900)"
+                style="height: 400px; justify-content: center"
+              >
+                <img
+                  class="chart accs-map"
+                  (click)="chartOverlay = views[2].charts[2]"
+                  [src]="'/assets/charts/' + views[2].charts[2]"
+                  [@fadeInLeftBigOnEnter]
+                />
+                <logos-quote
+                  [cite]="false"
+                  [dark]="true"
+                  [showQuote]="false"
+                  [hasContent]="true"
+                  [underlineOnHover]="false"
+                  [@fadeInRightBigOnEnter]
+                >
+                  <div [style.font-size.px]="20">
+                    Logos School is a member of the
+                    <a
+                      target="_blank"
+                      href="https://classicalchristian.org/"
+                      style="color: #850023; font-size: 24px; line-height: 32px"
+                      >Association of Classical Christian Schools (ACCS)</a
+                    >
+                  </div>
+                </logos-quote>
+              </div>
+
+              <div
+                class="row"
+                *ngIf="isVisible(2, 900, 1300)"
+                style="height: 400px"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <a
+                  href="https://classicalchristian.org/what-is-cce/"
+                  target="_blank"
+                >
+                  <logos-quote
+                    [quote]="views[2].quotes[1]"
+                    [citation]="accsCceCitation"
+                    [isMobile]="true"
+                  ></logos-quote>
+                </a>
+              </div>
+
+              <div class="spacer" style="height: 25px"></div>
+              <logos-carousel
+                style="height: 300px"
+                *ngIf="isVisible(2, 1325, 1625)"
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[2].charts[0]"
+                  [src]="'/assets/charts/' + views[2].charts[0]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[2].charts[1]"
+                  [src]="'/assets/charts/' + views[2].charts[1]"
+                />
+              </logos-carousel>
+
+              <div
+                class="row"
+                style="height: 275px"
+                *ngIf="isVisible(2, 1625, 1900)"
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[2].quotes[2]"
+                  [isMobile]="true"
+                  [cite]="false"
+                  [@zoomInOnEnter]
+                  [@zoomOutOnLeave]
+                ></logos-quote>
+              </div>
+
+              <logos-spacer [heightPx]="200"></logos-spacer>
+            </div>
+          </div>
+          <!-- CLASSICAL, CHRIST-CENTERED -->
+
+          <!-- EXCELLENCE -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 3"
+            [style.height.px]="activeViewIndex === -1 ? 0 : views[3].height"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[3].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex !== -1">
+                <p class="banner-content font-effect-3d-float">
+                  designed to achieve academic
+                  <span class="bold">excellence</span>
+                </p>
+              </logos-banner>
+
+              <div
+                class="row"
+                style="height: 100px"
+                *ngIf="isVisible(3, 100, 200)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-nav-menu [menuItems]="academicsSubmenu"></logos-nav-menu>
+              </div>
+
+              <logos-spacer [underline]="false" [heightPx]="100"></logos-spacer>
+
+              <logos-carousel
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+                *ngIf="isVisible(3, 300, 600)"
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[3].charts[0]"
+                  [src]="'/assets/charts/' + views[3].charts[0]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[3].charts[1]"
+                  [src]="'/assets/charts/' + views[3].charts[1]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[3].charts[2]"
+                  [src]="'/assets/charts/' + views[3].charts[2]"
+                />
+              </logos-carousel>
+
+              <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(3, 600, 900)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[3].quotes[0]"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <logos-carousel
+                *ngIf="isVisible(3, 900, 1200)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[3].charts[3]"
+                  [src]="'/assets/charts/' + views[3].charts[3]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[3].charts[4]"
+                  [src]="'/assets/charts/' + views[3].charts[4]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[3].charts[5]"
+                  [src]="'/assets/charts/' + views[3].charts[5]"
+                />
+              </logos-carousel>
+
+              <div
+                class="row"
+                style="height: 200px"
+                *ngIf="isVisible(3, 1200, 1400)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[3].quotes[1]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <logos-carousel
+                *ngIf="isVisible(3, 1400, 1700)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[3].charts[6]"
+                  [src]="'/assets/charts/' + views[3].charts[6]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[3].charts[7]"
+                  [src]="'/assets/charts/' + views[3].charts[7]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[3].charts[8]"
+                  [src]="'/assets/charts/' + views[3].charts[8]"
+                />
+              </logos-carousel>
+              <logos-spacer [heightPx]="200"></logos-spacer>
+            </div>
+          </div>
+          <!-- EXCELLENCE -->
+
+          <!-- LOVE OF LEARNING -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 4"
+            [style.height.px]="activeViewIndex === -1 ? 0 : views[4].height"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[4].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex !== -1">
+                <p class="banner-content font-effect-3d-float">
+                  instill a life-long <span class="bold">love of learning</span>
+                </p>
+              </logos-banner>
+
+              <div
+                class="row"
+                style="height: 400px"
+                *ngIf="isVisible(4, 100, 500)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[4].quotes[0]"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <logos-carousel
+                *ngIf="isVisible(4, 500, 800)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[4].charts[2]"
+                  [src]="'/assets/charts/' + views[4].charts[2]"
+                />
+              </logos-carousel>
+
+              <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(4, 800, 1100)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[4].quotes[1]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <logos-carousel
+                class="row"
+                *ngIf="isVisible(4, 1100, 1400)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[4].charts[0]"
+                  [src]="'/assets/charts/' + views[4].charts[0]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[4].charts[1]"
+                  [src]="'/assets/charts/' + views[4].charts[1]"
+                />
+              </logos-carousel>
+
+              <!-- <div
+                class="row"
+                style="height: 200px"
+                *ngIf="isVisible(4, 1400, 1600)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[4].quotes[2]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div> -->
+
+              <logos-spacer [heightPx]="300"></logos-spacer>
+            </div>
+          </div>
+          <!-- LOVE OF LEARNING -->
+
+          <!-- WORLDVIEW -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 5"
+            [style.height.px]="activeViewIndex === -1 ? 0 : views[5].height"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[5].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex !== -1">
+                <p class="banner-content font-effect-3d-float">
+                  through enthusiastic affirmation of the
+                  <span class="bold">Christian worldview</span>
+                  <span class="row"
+                    >as the foundation for knowledge, virtue, and beauty</span
+                  >
+                </p>
+              </logos-banner>
+
+              <div class="spacer" style="height: 100px"></div>
+
+              <logos-carousel
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+                *ngIf="isVisible(5, 200, 500)"
+                ><img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[5].charts[0]"
+                  [src]="'/assets/charts/' + views[5].charts[0]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[5].charts[1]"
+                  [src]="'/assets/charts/' + views[5].charts[1]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[5].charts[2]"
+                  [src]="'/assets/charts/' + views[5].charts[2]"
+                />
+              </logos-carousel>
+
+              <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(5, 500, 800)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[5].quotes[0]"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <logos-carousel
+                *ngIf="isVisible(5, 800, 1100)"
+                [@fadeInLeftBigOnEnter]
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[5].charts[3]"
+                  [src]="'/assets/charts/' + views[5].charts[3]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[5].charts[4]"
+                  [src]="'/assets/charts/' + views[5].charts[4]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[5].charts[5]"
+                  [src]="'/assets/charts/' + views[5].charts[5]"
+                />
+              </logos-carousel>
+
+              <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(5, 1100, 1400)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[5].quotes[1]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <!-- <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(5, 1400, 1700)"
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[5].quotes[2]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div> -->
+
+              <logos-carousel
+                *ngIf="isVisible(5, 1400, 1700)"
+                [@fadeInRightBigOnEnter]
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[5].charts[6]"
+                  [src]="'/assets/charts/' + views[5].charts[6]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[5].charts[7]"
+                  [src]="'/assets/charts/' + views[5].charts[7]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[5].charts[8]"
+                  [src]="'/assets/charts/' + views[5].charts[8]"
+                />
+              </logos-carousel>
+              <logos-spacer [heightPx]="300"></logos-spacer>
+            </div>
+          </div>
+          <!-- WORLDVIEW -->
+
+          <!-- GLORIFY GOD -->
+          <div
+            class="accordion-content"
+            *ngIf="i === 6"
+            [style.height.px]="activeViewIndex === -1 ? 0 : views[6].height"
+          >
+            <div class="verses" *ngIf="!isMobile">
+              <logos-bible-verse
+                *ngFor="let verse of views[6].verses"
+                [words]="verse.words"
+                [ref]="verse.ref"
+              ></logos-bible-verse>
+            </div>
+
+            <div class="overview">
+              <logos-banner *ngIf="activeViewIndex !== -1">
+                <p class="banner-content font-effect-3d-float">
+                  so that each student is equipped to
+                  <span class="italic">joyfully</span
+                  ><span class="bold">glorify God</span>
+                  <span class="row">in every aspect of life.</span>
+                </p>
+              </logos-banner>
+
+              <div class="spacer" style="height: 100px"></div>
+
+              <logos-carousel
+                *ngIf="isVisible(6, 200, 500)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[6].charts[0]"
+                  [src]="'/assets/charts/' + views[6].charts[0]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[6].charts[1]"
+                  [src]="'/assets/charts/' + views[6].charts[1]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[6].charts[2]"
+                  [src]="'/assets/charts/' + views[6].charts[2]"
+                />
+              </logos-carousel>
+
+              <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(6, 500, 800)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[6].quotes[0]"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <!-- <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(6, 800, 1100)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[6].quotes[1]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div> -->
+
+              <logos-carousel
+                *ngIf="isVisible(6, 800, 1100)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[6].charts[3]"
+                  [src]="'/assets/charts/' + views[6].charts[3]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[6].charts[4]"
+                  [src]="'/assets/charts/' + views[6].charts[4]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[6].charts[5]"
+                  [src]="'/assets/charts/' + views[6].charts[5]"
+                />
+              </logos-carousel>
+
+              <!-- <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(6, 1400, 1700)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[6].quotes[2]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div> -->
+
+              <div
+                class="row"
+                style="height: 300px"
+                *ngIf="isVisible(6, 1100, 1400)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <logos-quote
+                  (click)="goToVision()"
+                  [quote]="views[6].quotes[3]"
+                  [cite]="false"
+                  [isMobile]="true"
+                ></logos-quote>
+              </div>
+
+              <logos-carousel
+                *ngIf="isVisible(6, 1400, 1700)"
+                [@zoomInOnEnter]
+                [@zoomOutOnLeave]
+              >
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[6].charts[6]"
+                  [src]="'/assets/charts/' + views[6].charts[6]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[6].charts[7]"
+                  [src]="'/assets/charts/' + views[6].charts[7]"
+                />
+                <img
+                  class="chart"
+                  [style.max-width.px]="chartWidthPx"
+                  *logosCarouselContent
+                  (click)="chartOverlay = views[6].charts[8]"
+                  [src]="'/assets/charts/' + views[6].charts[8]"
+                />
+              </logos-carousel>
+              <div class="spacer" style="height: 100px"></div>
+            </div>
+          </div>
+          <!-- GLORIFY GOD -->
+        </div>
+        <logos-footer></logos-footer>
+        <button
+          *ngIf="scrollY > 0"
+          class="btn-back-to-top"
+          (click)="backToTop()"
+          mat-fab
+          aria-label="Return to Top"
+        >
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</logos-container>

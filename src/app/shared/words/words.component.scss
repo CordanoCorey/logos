@@ -1,0 +1,15 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.words {
+  line-height: 32px;
+
+  h3 {
+    color: $primary-color;
+    font-size: 24px;
+  }
+
+  p {
+    text-indent: 2em;
+  }
+}

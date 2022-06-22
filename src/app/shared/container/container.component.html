@@ -10,10 +10,15 @@
     <logos-mobile-main-menu
       (close)="onCloseSidenav()"
       (goTo)="goTo($event)"
+      [style.width.px]="windowWidth"
     ></logos-mobile-main-menu>
   </div>
+  <logos-navbar
+    *ngIf="showNavbar && !isMobile && routeName !== 'about-us'"
+  ></logos-navbar>
   <img
     class="splash-image"
+    [class.vertical]="backgroundImageVertical"
     *ngIf="backgroundImage"
     [src]="'/assets/' + backgroundImage"
     [@fadeInRightBig]="bgImgAnimationState"

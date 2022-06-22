@@ -1,0 +1,16 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.spacer {
+  width: 100%;
+  position: relative;
+
+  .underline {
+    @extend .gradient-underline;
+  }
+}
+
+.spacer.rotate {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}

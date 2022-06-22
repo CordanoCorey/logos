@@ -1,10 +1,24 @@
 <div class="nav-menu" [class.vertical]="vertical">
-  <button
+  <div
     class="menu-item font-effect-3d-float"
-    [routerLink]="menuItem.routerLink"
+    [style.width.%]="menuItemWidthPct"
     mat-button
     *ngFor="let menuItem of menuItems"
   >
-    {{ menuItem.label }}
-  </button>
+    <button
+      *ngIf="!menuItem.externalLink"
+      [routerLink]="menuItem.routerLink"
+      mat-button
+    >
+      {{ menuItem.label }}
+    </button>
+    <a
+      *ngIf="menuItem.externalLink"
+      [href]="menuItem.externalLink"
+      target="_blank"
+      mat-button
+    >
+      {{ menuItem.label }}
+    </a>
+  </div>
 </div>

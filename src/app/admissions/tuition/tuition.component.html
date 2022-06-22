@@ -1,0 +1,113 @@
+<div class="tuition">
+  <div class="row">
+    <div class="steps">
+      <h2>Application Process</h2>
+      <div class="step">
+        <span class="order">1.</span>
+        Complete the application
+      </div>
+      <div class="step">
+        <span class="order">2.</span>
+        Parent Interview
+      </div>
+      <div class="step">
+        <span class="order">3.</span>
+        Student Assessment
+      </div>
+    </div>
+    <div class="admissions-links">
+      <a
+        class="btn-enroll"
+        mat-button
+        href="/assets/docs/Logos School Enrollment Application 2022-2023.pdf"
+        target="_blank"
+      >
+        Click here for the enrollment application<br />(online application
+        coming soon).
+      </a>
+      <a
+        class="btn-enroll"
+        mat-button
+        href="https://docs.google.com/forms/d/1HcI5oApDqZhVV5awneRZxIL46MVOT0PDANXPkcR6HiU/viewform?edit_requested=true&pli=1"
+        target="_blank"
+      >
+        Click here to fill out an interest form
+      </a>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <h2 class="table-title">Tuition</h2>
+    <p class="note">
+      <mat-icon>notification_important</mat-icon>
+      <span class="message">
+        All students enrolled in 2022-23 school year will not be subject to
+        raised tuition costs for the 2023-24 school year.
+      </span>
+      <mat-icon>notification_important</mat-icon>
+    </p>
+    <mat-table [dataSource]="tuition" class="mat-elevation-z8">
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Grade Levels </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      </ng-container>
+
+      <!-- Yearly Column -->
+      <ng-container matColumnDef="yearly">
+        <mat-header-cell *matHeaderCellDef> Yearly </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.yearly }} </mat-cell>
+      </ng-container>
+
+      <!-- Monthly Column -->
+      <ng-container matColumnDef="monthly">
+        <mat-header-cell *matHeaderCellDef>
+          <div class="col-title">
+            <span>Monthly</span>
+            <span>(12 months)</span>
+          </div>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.monthly }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="tuitionColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tuitionColumns"></mat-row>
+    </mat-table>
+  </div>
+
+  <div class="table-wrapper">
+    <h2 class="table-title">Discounts</h2>
+    <mat-table [dataSource]="discounts" class="mat-elevation-z8 two-col">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Discount </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.amount }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="discountsColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: discountsColumns"></mat-row>
+    </mat-table>
+  </div>
+
+  <div class="table-wrapper">
+    <h2 class="table-title">Fees</h2>
+    <mat-table [dataSource]="fees" class="mat-elevation-z8 two-col">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Fee </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.amount }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="feesColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: feesColumns"></mat-row>
+    </mat-table>
+  </div>
+</div>

@@ -55,9 +55,27 @@
     bottom: -43px;
     right: 30px;
   }
+
+  .blockquote.no-quote:after {
+    content: "";
+  }
 }
 
-.quote:hover {
+.quote.italics {
+  .blockquote {
+    h1 {
+      font-style: italic;
+    }
+  }
+}
+
+.quote.dark {
+  .blockquote {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.quote.underline:hover {
   .blockquote {
     @include mat-elevation(0);
     background: rgba(0, 0, 0, 0.5);
@@ -78,11 +96,12 @@
   }
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-device-width: 1300px) {
   .quote {
     .blockquote h1 {
       font-size: 18px;
       font-weight: 400;
+      line-height: 20px;
     }
 
     .blockquote .citation {

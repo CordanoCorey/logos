@@ -1,0 +1,80 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+:host {
+  width: 100%;
+}
+
+.splash-mission {
+  width: 100%;
+  margin: 0;
+  position: relative;
+  @extend .font1;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .mission-part {
+    height: 130px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    position: absolute;
+
+    p {
+      font-size: 28px;
+      margin: 0;
+
+      .bold {
+        margin: 0 6px;
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .italic {
+        font-size: 30px;
+        font-style: italic;
+      }
+
+      .row {
+        display: block;
+        margin-left: 100px;
+      }
+    }
+  }
+
+  .mission-part:nth-of-type(1) {
+    left: 330px;
+  }
+
+  .mission-part:nth-of-type(2) {
+    left: 360px;
+  }
+
+  .mission-part:nth-of-type(3) {
+    left: 390px;
+  }
+
+  .mission-part:nth-of-type(4) {
+    left: 420px;
+  }
+
+  .mission-part:nth-of-type(5) {
+    left: 450px;
+  }
+
+  .mission-part:nth-of-type(6) {
+    left: 480px;
+  }
+
+  .mission-part:nth-of-type(7) {
+    left: 510px;
+  }
+
+  logos-mission {
+    width: 80%;
+    margin-top: 50px;
+  }
+}

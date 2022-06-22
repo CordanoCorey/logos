@@ -1,216 +1,1238 @@
 <div class="vision">
   <h2 class="font-effect-emboss">Vision & Philosophy</h2>
-  <div class="section">
-    <button class="btn-trigger" mat-button (click)="toggle(1)">
-      <div class="row">
-        <div class="goal">
-          <span class="number">1.</span>
-          Cast students as characters in God's story
-        </div>
-        <mat-icon
-          class="font-effect-3d-float"
-          [@flip]="expanded[1] ? 'rotated' : 'default'"
-          >expand_more</mat-icon
-        >
-      </div>
-    </button>
-    <div class="narrative" [@toggle]="expanded[1] ? 'show' : 'hide'">
-      <p class="by">
-        by instilling the self-perception of one created in God's image and in
-        the context of His creation.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-        elementum a ligula eu rhoncus. Curabitur et odio pellentesque, malesuada
-        diam eget, ultrices lectus. Donec ac sagittis sapien, in tempor urna.
-        Cras congue justo metus. Sed ut purus massa. Nunc dapibus finibus ipsum,
-        a lobortis ligula pharetra placerat. Quisque at maximus risus. Nam
-        consequat consectetur dignissim. Etiam ipsum nisl, faucibus eu lectus
-        eget, semper ornare libero. Duis lacinia rhoncus volutpat. Cras mollis
-        vel turpis id vestibulum. Proin feugiat risus ex, non blandit ante
-        fringilla eu. Phasellus in felis mi. Proin libero risus, sodales at
-        malesuada dignissim, blandit ut lectus.
-      </p>
-      <p>
-        Nam turpis arcu, aliquet ac diam non, pretium malesuada massa. Donec
-        enim mauris, molestie ac erat ac, dictum varius turpis. Nunc dapibus
-        sollicitudin orci, in tincidunt orci pulvinar at. Aliquam erat volutpat.
-        Curabitur nisl tellus, mattis a purus id, volutpat hendrerit justo. Sed
-        venenatis posuere augue et volutpat. Phasellus efficitur tellus quis
-        neque porta, nec rutrum nulla malesuada. Mauris sed ante turpis. Fusce
-        luctus metus odio, a luctus mi egestas nec. Donec placerat sit amet
-        neque et efficitur. In vel diam sollicitudin, tincidunt quam et,
-        scelerisque sapien. Donec tincidunt euismod augue in commodo. Nam
-        posuere, diam quis gravida cursus, sem leo volutpat lacus, sed rhoncus
-        nulla odio vitae tortor. Vestibulum ante ipsum primis in faucibus orci
-        luctus et ultrices posuere cubilia curae; Aenean vestibulum ligula nec
-        laoreet sollicitudin.
-      </p>
-      <p>
-        Mauris venenatis dui enim, a posuere felis convallis quis. Pellentesque
-        et nunc et enim elementum eleifend. Ut dolor nisl, mollis vitae eleifend
-        et, dignissim a nulla. Maecenas velit leo, interdum in enim sit amet,
-        congue commodo ligula. In hac habitasse platea dictumst. Pellentesque
-        est ligula, laoreet ut egestas at, pellentesque nec neque. Vivamus
-        eleifend venenatis massa, at tempor lectus suscipit a. Etiam accumsan,
-        lacus sed luctus pharetra, erat neque ultricies tortor, quis finibus
-        urna justo et ante. Etiam neque metus, aliquam ac vestibulum sed,
-        ultrices eget risus. Vestibulum lacinia, orci non volutpat tempor, mi
-        purus porttitor felis, a congue odio urna eget odio.
-      </p>
-      <p>
-        Ut vel eleifend orci. Nulla tincidunt pretium sodales. Morbi vel
-        vestibulum ante, a interdum quam. Aenean vestibulum dignissim auctor.
-        Nullam vitae rhoncus nisi. Nunc suscipit nibh ligula, ac ultricies
-        tellus egestas at. Proin tortor ipsum, tincidunt nec scelerisque ac,
-        tempor non odio. Quisque cursus fermentum nulla ac ornare. Maecenas
-        dapibus mauris eget elit finibus pulvinar. Pellentesque tempor libero
-        tincidunt lacus pretium, vitae condimentum dolor aliquet.
-      </p>
-      <p>
-        Etiam ut nulla gravida, hendrerit arcu eget, tincidunt nibh. Phasellus
-        sit amet lacus augue. Vivamus efficitur, arcu in euismod bibendum, odio
-        erat euismod lacus, et lacinia metus lacus quis leo. Donec malesuada,
-        diam sit amet pulvinar varius, velit magna viverra orci, non imperdiet
-        augue diam eget nisi. Nullam non velit tempor risus maximus iaculis.
-        Cras suscipit diam sit amet ligula semper faucibus. Nunc placerat elit
-        non neque malesuada accumsan. Sed finibus convallis ipsum, id accumsan
-        orci interdum eget. Quisque tempus lorem id blandit venenatis.
-      </p>
+  <logos-accordion
+    [expanded]="expanded[0]"
+    [hideHeadingWhenExpanded]="true"
+    [hideSubheadingWhenExpanded]="true"
+    (toggle)="toggle(0)"
+  >
+    <div class="accordion-heading" style="width: 100%">
+      “Daddy, what’s the smallest thing?”
     </div>
-    <logos-toggle-arrows
-      [isMobile]="isMobile"
-      [readMore]="expanded[1]"
-      (toggle)="toggle(1)"
-    ></logos-toggle-arrows>
-  </div>
-  <div class="section">
-    <button class="btn-trigger" mat-button (click)="toggle(2)">
-      <div class="row">
-        <div class="goal">
-          <span class="number">2.</span>
-          Unmask the world's spin on the story
-        </div>
-        <mat-icon
-          class="font-effect-3d-float"
-          [@flip]="expanded[2] ? 'rotated' : 'default'"
-          >expand_more</mat-icon
-        >
-      </div>
-    </button>
-    <div class="narrative" [@toggle]="expanded[2] ? 'show' : 'hide'">
-      <p class="by">
-        by equipping students to discern, engage, and overcome worldly thinking
-        with biblical thinking.
-      </p>
-      <p></p>
+    <span class="accordion-subheading">
+      Two preschool age sisters are contemplating the size of their baby brother
+      while looking at a mustard seed on one of those pregnancy tracker apps.
+    </span>
+    <div class="accordion-body">
+      <logos-words title="Quarks"
+        >“Daddy, what’s the smallest thing?” Two preschool sisters are
+        contemplating the size of their baby brother while looking at a mustard
+        seed on one of those pregnancy tracker apps.
+      </logos-words>
+      <logos-words>
+        “Wow, good question sweetie... I guess that would be an atom.”
+      </logos-words>
+      <logos-words>
+        “Oh, like Adam!” exhales the two-year-old. The neuron firings in her
+        brain are practically glowing as she connects the teachings of her
+        latest Sunday school class to her big sister’s present inquiry.
+      </logos-words>
+      <logos-words>
+        “Aw, no, not that Adam. Here, let’s pull up a picture…see, it’s like a
+        round ball of mostly air and ‘electrons’ surrounding a ‘nucleus’ of
+        tightly compacted ‘protons’ and ‘neutrons’…so…I guess there is something
+        smaller than an atom, technically.”
+      </logos-words>
+      <logos-words>
+        Those with kids know that we’ve now entered an infinite question loop.
+        As the child asks the question “What is that?” the parent subtly answers
+        the question, “what is that made of?” revealing an unconscious
+        presupposition that a thing is equal to the sum of its parts. Luckily,
+        “the science” says we can end what should be an infinite loop with an
+        “elementary particle” called a “quark.” The sisters roar with laughter
+        at the term.
+      </logos-words>
+      <logos-words>
+        Until the children started laughing, the adults in the room didn’t see
+        the obvious humor in the realization that our best minds have chosen to
+        veil such a fundamental building block of the physical world within a
+        word of such quirky arbitrariness. Similarly, the obvious question
+        regarding the entwined particles became obvious only after the
+        four-year-old asked it…
+      </logos-words>
+      <logos-words> “But what holds them together?” </logos-words>
+      <logos-words>Oh, the mind of a child.</logos-words>
+      <logos-words title="Wisdom of the World">
+        Scientists have given the name “strong force” to whatever it is that
+        holds the up quarks and down quarks together. Mystery solved, case
+        closed!
+      </logos-words>
+      <logos-words>
+        It can be a scary ordeal as parents to watch our babies transition
+        overnight from first word babblers to burgeoning amateur philosophers.
+        Kids ask practical questions that demand spiritual answers.
+      </logos-words>
+      <logos-words> “Where is heaven? What color is it?” </logos-words>
+      <logos-words>
+        The even scarier moment is the realization that whatever your answer,
+        they will believe you in perpetuity… Or, at least until you’ve sowed
+        enough doubt for them to begin questioning your reliability.
+      </logos-words>
+      <logos-words
+        >They follow up their questions iteratively with “Why?” and “Who says?”
+        until they reach an answer from authority. “Because I said so” or
+        “scientists say” or “God says.” Parents must decide beforehand where
+        this infinite loop terminates – which authority is the ultimate source
+        of truth.
+      </logos-words>
+      <logos-words>
+        Science is the cop out answer. Beyond the obvious limitation of modern
+        science, which ignores the entirety of an ever-present spiritual
+        reality, it veils a limited understanding of physical reality behind
+        confident boilerplate and appeals to “consensus.” For example, gravity,
+        (not to be confused with the “strong force,”) is the natural phenomenon
+        by which all things with mass or energy are attracted to one another. In
+        other words, gravity is the phenomenon of things gravitating toward one
+        another…and here we are, back in our infinite loop.
+      </logos-words>
+      <logos-words>
+        Failure to recognize the mystery that pervades reality closes the door
+        to further exploration and blinds the incurious and the philosophically
+        entrenched to alternative paradigms. Modern education restricts learning
+        to the passive props in the great story, excluding the most interesting
+        questions about why the props are there in the first place, and the role
+        the actors are to play on such a stage. In this setting, the right
+        question is the one that enters the infinite loop and is the be avoided.
+        The goal should be to get them to ask the right questions, and to never
+        stop asking them.
+      </logos-words>
+      <logos-words>
+        The Bible says that there are only two stories – one with answers
+        terminating in “I say” and one in which the Word of God defines Truth.
+        If parents want to explain the world and all of its quarks to their
+        children by positing swarms of microscopic fairies, that is their right
+        in a free(-ish) society…at least until the government says otherwise.
+        God says parents ought to be able to define for their children the story
+        they are in. But without God, you will eventually have to explain where
+        rights come from in the first place and, without appealing to His
+        revelation, why anyone ought to do anything. For those philosophical
+        pioneers on a pilgrimage toward this insurmountable summit: May the
+        strong force be with you!
+      </logos-words>
+      <logos-words> </logos-words>
+      <logos-words title="Word of God">
+        As for Logos School parents, our children’s story is set in God’s world,
+        which He spoke into existence ex nihilo – out of nothing
+        <logos-bible-citation cite="Gen 1:3, Ps 33:6"></logos-bible-citation>.
+        Through the Word, the Logos, all things were made and by Him all things
+        are being made new
+        <logos-bible-citation cite="2 Cor 5:17, Rev 21:5"></logos-bible-citation
+        >. Jesus was the Word at the beginning
+        <logos-bible-citation cite="John 1:1-3"></logos-bible-citation>, Who
+        entered into His own creation to redeem it
+        <logos-bible-citation cite="John 1:14"></logos-bible-citation>. He is,
+        therefore, both the storyteller and the hero of the story – the author
+        of salvation
+        <logos-bible-citation
+          cite="Heb
+        5:9"
+        ></logos-bible-citation
+        >. As the instantiated Word of God, Jesus is the exact imprint of God’s
+        nature on the Earth
+        <logos-bible-citation cite="Heb 1:3"></logos-bible-citation>. the Truth
+        incarnate and the personal archetype for all earthly predication. From
+        Him and through Him and to Him are all things
+        <logos-bible-citation cite="Rom 11:36"></logos-bible-citation>. As all
+        things hold together in Him
+        <logos-bible-citation cite="Col 1:16-20"></logos-bible-citation>, He
+        upholds the universe by the word of His power
+        <logos-bible-citation cite="Heb 1:2-3"></logos-bible-citation>. So, what
+        is the smallest thing in God’s spoken world? Words. And what holds the
+        cosmos and all its quarks together? The Word of God – Jesus Christ, the
+        Logos.
+      </logos-words>
+      <logos-words>
+        Only such a self-contained infinity, the ideal of unity in diversity,
+        can account for all the quarks of reality. From this perspective,
+        creation is a fine-tuned work of art, the self-portrait of a
+        transcendent Creator. He reveals Himself throughout nature and
+        redemptive history to fallen bearers of His image, a select few serving
+        as the earthen vessels within whom the One who caused Light to shine out
+        of darkness has shone in our hearts the Light of the knowledge of the
+        glory of God in the face of Jesus Christ
+        <logos-bible-citation cite="2 Cor 4:6-7"></logos-bible-citation>. In
+        weakness He provides strength
+        <logos-bible-citation cite="Matt 5:5"></logos-bible-citation>, that we
+        may never mistake ourselves for the One in Whom are hidden all the
+        treasures of wisdom and knowledge
+        <logos-bible-citation cite="Col 2:3"></logos-bible-citation>. In order
+        to attain wisdom, we have to maintain the sense of childlike wonder of
+        one who still searches for treasure, and who trusts his father’s
+        treasure map because he trusts his father.
+      </logos-words>
+      <logos-words>Oh, the Wonder of God.</logos-words>
     </div>
-    <logos-toggle-arrows
-      [isMobile]="isMobile"
-      [readMore]="expanded[2]"
-      (toggle)="toggle(2)"
-    ></logos-toggle-arrows>
-  </div>
-  <div class="section">
-    <button class="btn-trigger" mat-button (click)="toggle(3)">
-      <div class="row">
-        <div class="goal">
-          <span class="number">3.</span>
-          Bring the story of God's Kingdom to life in the eyes of the students
-        </div>
-        <mat-icon
-          class="font-effect-3d-float"
-          [@flip]="expanded[3] ? 'rotated' : 'default'"
-          >expand_more</mat-icon
-        >
-      </div>
-    </button>
-    <div class="narrative" [@toggle]="expanded[3] ? 'show' : 'hide'">
-      <p class="by">
-        by providing a clear model of the biblical Christian life through our
-        staff and board.
-      </p>
-      <p></p>
+  </logos-accordion>
+  <logos-accordion
+    [expanded]="expanded[0]"
+    [hideSubheadingWhenExpanded]="true"
+    (toggle)="toggle(0)"
+  >
+    <div class="accordion-heading" style="width: 100%">By What Standard?</div>
+    <span class="accordion-subheading">
+      Before identifying goals in education, we must ask the more fundamental
+      question: By what standard do we measure success?
+    </span>
+    <div class="accordion-body">
+      <logos-words title="Myth of Neutrality"
+        >Before identifying goals in education, we must ask the more fundamental
+        question: By what standard do we measure success? If God created out of
+        nothing, entered into His creation, died, and rose again, then His Word
+        must be the final word, and His standard the ultimate standard. The
+        alternative to the standard of God’s Word in Scripture is not freedom
+        from standards altogether. Notice that the alleged absence of a higher
+        standard – a professed worldview neutrality – is itself a standard. In
+        practice, some authority’s constraints are always enforced as ordained
+        norms. Given the implied influence of educational overlordship on
+        generations of children, zealous influence seekers inevitably race in to
+        fill the God-sized void left when Scripture is abandoned.
+      </logos-words>
+      <logos-words title="State of Education"
+        >Absent an authoritative word from Scripture delegating decisions about
+        children’s education to parents, the responsibility has increasingly
+        been outsourced to the state. The fall into state control over education
+        is so pervasive today that government standards are the unquestioned
+        authority not only in secular schools, but also in Christian schools who
+        have allowed a pragmatic dependence on government to supersede their
+        biblical partnership with parents. The result is the imposition of a
+        worldly, politicized standard that is volatile, fallible, and, often,
+        either an arbitrary exercise of power or downright premeditated
+        indoctrination. The state says “we know better than you (the parents)
+        what’s best for your children” and we respond with “well, everyone else
+        is doing it” or “I went to government school and I turned out okay.”
+        This generational apathy toward an encroaching state is the fruit of a
+        century-long, coordinated effort aimed at imposing a secularized,
+        progressive education. In the words of the great preacher, Dr. Voddie
+        Baucham, "if we send our kids to Caesar for an education, we should not
+        be surprised when they come back as Romans"<logos-citation
+        ></logos-citation>.</logos-words
+      >
+      <logos-words title="By What Authority?">
+        Classical Christian schools work with and for parents. Logos School
+        takes every measure to protect against a drift into dependence on the
+        state. For example, we go out of our way not to accept any government
+        funds. Our educational mandate does not come from government, but from
+        parents committed to bringing their children up in the discipline and
+        instruction of the Lord
+        <logos-bible-citation cite="Eph 6:4"></logos-bible-citation>. Our desire
+        is to be a service to parents, not a replacement for them. Those parents
+        who have elected to apply God’s standard in Scripture to the
+        discipleship of their children can rest assured that this perspective
+        will be reinforced and intellectually justified at Logos School.
+      </logos-words>
+      <logos-words title="Christ-centered"
+        >With an understanding that to pursue truth and to acquire knowledge is
+        to pursue God by seeking to better know Him, a “Christ-centered”
+        education inspires students to love God with all of their mind
+        <logos-bible-citation cite="Matt 22:37-38"></logos-bible-citation>.
+        Academic rigor is a requisite emphasis in a school that compels students
+        to work in all things as though unto the Lord
+        <logos-bible-citation cite="Col 3:23"></logos-bible-citation>. Academic
+        excellence, though not the north star, is traversed on the way, counted
+        among that which is added to those who seek first His Kingdom
+        <logos-bible-citation
+          cite="Matt 6:33, Luke 12:31"
+        ></logos-bible-citation
+        >. Whereas many Christian schools pursue ends of academic achievement
+        through biblical means, Logos School pursues Christ through
+        learning.</logos-words
+      >
+      <logos-words title="Classical"
+        >With an understanding that to pursue truth and to acquire knowledge is
+        to pursue God by seeking to better know Him, a “Christ-centered”
+        education inspires students to love God with all of their mind
+        <logos-bible-citation cite="Matt 22:37-38"></logos-bible-citation>.
+        Academic rigor is a requisite emphasis in a school that compels students
+        to work in all things as though unto the Lord
+        <logos-bible-citation cite="Col 3:23"></logos-bible-citation>. Academic
+        excellence, though not the north star, is traversed on the way, counted
+        among that which is added to those who seek first His Kingdom
+        <logos-bible-citation
+          cite="Matt 6:33, Luke 12:31"
+        ></logos-bible-citation
+        >. Whereas many Christian schools pursue ends of academic achievement
+        through biblical means, Logos School pursues Christ through
+        learning.</logos-words
+      >
+      <logos-words>
+        Modern progressive education falls into the fatal conceits of assuming
+        knowledge of the future
+        <logos-bible-citation cite="James 4:14-15"></logos-bible-citation> and
+        ignoring the wisdom from the past
+        <logos-bible-citation cite="1 Peter 5:5"></logos-bible-citation>. The
+        cynic may suggest that the goal is generations of cookie cutter cogs
+        stamped out by and for the machine. To the extent that truth is
+        acquired, it is unjustified and fleeting. Rather than cultivating virtue
+        – the shaping of students according to a standard that persists from age
+        to age – man-made values are instilled in service to a modern
+        institutional agenda. Too often, products of a progressive education
+        don’t know what they don’t know because, in shutting themselves off from
+        the past, they have become captives to their historical moment.
+      </logos-words>
+      <logos-words title="Classical, Christ-centered Education">
+        Classical, Christ-centered Education (CCE) is the education of the free
+        man. The goal of CCE is the shaping of the virtuous individual. It pays
+        particular attention to culture as man’s creative interaction with
+        creation, relating the biblical faith to the world around us. Operating
+        under the assumption that God is efficaciously working through history
+        towards His ends, CCE directs student attentions toward the
+        manifestation of His truth, goodness, and beauty wherever it may be
+        found, while painting a cohesive picture of what He is accomplishing
+        through the workings of Spirit-guided humanity. CCE immerses students in
+        the best stories that human tradition has to offer, always in the
+        context of the overarching true story of the Gospel.
+      </logos-words>
     </div>
-    <logos-toggle-arrows
-      [isMobile]="isMobile"
-      [readMore]="expanded[3]"
-      (toggle)="toggle(3)"
-    ></logos-toggle-arrows>
-  </div>
-  <div class="section">
-    <button class="btn-trigger" mat-button (click)="toggle(4)">
-      <div class="row">
-        <div class="goal">
-          <span class="number">4.</span>
-          Intellectually justify the truth of the story
-        </div>
-        <mat-icon
-          class="font-effect-3d-float"
-          [@flip]="expanded[4] ? 'rotated' : 'default'"
-          >expand_more</mat-icon
-        >
-      </div>
-    </button>
-    <div class="narrative" [@toggle]="expanded[4] ? 'show' : 'hide'">
-      <p class="by">
-        by teaching all subjects as parts of an integrated whole with the
-        Scriptures at the center.
-      </p>
-      <p></p>
+  </logos-accordion>
+
+  <logos-accordion
+    [expanded]="expanded[0]"
+    [hideSubheadingWhenExpanded]="true"
+    (toggle)="toggle(0)"
+  >
+    <div class="accordion-heading" style="width: 100%">
+      Which character are you?
     </div>
-    <logos-toggle-arrows
-      [isMobile]="isMobile"
-      [readMore]="expanded[4]"
-      (toggle)="toggle(4)"
-    ></logos-toggle-arrows>
-  </div>
-  <div class="section">
-    <button class="btn-trigger" mat-button (click)="toggle(5)">
-      <div class="row">
-        <div class="goal">
-          <span class="number">5.</span>
-          Teach students to love the story they're in
-        </div>
-        <mat-icon
-          class="font-effect-3d-float"
-          [@flip]="expanded[5] ? 'rotated' : 'default'"
-          >expand_more</mat-icon
-        >
-      </div>
-    </button>
-    <div class="narrative" [@toggle]="expanded[5] ? 'show' : 'hide'">
-      <p class="by">by loving the material and the students that we teach.</p>
-      <p></p>
+    <span class="accordion-subheading">
+      Any parent knows that participation in their children’s games of
+      imagination is not optional. “Daddy, you be Peter, and I’ll be Lucy.
+      Mommy, you’re the white witch.”
+    </span>
+    <div class="accordion-body">
+      <logos-words
+        >Any parent knows that participation in their children’s games of
+        imagination is not optional. “Daddy, you be Peter, and I’ll be Lucy.
+        Mommy, you’re the white witch.” Heaven forbid you should object to the
+        role you’ve been assigned, or come out of character by forgetting to
+        talk in an English accent. Calling her anything other than Lucy is met
+        with a pointed: “My name is Lucy!”</logos-words
+      >
+      <logos-words
+        >Most days, your aged soul cannot match your children’s youthful
+        enthusiasm for this imaginary world, and you are unable to sufficiently
+        embrace your character as to imagine a storyline interesting enough to
+        hold the audience’s attention. But maybe one day after a good night’s
+        sleep you really got into character. On this day, you were able to
+        connect who you are in the story with what you ought to be doing: “Let’s
+        go find Aslan! We’ll ask the tree for directions.” You are, after all,
+        in Narnia.
+      </logos-words>
+      <logos-words
+        >Here, with the stage set, through immersion in story and properly
+        directed attentions, you were able to communicate abstract truths
+        through concrete experience. “The white witch is scared of Aslan, but
+        I’m not,” Lucy says – wary of the wolves, yet seeking the
+        lion.</logos-words
+      >
+      <logos-words
+        >This is the atmosphere of learning that Logos School cultivates. We
+        tell them the real-life story that is unfolding around them and ask:
+        Which character are you?</logos-words
+      >
+      <logos-words
+        >When cultural forces pressure you to defile yourself, will you
+        compromise or will you be like Daniel and choose rather to stare down
+        lions
+        <logos-bible-citation cite="Dan 6"></logos-bible-citation>?</logos-words
+      >
+      <logos-words
+        >When it is your time to realize a calling from God to seize an
+        opportunity for His glory, will you cower out of fear of failure or will
+        you, like Esther, rise to the occasion
+        <logos-bible-citation cite="Esther 4:14"></logos-bible-citation
+        >?</logos-words
+      >
+      <logos-words
+        >Will you look at the Goliath who confronts you and say, “Goliath, too
+        big to fight”? Or will you be like David and say, “Goliath, too big to
+        miss”
+        <logos-bible-citation cite="1 Sam 17"></logos-bible-citation
+        >?</logos-words
+      >
+      <logos-words
+        >And, for the final word in all things, will you look to
+        Jesus?</logos-words
+      >
     </div>
-    <logos-toggle-arrows
-      [isMobile]="isMobile"
-      [readMore]="expanded[5]"
-      (toggle)="toggle(5)"
-    ></logos-toggle-arrows>
-  </div>
-  <div class="section">
-    <button class="btn-trigger" mat-button (click)="toggle(6)">
-      <div class="row">
-        <div class="goal">
-          <span class="number">6.</span>
-          Disciple students unto love for the author of salvation
-        </div>
-        <mat-icon
-          class="font-effect-3d-float"
-          [@flip]="expanded[6] ? 'rotated' : 'default'"
-          >expand_more</mat-icon
-        >
-      </div>
-    </button>
-    <div class="narrative" [@toggle]="expanded[6] ? 'show' : 'hide'">
-      <p class="by">by facilitating maturation in the image of God.</p>
-      <p></p>
+  </logos-accordion>
+  <h2 class="font-effect-emboss">6 Goals</h2>
+
+  <logos-accordion [expanded]="expanded[1]" (toggle)="toggle(1)">
+    <div class="accordion-heading">
+      <span class="number">1.</span>
+      {{ goals[0].line1 }}
     </div>
-    <logos-toggle-arrows
-      [isMobile]="isMobile"
-      [readMore]="expanded[6]"
-      (toggle)="toggle(6)"
-    ></logos-toggle-arrows>
-  </div>
+    <span class="accordion-subheading">
+      {{ goals[0].line2 }}
+    </span>
+    <div class="accordion-body">
+      <logos-words title="Buzz Lightyear">
+        Perhaps never was a character so sure of his role in a story as was Toy
+        Story’s Buzz Lightyear. In two minutes of screen time, we know his
+        backstory and his intended character arc. He is a Space Ranger from the
+        Universe Protection Unit and his mission is to protect the galaxy from
+        the Evil Emperor Zurg, the sworn enemy of the Galactic Alliance! When he
+        is confronted with his true identity, he spirals indiscriminately into a
+        nihilistic existential crisis. His self-perception comes crashing down
+        to a low point marked by a self-identification as “Mrs. Nesbit” (a
+        prophetic detail that shouldn’t be lost on the modern viewer). For Buzz,
+        “finding himself” meant no longer having to contend, literally and
+        figuratively, with gravity. Upon acquiring true self-knowledge, his
+        misdirected, “out of the box” virtue was redirected toward ends worthy
+        of his calling.
+      </logos-words>
+      <logos-words title="Factory Settings">
+        Whenever we see Buzz stumble in the series, it is because he has
+        succumbed to his ever-present weakness of regressing back to his
+        misbegotten factory settings. Schools are people factories. Place a
+        child in an institution for 12,000+ hours during their formative years
+        and out comes a person who would be a different person had they spent
+        those years being alternatively influenced at a different school
+        <logos-bible-citation cite="Luke 6:40"></logos-bible-citation>. How do
+        we measure the success of these people factories? What constitutes a
+        “good person”? Not only would proposed measures equivocate on the word
+        “good,” but we are far from a consensus answer among educational
+        institutions to the prerequisite question: “What is a person?”
+      </logos-words>
+      <logos-words title="Nature of Man">
+        It matters whether you tell kids they are the happy coincidence of
+        spontaneously rerouted stardust or spoken into being by a sovereign
+        Creator for the purpose of glorifying Himself through His creation
+        <logos-bible-citation cite="Prov 16:4"></logos-bible-citation>. Are they
+        a mere sum of their parts evolved from pond scum, distant cousins of
+        broccoli, with nerve ending inputs and reactionary energy transfer
+        outputs? Or do they have a soul? Are feelings associated with
+        consciousness simply an illusion, the present state of a determinative
+        series of complex chemical reactions – chemicals doing what they always
+        do at that temperature and under those conditions? Or do they have a
+        will? Is reality an impersonal abyss of time and chance acting on matter
+        and therefore, out of mathematical necessity, an unknowable multiverse?
+        Or do we live in God’s universe
+        <logos-bible-citation
+          cite="Job 41:11, 1 Chron 29:11"
+        ></logos-bible-citation
+        >, where He rules sovereignly
+        <logos-bible-citation cite="Ps 103:19"></logos-bible-citation> over
+        every soul
+        <logos-bible-citation cite="Ezek 18:4"></logos-bible-citation> to the
+        ends of the earth
+        <logos-bible-citation cite="Ps 59:13"></logos-bible-citation> unto all
+        generations
+        <logos-bible-citation cite="Ex 15:18"></logos-bible-citation>, where
+        every minute of the day belongs to Him
+        <logos-bible-citation cite="Ps 74:16"></logos-bible-citation>, and in
+        which He works all things according to His council
+        <logos-bible-citation cite="Eph 1:11"></logos-bible-citation>? In other
+        words, are they in a story complete with meaning and character arc? And,
+        if so, who’s story is it?
+      </logos-words>
+      <logos-words title="Sinking Ships">
+        This ideological contrast is not a one-off detail of a latent belief
+        system that never materializes in day-to-day instruction. Atheistic
+        materialism and its logical outgrowths, along with the whole corpus of
+        unbelieving doctrine are ingrained in the curriculum of secular schools
+        and taught as gospel truth with no mention of alternative paradigms.
+        Many Christians have accepted the self-defeating presuppositions of
+        unbelief (e.g. self-love, age of the universe, man is fundamentally
+        good, etc.), as “settled science” and looked to harmonize them with a
+        Christian worldview, having in the process compromised truth that
+        belongs to the divine archetype of harmony Himself. The result is a
+        watered-down, impotent Christianity that has no authoritative word from
+        God for a secularized society that has no hope for the future. To
+        attempt to instill morality in such a culture is to assume that a
+        collective moral obligation can arise out of an assumed great solidarity
+        of nervous systems <logos-citation></logos-citation>. To believe that
+        knowledge (true, justified belief) is possible while simultaneously
+        believing that reason is “simply the unforeseen and unintended
+        by-product of mindless matter at one stage of its endless and aimless
+        becoming” is to, at the same moment, accept a conclusion and discredit
+        the only testimony on which that conclusion can be based
+        <logos-citation></logos-citation>. If you’ve heard of the Titanic, then
+        you know how this ends. But unlike the box office hit movie Titanic,
+        modern American education has failed to capture the attention and
+        imagination of our young people.
+      </logos-words>
+      <logos-words title="Into a Narrative">
+        At Logos School, we tell a different story. Like the voice of Mufasa
+        imploring Simba to abandon the meaninglessness of the “hakuna matata”
+        lifestyle and “REMEMBER who (he is)” so that he can, therefore, go
+        accept his great commission, Logos School aims in all of its educational
+        pursuits at reminding students of their identity in Christ and the high
+        calling such a status entails. Our curriculum does not include merely a
+        list of great books, but a canon of literature formulated for the
+        purpose of writing students into the narrative of a transcendent and
+        knowable reality. We know we can know things because we have it on the
+        authority of the One Who made all things
+        <logos-bible-citation cite="John 1:3, Col 2:3"></logos-bible-citation>.
+        That He entered into history assures us that nothing we encounter in
+        life is without meaning
+        <logos-bible-citation cite="Eccl 7:14"></logos-bible-citation> and that
+        our every action plays a role in accomplishing His purposes
+        <logos-bible-citation
+          cite="1 Cor 10:31, Rom 8:28, 1 Peter 4:11"
+        ></logos-bible-citation
+        >.
+      </logos-words>
+      <logos-words title="Objective Truth">
+        Pontius Pilate provided the prototypical delineation for the world we
+        see today when he, before unknowingly setting into motion the event on
+        which all of history turns, looked on the face of Jesus and asked Him:
+        “What is truth?”
+        <logos-bible-citation cite="John 18:38"></logos-bible-citation>. There
+        are only two stories – one of God’s objectivity and one of man’s
+        relativism. Had Pilate known the story he was in, he would have
+        recognized his question as the ultimate irony since he posed it while
+        standing face-to-face with The Truth Incarnate. Luckily, for the sake of
+        our eternal souls, Pilate cast himself as a character in the wrong
+        story. (But then again, what is luck to a Christian??) The story that
+        students at Logos School are invited to join is the one in which
+        objective truth exists, and He is a person.
+      </logos-words>
+    </div>
+  </logos-accordion>
+
+  <logos-accordion [expanded]="expanded[2]" (toggle)="toggle(2)">
+    <div class="accordion-heading">
+      <span class="number">2.</span>
+      {{ goals[1].line1 }}
+    </div>
+    <span class="accordion-subheading">
+      {{ goals[1].line2 }}
+    </span>
+    <div class="accordion-body">
+      <logos-words title="Let it Go">
+        Consistent application of the world’s assumptions about human autonomy
+        are clearly articulated by Elsa in Frozen’s most climactic song, and
+        probably Disney’s most popular of the last 20 years, “Let it Go.” Beyond
+        the undeniable audio and visual appeal of the scene, Elsa’s impassioned
+        proclamation of “No right, no wrong, no rules for me. I’m free,”
+        resonates with a secular culture that has come to this same consensus
+        conclusion about truth and ethics. The problem is that what Elsa calls
+        liberation – freedom from standards outside herself – the bible calls
+        slavery to a wayward worldliness
+        <logos-bible-citation cite="Rom 6:16-18"></logos-bible-citation>. What
+        the world calls being “true to oneself,” the bible calls suppression of
+        truth in unrighteousness
+        <logos-bible-citation cite="Rom 1:18"></logos-bible-citation> and
+        antithetical to the biblical ideal of freedom
+        <logos-bible-citation cite="Rom 6"></logos-bible-citation>.
+      </logos-words>
+      <logos-words title="Relativism">
+        Elsa’s cathartic transformation in this scene is reminiscent of Disney’s
+        most defining scene – Cinderella’s adornment by her fairy godmother.
+        Both convey a theme of long-awaited rebirth. The bestowals differ with
+        respect to the reception from the recipient princess and the source of
+        the liberation’s inevitability. Cinderella’s humble catharsis was
+        imminent because hers was an imagined world in which an objective
+        standard for morality reigned – that which is the very target of Elsa’s
+        ire. In our world, when the objectivity of a supreme, immutable God
+        Who’s character defines right and wrong is removed, relativism prevails
+        and ethics is subjected to the whims of public opinion or, more likely,
+        to the will of the powerful. While Frozen’s Arendelle has a benevolent
+        ice queen to fill that void, we are left wandering undirected amidst
+        cultural tidal forces, like perpetual children “tossed to and fro by the
+        waves and carried about by every wind of doctrine”
+        <logos-bible-citation cite="Eph 4:14"></logos-bible-citation>.
+      </logos-words>
+      <logos-words title="Truth, Goodness, Beauty">
+        Absent an immutable interpretive context, we not only lose ethical
+        standards, but truth, beauty, and all other abstractions we assume, in
+        our vanity, to be derived from lived experience
+        <logos-bible-citation cite="Eph 4:17-18"></logos-bible-citation>. When
+        truth is subject to the whims of fallen individuals, every truth
+        proposition effectively reduces to a question of mere preference: “Do
+        you prefer sugar in your coffee?” So as to truth.
+      </logos-words>
+      <logos-words title="Remove Organ, Demand Function">
+        Like the movie Shrek – which wittingly undermines the very established
+        cultural categories it relies upon for its humor – could not exist in a
+        world where ogres and dragons are the good guys and no one knows the
+        muffin man, so we, though often unwittingly, remove the organ and demand
+        the function. The fatal assumption made by those looking to preserve the
+        traditions of the West, the ones that are worth preserving, is that the
+        battle is over the practicality of the traditions themselves and not
+        over the underlying, foundational truths they embody. In recovering the
+        heritage of the Christian West in education, Logos School proceeds with
+        the understanding that these traditions, insofar as they are true, good,
+        and beautiful, were not developed but were discovered. That is, the
+        goodness they manifest was built into the fabric of reality itself by
+        the Creator and is revelatory of His character
+        <logos-bible-citation cite="Rom 1:19-20, Ps 19:1"></logos-bible-citation
+        >.
+      </logos-words>
+      <logos-words title="Best Life Now">
+        The temptation of humanity since the Fall has been to develop human
+        traditions that run contrary to the character of God, in rebellion
+        against an ultimate standard that prescribes how we ought to live. If I
+        remove “the way and the truth and the life” from my thought processes, I
+        am left hopelessly relying on “my truth” to navigate “my best life now”
+        according to my own standard. However untenable, this autonomous outlook
+        is undeniably attractive, to modern youth especially. Logos School
+        endeavors to never be the source of introduction to worldly indulgences,
+        but to be constantly aware of popular culture temptations bombarding the
+        children entrusted to our care and address them critically when they
+        arise in classroom discussion.
+      </logos-words>
+      <logos-words title="Property of the Redeemer">
+        Many cultural idols are unavoidable. Which of us raising a daughter can
+        honestly say she has never heard of Elsa? Our philosophy at Logos School
+        is to neither embrace nor ignore the Elsas of the world, but to
+        critically identify redeeming qualities that are redeemable through the
+        work of the Spirit. Much of what the culture produces, though to varying
+        degrees mired the assumed autonomy of a humanity in need of redemption,
+        exhibits genuine fruit of the Spirit that needs to be directed to the
+        glory of God
+        <logos-bible-citation cite="James 1:17"></logos-bible-citation>. We
+        study the great works of history, many of them produced by unbelievers,
+        seeking out truth wherever it may be found, while highlighting the
+        limits of worldly wisdom and the futility of secular thought. We strive
+        to preserve the genuine insights offered by history’s greatest thinkers
+        while contrasting the foolishness of autonomous reasoning with the
+        wisdom of a redeemed counterpart. Rather than abandoning culture
+        altogether, thereby surrendering all intellectual and aesthetic activity
+        to the world
+        <logos-bible-citation cite="Matt 7:6"></logos-bible-citation>, we
+        dethrone cultural idols by sharing the Gospel and winning the battle of
+        ideas through hearts and minds.
+      </logos-words>
+      <logos-words title="Discernment">
+        In order to be in the world but not of the world
+        <logos-bible-citation cite="John 17:14-16"></logos-bible-citation>,
+        classical Christian school educators must possess a thorough grasp of
+        the distinctiveness of the Christian position, clearly discerning the
+        antithesis between believing and unbelieving thought. The classical
+        curriculum steers the sensibilities toward, for example, Rembrandt and
+        away from Jackson Pollock, while Christ-centered instruction contrasts
+        the worldview that values the former with the intellectual incoherence
+        of that which produced the latter. Although worldview training brings
+        about the kind of clear thinking that makes it difficult to mindlessly
+        enjoy great movies like Shrek, it preserves the saltiness of young
+        Christians who are the God-designated salt of the earth
+        <logos-bible-citation cite="Matt 5:13"></logos-bible-citation>. The 70%
+        of Christian children who fall away from the faith during their freshman
+        year of college likely began the deconstruction process much earlier.
+        CCE molds future leaders who know what they believe and why they believe
+        it, who know what the world believes and why it’s foolish, and who are
+        prepared to assume their position as the city on a hill in their role as
+        the light of the world
+        <logos-bible-citation cite="Matt 5:14-16"></logos-bible-citation>.
+      </logos-words>
+    </div>
+  </logos-accordion>
+
+  <logos-accordion [expanded]="expanded[3]" (toggle)="toggle(3)">
+    <div class="accordion-heading">
+      <span class="number">3.</span>
+      {{ goals[2].line1 }}
+    </div>
+    <span class="accordion-subheading">
+      {{ goals[2].line2 }}
+    </span>
+    <div class="accordion-body">
+      <logos-words title="Paideia">
+        Logos School accepts delegated responsibility from parents to bring
+        children up in the Paideia of the Lord
+        <logos-bible-citation cite="Eph 6:4"></logos-bible-citation>. Often
+        translated “discipline and instruction,” the Greek word Paideia here
+        means enculturation – the process by which culture is handed on by the
+        society and acquired by the individual. Therefore, the calling of the
+        Christian school is discipleship unto Christ, Who gave Himself up for
+        the life of the world, and the transmission of the culture of His body,
+        the Church.
+      </logos-words>
+      <logos-words title="Christian Counter-Culture">
+        In order to invite our future generations to participate in a Christian
+        counter-culture, we have to have one. Its members must affirm the
+        inerrancy of Scripture in its totality, and confirm the sufficiency of
+        Scripture by invoking all of Christ for all of life in the local
+        community of Carlisle, PA. In faithful, disciplined submission to the
+        Word, Logos School collaborators aspire to make God’s invisible Kingdom
+        visible
+        <logos-bible-citation cite="1 Cor 12:20,27"></logos-bible-citation>
+        through Christian fellowship and discipleship.
+      </logos-words>
+      <logos-words title="Testimony">
+        The way from the truth of God’s revealed word to spiritual life was
+        actualized in perfect testimony when the Word Himself, the perfect image
+        of the invisible God, became flesh, lived a sinless life, died, rose
+        again, and poured out His Spirit on believers
+        <logos-bible-citation cite="2 Peter 1:2-4"></logos-bible-citation>. We
+        are called in turn to testify to the truth of His Gospel. What we cannot
+        communicate through words must be demonstrated through life lived in
+        imitation of Christ
+        <logos-bible-citation cite="Heb 13:7"></logos-bible-citation>. Grabbing
+        hold of our justification as our foundation, we take up our cross daily
+        to direct students back to the Justifier.
+      </logos-words>
+      <logos-words title="Response to Grace">
+        At the cross lies the proper response to grace – gratitude and obedience
+        from the heart. On display in the environment of Logos School is the
+        unity of believers around God’s truth, and only that. We aspire to live
+        and work in such a way that is compelling
+        <logos-bible-citation cite="Matt 5:16"></logos-bible-citation>, and
+        which causes onlookers to be drawn to the source of the hope which is
+        radiated through our living testimony
+        <logos-bible-citation cite="1 Peter 3:15"></logos-bible-citation>. We
+        emit a palatable air of humility, the natural response which follows
+        from knowing Who God is and realizing the obligation to be thankful to
+        Him <logos-bible-citation cite="Rom 1:21"></logos-bible-citation>. We
+        reflect the cross through a willingness to sacrifice, a refusal to
+        complain, the exercise of true authority that never accepts flattery and
+        true submission that never grovels. Aware of the unearned gift we’ve
+        been given and liberated by the freedom it brings, we work as for the
+        Lord and not for men in every undertaking
+        <logos-bible-citation cite="Col 3:23"></logos-bible-citation>. Most
+        importantly, we do all that we do beaming with Spirit-filled joy – the
+        pleasing aroma
+        <logos-bible-citation
+          cite="2
+        Cor 2:15-16"
+        ></logos-bible-citation>
+        of those who, having sold everything to buy the pearl of great price
+        <logos-bible-citation
+          cite="Matt
+        13:45-46"
+        ></logos-bible-citation
+        >, have been raised to spiritual life.
+      </logos-words>
+      <logos-words title="Spirit of Accusation">
+        With God as the standard, our goal is not to produce strict adherents to
+        the standard in order for the school to run efficiently like a machine,
+        but to bring students to love the standard so that Logos School becomes
+        fruitful like a tree. An atmosphere of student order and cheerful
+        obedience can only be achieved by avoiding the biblical pitfall of
+        “boiling the kid in its mother’s milk”
+        <logos-bible-citation
+          cite="Ex 23:19, 34:26; Deut 14:21"
+        ></logos-bible-citation
+        >. This occurs when things that are good, desirable, and which lead to
+        spiritual life, such as piety or science, are turned into that which
+        leads to destruction, like pietism or scientism. Christian schools must
+        take special care not to boil the kid in legalism. Rules exist to be
+        enforced, and they should be. But the law that once condemned was
+        written on the hearts of believers in the person of the Spirit, words
+        proceeding from the One who nailed all condemnation to the cross at
+        Cavalry <logos-bible-citation cite="Rom 8:1-4"></logos-bible-citation>.
+        We, therefore, condemn only the Spirit’s antithesis that the world runs
+        on – the spirit of accusation itself
+        <logos-bible-citation cite="Rom 8:1, James 4:11"></logos-bible-citation
+        >. The devil is self-righteous and so is the world
+        <logos-bible-citation cite="James 4:4"></logos-bible-citation>, but the
+        Christian knows that his righteousness is not his own, since his is the
+        only faith tradition not beholden to works of law for salvation. Rather,
+        indwelt by the Spirit, we follow the person of the Son, and direct all
+        glory to the Father, so that no man may boast.
+      </logos-words>
+      <logos-words>
+        As recipients of the grace of God we must adopt a humble boldness,
+        characterized neither by compromise nor arrogance, toward the
+        unbelieving world. Fulfillment of the first great commandment – love for
+        God in response to His grace with all of one’s heart, soul, and mind –
+        is the only necessary and sufficient condition for loving one’s
+        neighbor, the second great commandment
+        <logos-bible-citation cite="Matt 22:37-40"></logos-bible-citation>. We
+        must teach students to love without compromising truth. They should see
+        the goodness of God incarnated through Christians living in faithful
+        imitation of Jesus, as we, by holding the mirror of the Word up to our
+        lives, demonstrate that there is a Christian way to do everything.
+      </logos-words>
+      <logos-words title="Imitation to Understanding">
+        Applying Gospel Truth to the life of Logos School is truly to serve up
+        the new wine
+        <logos-bible-citation
+          cite="Matt
+        9:17"
+        ></logos-bible-citation>
+        as a living illustration of the Paideia of the Lord. We invite students
+        to become fellow partakers
+        <logos-bible-citation cite="Matt 9:37-38"></logos-bible-citation>.
+        Classical educators teach the habit of the mind to react in a way the
+        spreads the implications of the Gospel
+        <logos-bible-citation cite="Deut 6:4-9"></logos-bible-citation>.
+        Classical education seeks to join imitation with understanding in its
+        transmission of a shared culture and instruction of the younger
+        generation in its meaning. Students are formed over time as they learn
+        to justify intellectually what has first been embraced sympathetically.
+        The piety on display at Logos School represents a refusal to be
+        conformed to the ways of the world, while rehearsing the proper
+        disposition toward God through a willingness to be transformed by the
+        renewal of the mind, with rightly ordered loves and attentions turned in
+        a counter-cultural direction toward the true, the good, and the
+        beautiful <logos-bible-citation cite="Rom 12:2"></logos-bible-citation>.
+      </logos-words>
+    </div>
+  </logos-accordion>
+
+  <logos-accordion [expanded]="expanded[4]" (toggle)="toggle(4)">
+    <div class="accordion-heading">
+      <span class="number">4.</span>
+      {{ goals[3].line1 }}
+    </div>
+    <span class="accordion-subheading">
+      {{ goals[3].line2 }}
+    </span>
+    <div class="accordion-body">
+      <logos-words title="Knowledge">
+        Regardless of the underlying philosophy of education, all teaching
+        ventures share the common goal of imparting knowledge – true, justified
+        belief. Classical Christian educators hold a deep conviction that no
+        fact is teachable unless brought into relation with the unifying context
+        embodied by Jesus Christ, the arche or origin of all knowledge
+        <logos-bible-citation cite="Col 1:17, John 1:1"></logos-bible-citation>.
+        Without this infinite reference point, each finite point becomes a
+        tidbit of atomized truth, disconnected from the true vine, that
+        eventually withers and gets thrown away
+        <logos-bible-citation cite="John 15:1-6"></logos-bible-citation>. To
+        undertake the task of learning without invoking the Word would be like
+        performing a critical analysis of Hamlet without reference to the prince
+        of Denmark…or Shakespeare. At Logos School, the pursuit of knowledge is
+        rightly framed as a unified enterprise that points us to our Creator
+        God.
+      </logos-words>
+      <logos-words title="Christ-centered">
+        Failure to live up to the “Christ-centered” designation looks like a
+        Christian school that mimics government schools in every subject, then
+        tacks on a bible class for “Christian worldview training” that is
+        disconnected from its applications in the worldly context. While we do
+        have a bible class and we don’t invoke the name of the Lord before every
+        spelling word or multiplication fact, each individual student learns to
+        act in the spirit of that pesky, yet fearless, young truth-teller from
+        the Emperor’s New Clothes, pointing to the unacknowledged elephant in
+        the modern classroom – that possession of justified truth presupposes a
+        Justifier. As educators operating outside government-imposed academic
+        confines, we liberally exercise the freedom to call the Justifier of all
+        truth by His name.
+      </logos-words>
+      <logos-words title="Puzzle">
+        Consider the lifelong process of organizing thoughts as that of
+        assembling a puzzle which depicts what is true about reality. Throughout
+        the course of our lives we are showered with puzzle pieces, ideas the
+        world would have us incorporate into our vision of the whole, but we are
+        without the picture on the front of the puzzle box. We are offered the
+        backdrops of those farther along in the construction process as tempting
+        appeals to model our own puzzle in their image. The classically educated
+        have the anthology of historical works of man to inform their
+        discernment of true pieces from false ones – fruit of Spirit-informed
+        thought that should be preserved from wisdom of the world that should be
+        discarded. Only a Christ-centered education provides students with the
+        picture on the front of the puzzle box, as it is revealed in God’s Word.
+        Without it, the learning process perpetuates permanently in a state
+        resembling a multitude of unfinished puzzles with connected clusters
+        disjointly dispersed about an expansive floor. This is the process of
+        unjustified, intellectual abstraction divorced from that
+        all-encompassing, concrete context within Whom man lives and moves and
+        has his being
+        <logos-bible-citation cite="Acts 17:28"></logos-bible-citation>, as man
+        separates what God joins and joins what God separates. A Christ-centered
+        approach to learning stands alone in its ability to account for belief
+        that is both true and justified, and is therefore solely capable of
+        achieving the overarching goal of imparting knowledge through education.
+      </logos-words>
+      <logos-words title="Liberal Arts"
+        >Liberal arts are the skills required to achieve knowledge. Mastering
+        the tools of learning forms students who are always curious, always
+        pursuing truth, and capable of handily learning any new subject. CCE
+        employs the so-called “master art” of the Trivium for learning across
+        subjects. The Trivium is a methodology for producing knowledge of the
+        truth in three arts or stages of academic development – Grammar, Logic,
+        and Rhetoric. During the Grammar stage, students learn to be at home in
+        language as they accumulate raw data (e.g. multiplication facts,
+        geography, spelling words, etc.) through poetic and imitative practices,
+        learning what words mean and how that meaning is conveyed. In the Logic
+        (or Dialectic) stage, students engage in disputations about the
+        reliability of accumulated knowledge from the Grammar stage, training
+        their minds to perceive truth and validity in so doing. The Rhetoric
+        stage is then the winsome, persuasive application of grammar and logic.
+        Students learn to develop a thesis (this and not that) then stand their
+        ground with wisdom and eloquence through poetic expression and clarity
+        of style. These arts (or skills) were historically considered the arts
+        of the free man because they provided freedom to those who studied them
+        – the freedom that results from learning how to think.
+      </logos-words>
+      <logos-words title="History">
+        The liberal arts represent a tradition that CCE seeks to recover from
+        history and improve upon in the present. Starting with the belief that
+        God is active in history, we follow the unfolding narrative of His
+        Kingdom people, their doctrinal and cultural development, and their
+        interactions in the broader historical context. Through this lens,
+        history is decorated with the illuminating providence of the divine
+        decree. Starting with Creation, the Fall, the Flood, and the four
+        empires from Daniel
+        <logos-bible-citation cite="Dan 2"></logos-bible-citation>, all the way
+        up through the Reformation and modern America, we are living in the
+        everlasting Kingdom of God
+        <logos-bible-citation cite="Dan 2:44"></logos-bible-citation> and its
+        story is the one we tell. Practically, knowledge of the past provides
+        interpretations of the present and prescriptions for the future,
+        particularly whether the remedy for cultural decline lies in
+        enlightenment or, alternatively, in reformation.
+      </logos-words>
+      <logos-words>
+        Unlike the postmodern ethos – an affront to stability of meaning
+        characterized by open dismissal of objective facts – that dominates
+        contemporary thought, Enlightenment thinkers recognized the necessity of
+        grounding reality in objective truth; even if many (e.g. Immanuel Kant)
+        ultimately (and unironically) determined truth (and God) to be
+        unknowable. Predecessors of the Enlightenment, the heroes of the
+        Scientific Revolution believed as a presupposition that a perfect God
+        had woven perfect mathematical harmonies into the world that reflected
+        the truth of reality. The great scientists and mathematicians of
+        Reformation Europe (Newton, Euler, Faraday, etc.) studied God’s creation
+        experimentally (induction) and applied mathematical formulas to natural
+        phenomena (deduction). Contrary to popular historical obscurantism, it
+        was belief in a rational and orderly God that formed the preconditions
+        for the rise of natural science in the West.
+      </logos-words>
+      <logos-words title="Science">
+        Contemporary science dogmatically embraces a “natural selection acting
+        on random mutations” paradigm in which a thing can be explained in its
+        totality in terms of matter, force, and energy, without any reference to
+        its essential meaning or purpose. Abandoning the belief that reality
+        itself is grounded in a personal context
+        <logos-bible-citation cite="Acts 17:28"></logos-bible-citation> means
+        science education must necessarily divorce fact from meaning, truth from
+        value, and the aspiring scholar from the unchanging source of all
+        knowledge toward Whom cultivated affections are meant to be directed
+        <logos-bible-citation cite="Rom 1:21"></logos-bible-citation>. Under
+        this narrow, robotic definition of natural science, knowing something
+        means knowing how to apply it, not how to justify it.
+      </logos-words>
+      <logos-words>
+        If ultimate reality consists merely of chance-related particulars, then
+        probabilities must be calculated against the backdrop of an effectively
+        infinite, impersonal void. Conversely, in the person of Christ we have
+        the covenantal promise of stability and regularity in nature
+        <logos-bible-citation
+          cite="Gen 8:22, Jer 33:20-21"
+        ></logos-bible-citation
+        >. Believers can therefore justifiably utilize induction, the process of
+        empirical reasoning – from observed patterns in definite experience to
+        general principles of cause and effect – on which the scientific method
+        depends. Far from being antagonistic, the relationship between faith and
+        science is a complementary one. Grace does not destroy nature, but
+        perfects it. Luckily, for the sake of scientific advancement, the choice
+        between Christ and chaos is decided for us every morning when the sun
+        rises, whether or not we choose to recognize grace as grace
+        <logos-bible-citation cite="Matt 5:45"></logos-bible-citation>.
+      </logos-words>
+      <logos-words title="Math">
+        If we assume, with an unbelieving faith, that the world is fundamentally
+        chaotic and not intelligently designed, we have removed the intellectual
+        basis not just for the inductive reasoning in science but for deductive
+        reasoning in math also. The reality is that we live in a universe that
+        is inexplicably ordered given atheistic assumptions. Math seeks to
+        discover, examine, and apply those fundamental laws by which God gives
+        order to His creation. It gives us a glimpse into God’s consistency and
+        incorruptibility
+        <logos-bible-citation cite="Heb 13:8"></logos-bible-citation>. The
+        engineer, for example, implicitly trusts in these qualities for
+        assurance that his bridge, mathematically modelled as an infinite number
+        of infinitesimally small mathematical points, will stand the test of the
+        physical world. For the one who has eyes to see, conceptions of infinity
+        elicited by tangible objects in the real-world paint a picture in the
+        mind’s eye of a God Who is simultaneously infinite and omnipresent
+        <logos-bible-citation cite="Jer 23:24"></logos-bible-citation>.
+      </logos-words>
+      <logos-words>
+        Scholars of antiquity viewed the world through this lens of discrete and
+        continuous magnitudes. Hence, their formulation of the Quadrivium, which
+        was taught after the Trivium and laid the foundation for the study of
+        philosophy and theology, as arithmetic (number in the abstract),
+        geometry (number in space), music (number in time), and astronomy
+        (number in space and time). Arithmetic explores relationships among
+        discrete quantities, and geometry investigates extended continuous
+        magnitudes. Astronomy provided the empirical impulse for gathering
+        mathematical data in experimental science. Music set the trajectory for
+        theoretical mathematics in pursuit of a grand unified theory. Arithmetic
+        and geometry together offer the tools of mathematical proof and
+        conceptions of unity. This unity, between mathematical processes
+        conceived in the mind and the temporal reality of the physical universe,
+        need not exist except for the fact that God created them both.
+      </logos-words>
+      <logos-words title="Philosophy">
+        This problem of reconciling the finite and the infinite, the discrete
+        and the continuous, temporal chance and abstract ideas, material
+        particulars and rational forms, fact and meaning, time and eternity,
+        being and becoming, etc. is called the problem of the one and the many.
+        It is the intellectual dilemma that gave rise to the discipline of
+        philosophy, which pursues the unity of knowledge of reality that lies
+        behind value judgements of what is true, good, and beautiful. The
+        apostle Paul warns us not to be taken captive by philosophy and empty
+        deceit according to human tradition and not according to Christ
+        <logos-bible-citation cite="Col. 2:8"></logos-bible-citation>. In other
+        words, without revelation, our two ways of knowing things – through
+        reason (the one) and experience (the many) – cannot be trusted to cohere
+        through any metaphysical scheme devised by the likes of Plato,
+        Aristotle, or any of their philosophical successors. Only through the
+        One in Whom the fullness of deity dwells bodily
+        <logos-bible-citation cite="Col. 2:9"></logos-bible-citation> can we
+        traverse such a chasm. The philosophical enigma that is the problem of
+        the one and the many, which our most brilliant minds have chronically
+        toiled in vain to overcome for centuries, was answered for us two
+        thousand years ago as a sidenote by the God Who is One and Three, the
+        indispensable authority and reference point for all human reasoning.
+      </logos-words>
+      <logos-words title="Theology">
+        In Jesus Christ, the God-Man, we find sufficient justification for the
+        assumption that the mind’s perception of the rational and the body’s
+        experience of the real are equally ultimate and mutually affirming. In
+        other words, ideas formulated in the mind can be verified through
+        practical experimentation, and observations about reality can be
+        comprehended as unified, intelligible concepts. This is the learning
+        process. And since only the triune God of the Bible can account for its
+        reliability, He is revealed at every point in the process.
+      </logos-words>
+      <logos-words>
+        As truth is acquired during the course of a K-12 education, students
+        connect the pieces of the puzzle. Like pixels added to a blurry
+        photograph, each brings the picture more clearly into focus and further
+        verifies the puzzler’s grounding assumptions; the initial, axiomatic
+        pixels represented the finished product truly. With academic maturity
+        comes ease of idea integration – the incremental ease with which a
+        puzzle piece can be incorporated into a puzzle that has long since taken
+        shape. Choosing the correct pieces for your puzzle is roughly analogous
+        to practicing the art of grammar, as students acquire facts (true puzzle
+        pieces) through the learning process. Assembling the puzzle can be
+        compared to the sorting, ordering, and refining art of logic through
+        which students establish beliefs using formal processes for organizing
+        data. An illustration of the art of rhetoric would be to say: “You’ve
+        assembled this puzzle for long enough that you know it by heart. Now
+        draw it. And with your drawing, convince others that yours is a true
+        depiction of the image on the front of the puzzle box.”
+      </logos-words>
+      <logos-words
+        >The final test then, in an education which pursues genuine knowledge of
+        the truth contained in reality, is whether this intellectual expression
+        through artistic medium resembles the face of Jesus, the Truth incarnate
+        <logos-bible-citation cite="2 Cor 4:6"></logos-bible-citation>. Thus,
+        the path to knowledge is traversed by iteratively concluding with
+        increasing clarity what we assumed by faith to be true at the onset,
+        namely the Word of God
+        <logos-bible-citation
+          cite="2 Peter 1:5, 1 John 3:2, Rev 22:13"
+        ></logos-bible-citation
+        >.
+      </logos-words>
+    </div>
+  </logos-accordion>
+
+  <logos-accordion [expanded]="expanded[5]" (toggle)="toggle(5)">
+    <div class="accordion-heading">
+      <span class="number">5.</span>
+      {{ goals[4].line1 }}
+    </div>
+    <span class="accordion-subheading">
+      {{ goals[4].line2 }}
+    </span>
+    <div class="accordion-body"></div>
+  </logos-accordion>
+
+  <logos-accordion [expanded]="expanded[6]" (toggle)="toggle(6)">
+    <div class="accordion-heading">
+      <span class="number">6.</span>
+      {{ goals[5].line1 }}
+    </div>
+    <span class="accordion-subheading">
+      {{ goals[5].line2 }}
+    </span>
+    <div class="accordion-body">
+      <logos-words>
+        Ask your five year old to choose between a giant chocolate bar and a
+        giant gold bar. Further stipulate that he can eat the chocolate bar
+        immediately and that one hundred other kids are lined up to eat it
+        should he turn it down. None of his peers are lined up for the gold bar,
+        and he can’t spend it until adulthood. However, he gets to live life
+        until then knowing he won’t have to worry about money. Which does he
+        choose?
+      </logos-words>
+      <logos-words title="Take up your Cross">
+        We humbly acknowledge that even diligent efforts to convince students to
+        choose the gold bar may not overcome a sin nature and the modern deluge
+        of chocolate-loving cultural influences. Nothing short of the
+        regenerating work of the Spirit can turn a fallen in Adam heart of stone
+        to a risen in Christ heart of flesh. Nevertheless, we confess that the
+        ultimate measure of success for each individual student is that they
+        grow to love God’s standard and respond in faithful submission out of
+        gratitude when it comes time for them to take up their own cross. We sow
+        the seed and tend to the garden, then pray for the rain with faith that
+        God will reap the harvest
+        <logos-bible-citation cite="Eccl 11:6"></logos-bible-citation>.
+      </logos-words>
+      <logos-words title="Think God's Thoughts">
+        Very few are able to pinpoint the exact moment of the sunrise – a road
+        to Damascus moment – but we can know that the sun is up when the
+        Spirit’s internal testimony has removed opposition to, and compelled us
+        to believe in the self-attesting, freedom-bringing Word of God. Having
+        been granted the mind and disposition of Christ at the point of
+        regeneration
+        <logos-bible-citation cite="1 Cor 2:14-16"></logos-bible-citation>, our
+        beliefs become not only true (in that they correspond with the mind of
+        God according to special revelation) but justified (set on a trajectory
+        to develop and to embrace ever greater depths of divine truth)
+        <logos-citation></logos-citation>. Whereas the unbeliever’s every
+        thought process begins with the unconscious denial “there is no God”
+        <logos-bible-citation cite="Ps 14:1"></logos-bible-citation>, the
+        believer seeks to take every thought captive to the obedience of Christ
+        <logos-bible-citation cite="2 Cor 10:5"></logos-bible-citation>, so that
+        even our reasoning is directed towards God’s glory. As described by St.
+        Augustine, who took Plato’s forms and put them in the mind of God, we
+        aspire to “think God’s thoughts after Him” when we pursue knowledge. A
+        true belief is formed in faithful submission to the Word of Christ
+        because our concepts are but finite reflections of the mind of God. In
+        this manner, we have assurance that we can know things truly, though
+        analogically and never exhaustively, in proportion to God’s infinite
+        comprehension of His Creation.
+      </logos-words>
+      <logos-words title="Auto-Biography">
+        Incidentally, Augustine was also the originator of the robust
+        auto-biography
+        <logos-citation
+          >“How Christianity Makes Sense of Narrative Realism | w/Dr. Brian
+          Ballard” Parker's Pensées, 2022</logos-citation
+        >. History reflects a cross-cultural compulsion to narrate the self and
+        a countervailing aversion toward the vanity implied through a story
+        written "by me featuring me" as the hero. Various mediums have been
+        developed throughout history to mitigate such self-glorification. One
+        such medium consists of a historian telling the history of the Empire
+        and leaving the last chapter for his own life as its triumphant
+        conclusion. There’s even a medieval Chinese autobiographical tradition
+        in which authors feigned death as license to produce a self-written
+        epitaph. Christianity licenses self-narration of one’s spiritual
+        development for the sake of edifying the church and reaching the
+        unconvinced. It controls for bias and conceit by posing the Christian as
+        sub-author in a larger narrative, and in a supporting role to the true
+        hero of the preeminent story – the Lucy to His Aslan. The Christian life
+        can thus be put on display as a means of glorifying God and edifying
+        future generations. Like the stones of the Jordan
+        <logos-bible-citation cite="Josh 4:1-7"></logos-bible-citation>, we are
+        to pass on sacred memories as a shared narrative inheritance to our
+        children. Then as their own story develops, they won’t be lost. Having
+        already seen the prequel, they know their context.
+      </logos-words>
+      <logos-words title="The True Story">
+        It is written into our DNA that we are part of an unfolding story. This
+        generation may think they are postmodern relativists, but they all watch
+        Marvel comic book movies
+        <logos-citation
+          >“Louis Markos | The Myth Made Fact” KeyLifeNetwork,
+          2020</logos-citation
+        >. They know there’s good and evil, and they are looking for a hero. Our
+        job at Logos School is to convince the next generation that God’s story,
+        the one into which all other stories fit, is the best story...
+      </logos-words>
+      <logos-words
+        >The Creator God condescended into His Creation and rescued sinners to
+        eternal life through the sacrifice of Jesus Christ
+        <logos-bible-citation cite="John 3:16"></logos-bible-citation> so that
+        the world through Him might be saved
+        <logos-bible-citation cite="John 3:17"></logos-bible-citation>. The hero
+        of the story is currently seated at the right hand of the Father making
+        His enemies a footstool for His feet
+        <logos-bible-citation cite="Psalm 110:1"></logos-bible-citation> and
+        making all things new
+        <logos-bible-citation
+          cite="2 Cor 5:17, Rev 21:5"
+        ></logos-bible-citation>
+        as He extends His kingdom in the present through His Spirit-constituted
+        New Kingdom people. We’ve been instructed to pray for such continued
+        revival: “Thy Kingdom come, Thy will be done, on earth as it is in
+        heaven” <logos-bible-citation cite="Matt 6:10"></logos-bible-citation>.
+        Creation is being restored as the theatre of God’s glory
+        <logos-bible-citation cite="Isa 43:7"></logos-bible-citation> and will
+        be until the earth is filled with the knowledge of the Lord as the
+        waters cover the sea
+        <logos-bible-citation cite="Hab 2:14"></logos-bible-citation>. This is
+        God’s story of Creation, Fall, Redemption, and Consummation
+        <logos-bible-citation cite="Rev 4:8"></logos-bible-citation> that will
+        be told to the ends of the earth until every knee bows and every tongue
+        confesses that Jesus Christ is Lord
+        <logos-bible-citation cite="Phil 2:10-11"></logos-bible-citation>.
+      </logos-words>
+      <logos-words title="Therefore, Go."
+        >Jesus told stories that cast a vision of God’s unfolding plan and
+        extended an invitation to join it. The pattern of the descriptive
+        indicative (is) qualifying the prescriptive imperative (ought) is a
+        recurring motif throughout the Bible. Here’s what’s true of you. Here’s
+        what’s true of the world. Therefore, go act in the world with faith in
+        that truth. Those products of Logos School who truly believe the
+        indicative of the Great Commission, that “all authority in heaven and on
+        earth” has been given to Jesus, will be thoroughly equipped to act out
+        the imperative of that commission in the world in any vocation or
+        creative endeavor as God’s co-laborers
+        <logos-bible-citation cite="2 Cor 3:9"></logos-bible-citation>, seated
+        with Him in the heavenly places
+        <logos-bible-citation cite="Eph 2:6"></logos-bible-citation>. In Christ
+        and by the Spirit, the redeemed person walks in newness of life, by
+        faith trusting God and keeping His commandments on the path to wisdom.
+        Logos School, in extending an invitation to students to join the Gospel
+        story, aspires, as in all things, to follow the example of Jesus by
+        taking them to the path, giving them the ability to walk the path, and
+        encouraging them to, Therefore, Go.</logos-words
+      >
+      <logos-words
+        >You, Logos School graduate, have been gifted the education of the free
+        man.
+        <br />
+        <i>THEREFORE, GO be a leader of men.</i>
+      </logos-words>
+      <logos-words
+        >God uniquely crafted you in His image with the ability to create worlds
+        out of nothing with your words.
+        <br />
+        THEREFORE, GO explain blue to a blind man.
+      </logos-words>
+      <logos-words
+        >The bible begins with a marriage
+        <logos-bible-citation cite="Gen 2:24"></logos-bible-citation> and ends
+        with a marriage
+        <logos-bible-citation cite="Rev 21:9"></logos-bible-citation>.
+        <br />
+        THEREFORE, GO value your marriage in the light of its cosmic
+        significance.
+      </logos-words>
+      <logos-words
+        >Humanity fell in Adam in a garden
+        <logos-bible-citation cite="Gen 3"></logos-bible-citation>. Christ was
+        raised as the first fruits from the dead
+        <logos-bible-citation cite="1 Cor 15:20"></logos-bible-citation> in a
+        garden and was mistaken for the gardener
+        <logos-bible-citation cite="John 20:15"></logos-bible-citation>.
+        <br />
+        THEREFORE, GO tend to the garden, bearing the fruit of His Spirit.
+      </logos-words>
+      <logos-words
+        >God has ordained both the prosperity and the adversity that besets you
+        <logos-bible-citation cite="Eccl 7:14"></logos-bible-citation>, and He
+        causes all things to work together for good for those who are called
+        according to His purpose
+        <logos-bible-citation cite="Rom 8:28"></logos-bible-citation>.
+        <br />
+        THEREFORE, GO live without fear and don’t despair when life feels
+        hopeless.
+      </logos-words>
+      <logos-words
+        >If God wills it, then it will be done.
+        <br />
+        THEREFORE, GO boldly into the world and have faith in God’s providence
+        when challenges seem insurmountable.
+      </logos-words>
+      <logos-words
+        >You’ve been created for a purpose.
+        <br />
+        THEREFORE, GO let the Spirit guide you toward your calling and use it to
+        glorify God.
+      </logos-words>
+      <logos-words
+        >God intends for you to pursue His wisdom.
+        <br />
+        THEREFORE, GO learn and never stop learning.
+      </logos-words>
+      <logos-words
+        >God’s story is unfolding around you.
+        <br />
+        THEREFORE, GO, get in character, and let it be told through you. Bring
+        your treasure map.
+      </logos-words>
+    </div>
+  </logos-accordion>
 </div>

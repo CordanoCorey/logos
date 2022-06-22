@@ -70,9 +70,11 @@ export class ContainerComponent
   extends SmartComponent
   implements OnInit, AfterViewInit
 {
+  @Input() backgroundImageVertical = false;
   @Input() contentBackground = 'rgba(30, 63, 102, 0.91)';
   @Input() hasClouds = false;
   @Input() hasOverlay = false;
+  @Input() showNavbar = true;
   @Input() sidenavOpened = false;
   @Output() scrolling = new EventEmitter<number>();
   @Output() splashLoaded = new EventEmitter<string>();
@@ -94,8 +96,13 @@ export class ContainerComponent
         routeNameSelector(store),
         isMobileSelector(store),
       ]).subscribe((x) => {
-        if (x[1] && !(x[0] === 'contact-us' || x[0] === 'about-us')) {
-          this.dispatch(RouterActions.navigate('/about'));
+        if (x[1]) {
+          if (x[0] === 'home') {
+            // this.dispatch(RouterActions.navigate('/home/mobile'));
+          }
+          if (!(x[0] === 'contact-us' || x[0] === 'about-us')) {
+            // this.dispatch(RouterActions.navigate('/about'));
+          }
         }
       })
     );
@@ -113,6 +120,7 @@ export class ContainerComponent
   @Input()
   set backgroundImage(value: string) {
     this._backgroundImage = value;
+    this.backgroundImageVertical = value.includes('19.jpg');
     if (value) {
       this.bgImgAnimationState = false;
       setTimeout(() => {
@@ -166,7 +174,8 @@ export class ContainerComponent
   }
 
   set windowWidth(value: number) {
-    // console.log(`Previous window width:\t`, this._windowHeight);
+    // console.log(value);
+    // console.log(`Previous window width:\t`, this._windowWidth);
     // console.log(`New window width:\t`, value);
     if (value !== this._windowWidth) {
       this._windowWidth = value;

@@ -1,0 +1,157 @@
+<logos-container [hasOverlay]="false">
+  <div class="pay">
+    <logos-header></logos-header>
+    <!-- <nav mat-tab-nav-bar>
+      <a mat-tab-link [active]="activeLink == 'DONATE'"> Donate </a>
+      <a mat-tab-link>Pay Tuition</a>
+    </nav> -->
+    <logos-coming-soon>
+      <div class="scrollable">
+        <h1 class="font-effect-3d-float" [@slideInLeftOnEnter]>Donate</h1>
+        <div class="wrapper">
+          <form [formGroup]="customerAddressForm">
+            <h2>Your Information</h2>
+            <div class="row first">
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" required />
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" required />
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" required />
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address" required />
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="city" appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city" required />
+              </mat-form-field>
+              <mat-form-field class="zip" appearance="outline">
+                <mat-label>Zip Code</mat-label>
+                <input
+                  matInput
+                  #zipCode
+                  maxlength="5"
+                  placeholder="Ex. 17013"
+                  formControlName="zip"
+                />
+                <mat-hint align="end">{{ zipCode.value.length }} / 5</mat-hint>
+              </mat-form-field>
+            </div>
+          </form>
+          <form [formGroup]="creditCardForm" class="credit-card">
+            <h2>Credit Card Information</h2>
+            <div class="row card-number">
+              <h3>Card Number</h3>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  placeholder="0000"
+                  formControlName="cardNumber4"
+                  required
+                  maxlength="4"
+                  #cardNumber4
+                />
+                <!-- <mat-hint align="end">{{ cardNumber4.value.length }} / 4</mat-hint> -->
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  placeholder="0000"
+                  formControlName="cardNumber8"
+                  required
+                  maxlength="4"
+                  #cardNumber8
+                />
+                <!-- <mat-hint align="end">{{ cardNumber8.value.length }} / 4</mat-hint> -->
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  placeholder="0000"
+                  formControlName="cardNumber12"
+                  required
+                  maxlength="4"
+                  #cardNumber12
+                />
+                <!-- <mat-hint align="end">{{ cardNumber12.value.length }} / 4</mat-hint> -->
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  placeholder="0000"
+                  formControlName="cardNumber16"
+                  required
+                  maxlength="4"
+                  #cardNumber16
+                />
+                <!-- <mat-hint align="end">{{ cardNumber16.value.length }} / 4</mat-hint> -->
+              </mat-form-field>
+            </div>
+            <div class="row expiration-date">
+              <h3>Expiration Date</h3>
+              <mat-form-field appearance="fill">
+                <mat-label>Month</mat-label>
+                <input
+                  matInput
+                  formControlName="expirationDate2"
+                  placeholder="e.g. 01"
+                  required
+                  maxlength="2"
+                  #expirationDate2
+                />
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Year</mat-label>
+                <input
+                  matInput
+                  formControlName="expirationDate4"
+                  required
+                  maxlength="2"
+                  #expirationDate4
+                />
+              </mat-form-field>
+            </div>
+            <div class="row card-code">
+              <h3>Security Code</h3>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  formControlName="cardCode"
+                  placeholder="000"
+                  required
+                  maxlength="3"
+                  #cardCode
+                />
+                <mat-hint align="end">{{ cardCode.value.length }} / 3</mat-hint>
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+        <div class="buttons">
+          <button *ngIf="false" mat-raised-button class="btn-submit">
+            Submit
+          </button>
+        </div>
+      </div>
+    </logos-coming-soon>
+  </div>
+</logos-container>

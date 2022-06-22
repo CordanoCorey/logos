@@ -29,6 +29,17 @@
     top: 0px;
   }
 
+  img.splash-image.vertical {
+    height: 100%;
+    // width: unset;
+    // position: relative;
+    // left: unset;
+    // top: unset;
+    // margin: 0 auto;
+    // display: block;
+    // min-width: 60%;
+  }
+
   .content {
     position: absolute;
     top: 0px;
@@ -42,7 +53,7 @@
   }
 
   .sidenav-container {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     overflow: hidden;
@@ -50,18 +61,35 @@
     height: 100%;
     background: #fff;
   }
+
+  logos-navbar {
+    position: fixed;
+    top: 30%;
+    left: 0;
+    width: 50px;
+    z-index: 11;
+  }
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-device-width: 1300px) {
   .container {
     img.splash-image {
       width: unset;
       min-width: 100%;
       position: absolute;
       left: 0;
-      top: 230px;
+      top: 25%;
       height: 50%;
       min-height: unset;
+    }
+
+    img.splash-image.vertical {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 60px;
+      height: unset;
+      min-height: 100%;
     }
   }
 }

@@ -11,7 +11,12 @@ export class QuoteComponent implements OnInit {
   @Input() words = '';
   @Input() citation: Citation = new Citation();
   @Input() cite = true;
-  @Input() htmlString = null;
+  @Input() dark = false;
+  @Input() hasContent = false;
+  @Input() italics = false;
+  @Input() isMobile = false;
+  @Input() showQuote = true;
+  @Input() underlineOnHover = true;
 
   constructor() {}
 

@@ -1,0 +1,9 @@
+<div class="splash-announcement" [class.hidden]="hidden">
+  <mat-icon class="icon-alert" (click)="hidden = true"
+    >notification_important</mat-icon
+  >
+  <ng-content></ng-content>
+  <mat-icon class="icon-close" (click)="hidden = true"
+    >notification_important</mat-icon
+  >
+</div>

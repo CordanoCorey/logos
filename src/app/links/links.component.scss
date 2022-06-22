@@ -1,0 +1,58 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+:host {
+  display: block;
+  min-height: 100%;
+  width: 100%;
+}
+
+.links {
+  padding-top: 130px;
+  height: calc(100% - 130px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 56px;
+    color: mat-color($primary-palette, 600);
+    text-align: center;
+    font-style: italic;
+  }
+
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      font-size: 24px;
+      color: $primary-color;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    a:hover {
+      color: mat-color($primary-palette, 300);
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1300px) {
+  .links {
+    padding-top: 60px;
+    height: calc(100% - 60px);
+    overflow: hidden;
+
+    h1 {
+      font-size: 32px;
+      margin: 10px 0;
+    }
+
+    logos-header {
+      height: 60px;
+    }
+  }
+}

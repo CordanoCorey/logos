@@ -1,5 +1,21 @@
-<div class="carousel scrollable">
-  <div *ngFor="let view of views">
-    <ng-container *ngTemplateOutlet="view.templateRef"></ng-container>
+<mat-icon *ngIf="overflowed" class="scroll-x scroll-left"
+  >arrow_back_ios</mat-icon
+>
+<div
+  class="carousel scrollable-small-h"
+  [class.overflowed]="overflowed"
+  #carouselEl
+>
+  <div
+    class="carousel-content-wrapper"
+    [style.width.px]="wrapperWidthPx"
+    [class.centered]="viewCount === 1"
+  >
+    <div class="carousel-content" *ngFor="let view of views" #contentWrapper>
+      <ng-container *ngTemplateOutlet="view.templateRef"></ng-container>
+    </div>
   </div>
 </div>
+<mat-icon *ngIf="overflowed" class="scroll-x scroll-right"
+  >arrow_forward_ios</mat-icon
+>

@@ -4,6 +4,9 @@
 .vision {
   @extend .primary-font;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h2 {
     @extend .primary-font;
@@ -13,123 +16,40 @@
     font-style: italic;
   }
 
-  .section {
+  logos-accordion {
+    @include mat-elevation(2);
+    background: #fff;
+    display: block;
+    border-radius: 20px;
+    max-width: 1000px;
+    margin-bottom: 50px;
+  }
+
+  .accordion-heading {
+    color: $primary-color;
+    font-weight: 700;
+    @extend .primary-font;
+    white-space: break-spaces;
+    // height: 72px;
+
+    .number {
+      @extend .font1-bold;
+      margin-right: 8px;
+    }
+  }
+
+  .accordion-body {
     display: flex;
     flex-direction: column;
-    margin-bottom: 50px;
-    border: 1px solid mat-color($accent-palette, 50);
-    border-radius: 20px;
-
-    .row {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 32px;
-
-      .goal {
-        color: $primary-color;
-        font-weight: 700 !important;
-        @extend .primary-font;
-
-        .number {
-          @extend .font1-bold;
-          margin-right: 8px;
-        }
-      }
-    }
-
-    .btn-trigger {
-      font-size: 28px;
-      font-weight: bold;
-      width: 100%;
-      color: $primary-color;
-      border-radius: 20px 20px 0 0;
-
-      mat-icon {
-        @include mat-icon-diameter(32px);
-        color: mat-color($primary-palette, 800);
-      }
-    }
-
-    .narrative {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 22px;
-      overflow: hidden;
-      width: 100%;
-
-      p.by {
-        @extend .alt-font;
-        margin-top: 0px;
-        color: $primary-color;
-        font-weight: 500 !important;
-        color: mat-color($accent-palette, 900);
-        //font-style: italic;
-        width: 92%;
-        line-height: 22px;
-      }
-
-      p {
-        @extend .primary-font;
-        width: 90%;
-        color: #000;
-      }
-    }
+    align-items: center;
   }
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-device-width: 1300px) {
   .vision {
     h2 {
       font-size: 26px;
       margin-top: -10px;
-    }
-
-    .section {
-      .row {
-        height: unset;
-
-        .goal {
-          line-height: 20px;
-          font-size: 20px;
-          text-align: left;
-          width: 96%;
-          padding: 5px 0;
-          font-weight: 500 !important;
-
-          .number {
-
-            margin-right: 2px;
-            font-weight: 700;
-          }
-        }
-      }
-
-      .btn-trigger {
-
-        mat-icon {
-          position: absolute;
-          right: 0;
-          top: 0;
-        }
-      }
-
-      .narrative {
-
-        p.by {
-          line-height: 15px;
-          font-size: 15px;
-          width: 98%;
-          margin-left: 1%;
-        }
-
-        p {
-          line-height: 18px;
-          font-size: 15px;
-        }
-      }
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { GOALS } from '../models';
 import {
   animate,
   state,
@@ -27,7 +28,8 @@ import {
 })
 export class VisionComponent implements OnInit {
   @Input() isMobile = false;
-  expanded = [true, false, false, false, false, false, false];
+  expanded = [false, false, false, false, false, false, false];
+  goals = GOALS;
   constructor(public el: ElementRef) {}
 
   ngOnInit(): void {}

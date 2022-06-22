@@ -1,0 +1,7 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.bible-citation {
+  color: $primary-color;
+  font-size: 0.7em;
+}

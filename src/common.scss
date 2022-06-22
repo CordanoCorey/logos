@@ -132,7 +132,7 @@ $dark-blue: mat-color($primary-palette, 600);
   }
 
   .scrollable-small::-webkit-scrollbar-track {
-    @include bg-gradient-rb-v();
+    @include primary-gradient();
   }
 
   .scrollable-small::-webkit-scrollbar {
@@ -141,14 +141,14 @@ $dark-blue: mat-color($primary-palette, 600);
   }
 
   .scrollable-small::-webkit-scrollbar-thumb {
-    @include black-hgradient();
+    @include light-primary-gradient();
     border-radius: 5px;
     z-index: 99999;
     cursor: grab;
   }
 
   .scrollable-small-h::-webkit-scrollbar-track {
-    @include bg-gradient-br();
+    @include primary-gradient-v();
   }
 
   .scrollable-small-h::-webkit-scrollbar {
@@ -157,7 +157,7 @@ $dark-blue: mat-color($primary-palette, 600);
   }
 
   .scrollable-small-h::-webkit-scrollbar-thumb {
-    @include black-gradient();
+    @include light-primary-gradient();
     border-radius: 5px;
     z-index: 99999;
     cursor: grab;

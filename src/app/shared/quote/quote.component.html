@@ -1,7 +1,15 @@
-<div class="quote">
-  <div class="blockquote">
-    <h1 *ngIf="!htmlString" class="font-effect-3d-float">
+<div
+  class="quote"
+  [class.underline]="underlineOnHover"
+  [class.italics]="italics"
+  [class.dark]="dark"
+>
+  <div class="blockquote" [class.no-quote]="!showQuote">
+    <h1 *ngIf="!hasContent" [class.font-effect-3d-float]="!isMobile">
       {{ words }}
+    </h1>
+    <h1 *ngIf="hasContent" [class.font-effect-3d-float]="!isMobile">
+      <ng-content></ng-content>
     </h1>
     <p class="citation" *ngIf="cite">&mdash;{{ citation.via }}</p>
   </div>

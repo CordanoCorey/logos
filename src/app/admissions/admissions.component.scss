@@ -1,0 +1,78 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+:host {
+  display: block;
+  min-height: 100%;
+  width: 100%;
+}
+
+.admissions {
+  padding-top: 130px;
+  height: calc(100% - 130px);
+  width: 100%;
+
+  h1 {
+    font-size: 56px;
+    color: mat-color($primary-palette, 700);
+    text-align: center;
+    font-style: italic;
+  }
+
+  logos-header {}
+
+  img.logo {
+    z-index: 0;
+    opacity: 0.2;
+    position: fixed;
+    left: 35%;
+    width: 30%;
+  }
+
+  .scrollable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    height: 100%;
+    width: 96%;
+    padding: 0 2%;
+
+    logos-tuition {
+      display: flex;
+      margin: 20px 0;
+      z-index: 1;
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1300px) {
+  .admissions {
+    padding-top: 60px;
+    height: calc(100% - 60px);
+
+    h1 {
+      font-size: 42px;
+      margin: 0;
+    }
+
+    logos-header {
+      height: 60px;
+    }
+
+    img.logo {
+      z-index: 0;
+      opacity: 0.2;
+      position: fixed;
+      left: 3%;
+      width: 90%;
+    }
+
+    .scrollable {
+      logos-tuition {
+        width: 94%;
+      }
+    }
+  }
+}

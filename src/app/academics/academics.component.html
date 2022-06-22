@@ -1,3 +1,21 @@
-<logos-container [hasClouds]="true">
-  <logos-coming-soon></logos-coming-soon>
+<logos-container [hasOverlay]="false">
+  <div class="academics">
+    <logos-header></logos-header>
+    <img
+      class="logo"
+      src="assets/Olive_1.png"
+      [style.top.px]="logoTopPx"
+      #logoEl
+    />
+    <div class="scrollable" #scrollable>
+      <h1 class="font-effect-3d-float" [@slideInLeftOnEnter]>Academics</h1>
+      <div class="coming-soon">
+        <div class="wrapper">
+          <button mat-button routerLink="/about" class="about-link">
+            Go to About Us
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </logos-container>

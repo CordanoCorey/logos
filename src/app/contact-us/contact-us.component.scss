@@ -19,6 +19,7 @@
     font-size: 56px;
     color: mat-color($primary-palette, 600);
     text-align: center;
+    font-style: italic;
   }
 
   logos-header {}
@@ -68,7 +69,7 @@
   }
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media only screen and (max-device-width: 1300px) {
   .contact-us {
     padding-top: 60px;
     height: calc(100% - 60px);

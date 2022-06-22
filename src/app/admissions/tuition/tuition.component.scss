@@ -1,0 +1,114 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.tuition {
+  width: 100%;
+  padding-bottom: 200px;
+
+  h2 {
+    //@extend .heading-font;
+    color: mat-color($accent-palette, 900);
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  .note {
+    color: $primary-color;
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+      margin: 0 5px;
+    }
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .steps {
+      .step {
+        font-size: 20px;
+      }
+    }
+
+    .admissions-links {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn-enroll {
+      font-size: 24px;
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+
+  .table-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2.table-title {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    mat-table {
+      background: #fff;
+      width: 100%;
+      max-width: 800px;
+
+      .col-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      mat-header-cell {
+        justify-content: center;
+      }
+
+      mat-cell {
+        justify-content: center;
+      }
+    }
+
+    mat-table.two-col {
+
+      .mat-column-name {
+        min-width: 200px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1300px) {
+  .tuition {
+
+    h2 {
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .row {
+      flex-direction: column;
+      justify-content: flex-start;
+
+      .btn-enroll {
+        margin-top: 20px;
+      }
+    }
+
+    .table-wrapper {
+
+      h2.table-title {
+        font-size: 24px;
+      }
+    }
+  }
+}

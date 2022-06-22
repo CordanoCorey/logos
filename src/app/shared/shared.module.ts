@@ -43,7 +43,6 @@ import { CircleLinksComponent } from './circle-links/circle-links.component';
 import { CloudsComponent } from './clouds/clouds.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
-import { SocialLinksComponent } from './social-links/social-links.component';
 import { SplashComponent } from './splash/splash.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ContainerComponent } from './container/container.component';
@@ -64,6 +63,15 @@ import { CarouselContentDirective } from './carousel/carousel-content.directive'
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { BannerComponent } from './banner/banner.component';
 import { ImagePreloadComponent } from './image-preload/image-preload.component';
+import { AccordionComponent } from './accordion/accordion.component';
+import { SpacerComponent } from './spacer/spacer.component';
+import { ImageComponent } from './image/image.component';
+import { WordsComponent } from './words/words.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SplashMissionComponent } from './splash-mission/splash-mission.component';
+import { SplashAnnouncementComponent } from './splash-announcement/splash-announcement.component';
+import { CitationComponent } from './citation/citation.component';
+import { BibleCitationComponent } from './bible-citation/bible-citation.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +86,6 @@ import { ImagePreloadComponent } from './image-preload/image-preload.component';
     CloudsComponent,
     FooterComponent,
     MainMenuComponent,
-    SocialLinksComponent,
     SplashComponent,
     CarouselComponent,
     ContainerComponent,
@@ -99,6 +106,15 @@ import { ImagePreloadComponent } from './image-preload/image-preload.component';
     NavMenuComponent,
     BannerComponent,
     ImagePreloadComponent,
+    AccordionComponent,
+    SpacerComponent,
+    ImageComponent,
+    WordsComponent,
+    NavbarComponent,
+    SplashMissionComponent,
+    SplashAnnouncementComponent,
+    CitationComponent,
+    BibleCitationComponent,
   ],
   imports: [
     CommonModule,
@@ -169,18 +185,22 @@ import { ImagePreloadComponent } from './image-preload/image-preload.component';
     // NgxChartsModule,
     PipesModule,
     RouterModule,
+    AccordionComponent,
     BannerComponent,
     BeliefsComponent,
+    BibleCitationComponent,
     BibleVerseComponent,
     CarouselComponent,
     CarouselContentComponent,
     CarouselContentDirective,
+    CitationComponent,
     ComingSoonComponent,
     ContainerComponent,
     FaqsComponent,
     FooterComponent,
     GoalsComponent,
     HeaderComponent,
+    ImageComponent,
     ImageBannerComponent,
     ImagePreloadComponent,
     MainMenuComponent,
@@ -190,11 +210,15 @@ import { ImagePreloadComponent } from './image-preload/image-preload.component';
     OverlayComponent,
     QuoteComponent,
     SlidesComponent,
+    SpacerComponent,
+    SplashAnnouncementComponent,
+    SplashMissionComponent,
     StatComponent,
     SubMenuComponent,
     ToggleArrowsComponent,
     ValuesComponent,
     VisionComponent,
+    WordsComponent,
   ],
 })
 export class SharedModule {}
